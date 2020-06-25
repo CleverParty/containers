@@ -1,15 +1,14 @@
 language: python
 python:
-  - 2.7
-  - 3.5
-  - 3.6
+  - "2.7"
+  - "3.3"
+  - "3.4"
+cache: pip
 before_install:
   - python --version
   - pip install -U pip
   - pip install -U pytest
   - pip install codecov
-install:
-  - pip install ".[test]" . # install package + test dependencies
-script: pytest # run tests
-after_success:
-  - codecov # submit coverage
+install: pip install -e .
+script: pytest # this currently works on travisci , edit this after testing on circleci
+
