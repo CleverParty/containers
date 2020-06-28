@@ -2,13 +2,14 @@ language: python
 python:
   - "2.7"
   - "3.3"
-  - "3.4"
+  - "3.x"
+
 cache: pip
 before_install:
   - python --version
   - pip install -U pip
-  - pip install -U pytest
-  - pip install codecov
-install: pip install -e .
-script: pytest # this currently works on travisci , edit this after testing on circleci
+
+script: 
+  - make project
+  - make build  # this comment is for ci check verification.
 
