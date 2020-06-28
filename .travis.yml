@@ -1,15 +1,12 @@
 language: python
 python:
   - "2.7"
-  - "3.3"
   - "3.6.7"
   - "3.7"
   - "3.7.1"
 
-cache: pip
 before_install:
   - python --version
-  - pip install -U pip
 
 script: 
   - make project
