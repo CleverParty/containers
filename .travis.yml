@@ -9,5 +9,5 @@ before_install:
 
 script: 
   - make project
-  - make build  # this comment is for ci check verification.
+  - make build  
 
