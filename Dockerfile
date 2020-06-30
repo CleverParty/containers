@@ -1,32 +1,25 @@
-FROM golang:alpine
+# For more information, please refer to https://aka.ms/vscode-docker-python
+FROM python:3.8-slim-buster
 
-# Set necessary environmet variables needed for our image
-ENV GO111MODULE=on \
-    CGO_ENABLED=0 \
-    GOOS=linux \
-    GOARCH=amd64
+EXPOSE 8007
 
-# Move to working directory /build
-WORKDIR /build
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE 1
 
-# Copy and download dependency using go mod
-# removed go.mod and go.sum dependencies
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED 1
 
-# RUN go mod download
+# Install pip requirements
+ADD requirements.txt .
+RUN python -m pip install -r requirements.txt
 
-# Copy the code into the container
-COPY . .
+WORKDIR /app
+ADD . /app
 
-# Build the application
-RUN go build main .
+# Switching to a non-root user, please refer to https://aka.ms/vscode-docker-python-user-rights
+RUN useradd appuser && chown -R appuser /app
+USER appuser
 
-# Move to /dist directory as the place for resulting binary folder
-WORKDIR /dist
-
-# Copy binary from build to main folder
-RUN cp /build/main .
-
-# Export necessary port
-EXPOSE 3007
-
-CMD ["/dist/main"]
+# During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
+# File wsgi.py was not found in subfolder:containers. Please enter the Python path to wsgi file.
+CMD ["gunicorn", "--bind", "0.0.0.0:8007", "pythonPath.to.wsgi"]
