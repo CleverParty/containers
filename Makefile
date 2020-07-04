@@ -2,5 +2,6 @@ project:
 	echo "Running python files"
 
 build:
-	. game/bin/activate # Using a "." instead of source works , also this env has all required packages currently
+	pip install nashpy
+	# . game/bin/activate # Using a "." instead of source works 
 	python3 nash/actors.py
