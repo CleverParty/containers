@@ -7,3 +7,7 @@
 3) Isolated GET ping issues in golang-gin routers.
 
 Proposed : A Full fledged dockerised communication platform
+
+Pro-Tip :-
+(A) When using Django App on localhost , the folowing  commands make life easier :
+ -  "ps -ef | grep runserver" and also  "pkill -9 -f runserver" to kill the runserver on the chosen port.
