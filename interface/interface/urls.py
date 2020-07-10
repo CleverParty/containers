@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('holder/', include('holder.urls')), # this path can be edited later as per your requirements, because it can be configured at holder/urls.py (URLconf)
+    path('index/', include('holder.urls')), # this path can be edited later as per your requirements, because it can be configured at holder/urls.py (URLconf)
     path('admin/', admin.site.urls), 
 ]
 
-# pro-tip : "ps -ef | grep runserver" and also  "pkill -9 -f runserver"
