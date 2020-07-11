@@ -9,4 +9,4 @@ build:
 	pip freeze
 	python3 interface/holder/diffTest.py
 	# source game/bin/activate , Using a "." instead of source works 
-	# python3 nash/actors.py
+	python3 nash/actors.py
