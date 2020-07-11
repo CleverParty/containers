@@ -1,0 +1,4 @@
+/var/folders/1g/m6mc67g57dl8ycyqw0ynjjlw0000gn/T/tmpwa6svn3d/dolfin_expression_665ace994b4bbc9985648b72c1cfcf4c.cpp:61:51: error: indirection requires pointer operand ('int' invalid)
+          values[0] = 1 + x[0]*x[0] + 7*x[1]*x[1]**2;
+                                                  ^~
+1 error generated.
