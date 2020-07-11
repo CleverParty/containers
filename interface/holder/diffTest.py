@@ -1,4 +1,7 @@
-from __future__ import print_function
+from django.test import TestCase
+from views import index
+from sympy import * 
+import unittestfrom __future__ import print_function
 from fenics import *
 import matplotlib.pyplot as plt
 
