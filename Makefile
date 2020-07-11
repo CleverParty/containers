@@ -2,8 +2,6 @@ project:
 	echo "Running python files"
 
 build:
-	conda create -n fenicsproject -c conda-forge fenics
-	source activate fenicsproject
 	pip install nashpy
 	# pip install numpy
 	#pip install matplotlib

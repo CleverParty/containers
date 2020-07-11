@@ -10,7 +10,7 @@ script:
   - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
   - chmod +x miniconda.sh
   - ./miniconda.sh -b
-  - export PATH=/home/travis/miniconda2/bin:$PATH
+  - export PATH=/home/travis/miniconda2/bin:$PATH # the path given for default miniconda install is wrong, PATH=/home/travis/miniconda/bin:$PATH == X
   - conda update --yes conda 
   - make project 
   - make build  
