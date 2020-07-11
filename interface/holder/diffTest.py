@@ -2,15 +2,16 @@ from django.test import TestCase
 from views import index
 from sympy import * 
 import unittest
+import numpy as np
 from fenics import *
 import matplotlib.pyplot as plt
 
 # Create mesh and define function space
-mesh = UnitSquareMesh(8, 8)
+# mesh = UnitSquareMesh(8, 8)
 V = FunctionSpace(mesh, 'P', 1)
 
 # Define boundary condition
-u_D = Expression('1 + x[0]*x[0] + 2*x[1]*x[1]', degree=2)
+u_D = Expression('1 + x[0]*x[0] + 13*x[1]*x[1]', degree=2)
 
 def boundary(x, on_boundary):
     return on_boundary
@@ -30,7 +31,7 @@ solve(a == L, u, bc)
 
 # Plot solution and mesh
 plot(u)
-plot(mesh)
+# plot(mesh)
 
 # Save solution to file in VTK format
 vtkfile = File('poisson/solution.pvd')
@@ -42,23 +43,13 @@ error_L2 = errornorm(u_D, u, 'L2')
 # Compute maximum error at vertices
 vertex_values_u_D = u_D.compute_vertex_values(mesh)
 vertex_values_u = u.compute_vertex_values(mesh)
-import numpy as np
 error_max = np.max(np.abs(vertex_values_u_D - vertex_values_u))
 
 # Print errors
-print('error_L2  =', error_L2)
+# print('error_L2  =', error_L2)
 print('error_max =', error_max)
 
 # Hold plot
 plt.show()
 
 
-class TestStringMethods(unittest.TestCase):
-
-    def testIndex(self):
-        y = Symbol('x')
-        func = 5*y**3+12
-        diffVal = func.diff(y)
-
-if __name__ == '__main__':
-    unittest.main()
