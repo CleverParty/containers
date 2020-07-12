@@ -9,8 +9,8 @@ def testIndex(val):
     return(func.diff(y))
 
 class TestStringMethods(unittest.TestCase):
-    y = Symbol('y')
     def test(self):
+        y = Symbol('y')
         self.assertEqual(5*y, 5)
 
 if __name__ == '__main__':
