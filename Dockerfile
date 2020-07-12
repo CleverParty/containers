@@ -1,20 +1,19 @@
+# base image to be used
 FROM python:3.8-slim-buster
-
-# Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE 1
-
-# Turns off buffering for easier container logging
+# The environment variable ensures that the python output is set 
+#straight to the terminal with out buffering it first
 ENV PYTHONUNBUFFERED 1
+WORKDIR /current
+# reminder to edit the requirements.txt file
+COPY requirements.txt /current/ 
+RUN pip3 install -r requirements.txt
 
-# Install pip requirements
-ADD requirements.txt .
-RUN python -m pip install -r requirements.txt
+# Copy the current directory contents into the container at /code/
+COPY . /current
 
-WORKDIR /app
-ADD . /app
-
-RUN useradd appuser && chown -R appuser /app
-USER appuser
-
-# During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "app.py"]
+#set environment vars to be used
+ENV AUTHOR="ShanmukhaS"
+#port from the container to expose to host
+EXPOSE 8008
+#Tell image what to do when it starts as a container
+CMD /current/start_server.sh
