@@ -4,8 +4,6 @@ entrypoints==0.3
 jupyter-console==6.1.0
 jupyter-core==4.6.3
 oauthlib==3.1.0
-pandas==1.0.3
-pandocfilters==1.4.2
 parsel==1.6.0
 parso==0.6.2
 pyperclip==1.8.0

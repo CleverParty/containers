@@ -7,8 +7,11 @@ class TestStringMethods(unittest.TestCase):
 
     def testIndex(self):
         y = Symbol('x')
-        func = 5*y**3+12
+        func = 5*y
         diffVal = func.diff(y)
+    
+    def test(self):
+        self.assertEqual(self.testIndex(), 5)
 
 if __name__ == '__main__':
     unittest.main()
