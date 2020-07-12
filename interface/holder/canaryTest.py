@@ -4,14 +4,18 @@ from sympy import *
 import unittest
 
 def testIndex(val):
-    y = Symbol('y')
-    func = val
-    return(func.diff(y))
+    x = Symbol('x')
+    f = val
+    d = f.diff(x)
+    return(d)
 
 class TestStringMethods(unittest.TestCase):
     def test(self):
-        y = Symbol('y')
-        self.assertEqual(5*y, 5)
+        x = Symbol('x')
+        testCheck = 10*x
+        testVal = 5*x**2+12
+        print(testIndex(testVal))
+        self.assertEqual(testIndex(testVal), testCheck)
 
 if __name__ == '__main__':
     unittest.main()
