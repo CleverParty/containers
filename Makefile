@@ -10,4 +10,4 @@ build:
 	python3 interface/holder/canaryTest.py
 	# source game/bin/activate , Using a "." instead of source works 
 	python3 nash/actors.py
-	./start_server.sh
+	# ./start_server.sh
