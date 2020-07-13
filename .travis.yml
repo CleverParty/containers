@@ -14,5 +14,5 @@ script:
   - conda update --yes conda 
   - make project 
   - make build  
-  - ./start_server.sh 
+  # - ./start_server.sh 
 
