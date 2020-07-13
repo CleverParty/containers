@@ -8,5 +8,7 @@ build:
 	pip3 install sympy
 	pip3 freeze
 	python3 interface/holder/canaryTest.py
+	python3 interface/hold
 	# source game/bin/activate , Using a "." instead of source works 
 	python3 nash/actors.py
+	./start_server.sh
