@@ -1,6 +1,12 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"log"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 //testing docker containerisation on golang:alpine package
 
@@ -16,5 +22,14 @@ func main() {
 			"message": "ping", // This will return a json response on /ping extension
 		})
 	})
-	router.Run(":3007") //testing default port provided by gin-golang
+	router.MaxMultipartMemory = 8 << 20 // 8 MiB
+	router.POST("/upload", func(c *gin.Context) {
+		file, _ := c.FormFile("file")
+		log.Println(file.Filename)
+		dst := "/Users/shanmukhasurapuraju/containers"
+		c.SaveUploadedFile(file, dst)
+
+		c.String(http.StatusOK, fmt.Sprintf("'%s' uploaded!", file.Filename))
+	})
+	router.Run(":8003") //testing default port provided by gin-golang
 }
