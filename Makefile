@@ -4,7 +4,7 @@ project:
 build:
 	pip3 install nashpy
 	# pip install numpy
-	# pip install matplotlib
+	pip3 install matplotlib
 	pip3 install sympy
 	pip3 freeze
 	python3 interface/holder/canaryTest.py

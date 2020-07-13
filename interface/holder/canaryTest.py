@@ -3,12 +3,19 @@ from views import index
 from sympy import * 
 import unittest
 
-class TestStringMethods(unittest.TestCase):
+def testIndex(val):
+    x = Symbol('x')
+    f = val
+    d = f.diff(x)
+    return(d)
 
-    def testIndex(self):
-        y = Symbol('x')
-        func = 5*y**3+12
-        diffVal = func.diff(y)
+class TestStringMethods(unittest.TestCase):
+    def test(self):
+        x = Symbol('x')
+        testCheck = 10*x
+        testVal = 5*x**2+12
+        print(testIndex(testVal))
+        self.assertEqual(testIndex(testVal), testCheck)
 
 if __name__ == '__main__':
     unittest.main()
