@@ -1,6 +1,6 @@
-ls -la
 cd interface
-python manage.py migrate
+ls -la
+python3 manage.py migrate
 echo "server running at port 8008"
 echo "Author = $AUTHOR"
-python manage.py runserver 0.0.0.0:8008
+python3 manage.py runserver 0.0.0.0:8008
