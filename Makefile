@@ -1,6 +1,7 @@
 project:
 	echo "Running python files"
-
+test:
+	echo "test Phase has begun"
 build:
 	pip3 install nashpy
 	# pip install numpy
@@ -11,3 +12,5 @@ build:
 	# source game/bin/activate , Using a "." instead of source works 
 	python3 nash/actors.py
 	# ./start_server.sh
+ran:
+	python3 acoustics.py
