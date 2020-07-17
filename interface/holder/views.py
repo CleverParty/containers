@@ -11,7 +11,7 @@ def processOne(request):
 
 def index(request):
     x = Symbol('x')
-    f = 5*x**3+12
+    f = 5*x**3 + 12
     d = f.diff(x)
     html = "<html><body>The Derivate of  5*x**3+12 := %s </body></html>" % d
     return HttpResponse(html)
