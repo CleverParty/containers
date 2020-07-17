@@ -12,7 +12,9 @@ script:
   - ./miniconda.sh -b
   - export PATH=/home/travis/miniconda2/bin:$PATH # the path given for default miniconda install is wrong, PATH=/home/travis/miniconda/bin:$PATH == X
   - conda update --yes conda 
-  - make project 
+  - make project
   - make build  
+  - make test
+  - make run
   # - ./start_server.sh 
 
