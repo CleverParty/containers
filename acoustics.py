@@ -13,7 +13,6 @@ ax.set_ylim([0, 3])
 ax.set_zlim([0, 2]);
 room.plot()
 
-room.plot_rir()
 fig = plt.gcf()
 fig.set_size_inches(20, 10)
 """# Create a 4 by 6 metres shoe box room
