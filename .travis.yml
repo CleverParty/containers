@@ -15,6 +15,6 @@ script:
   - make project
   - make build  
   - make test
-  - make run
+  - make dynamic
   # - ./start_server.sh 
 
