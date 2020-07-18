@@ -7,9 +7,11 @@ build:
 	# pip install numpy
 	pip3 install matplotlib
 	pip3 install sympy
+	pip3 install beautifulsoup4
 	pip3 freeze
 	# source game/bin/activate , Using a "." instead of source works 
 	python3 nash/actors.py
 	# ./start_server.sh
 ran:
 	python3 interface/holder/canaryTest.py
+	python3 scrapeHistoricalData.py

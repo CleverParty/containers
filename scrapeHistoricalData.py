@@ -14,7 +14,8 @@ data = []
 for t in soup.find_all('td'):
     data.append(t.text)
     
-del data[-1]
+del data[-1] # this is essential to re-shape the array
 df_returns = pd.DataFrame(np.array(data).reshape(49,40), columns=col_names)
 df_returns.set_index('Year', inplace=True)
-df_returns.to_csv('hist.csv')
+# df_returns.to_csv('hist.csv') use this command when generating the csv file
+print(df_returns)
