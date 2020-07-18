@@ -12,6 +12,6 @@ build:
 	# source game/bin/activate , Using a "." instead of source works 
 	python3 nash/actors.py
 	# ./start_server.sh
-ran:
+dynamic:
 	python3 interface/holder/canaryTest.py
 	python3 scrapeHistoricalData.py
