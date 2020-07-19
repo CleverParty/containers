@@ -16,6 +16,12 @@ def SandP():
     raw_df.columns = raw_df.iloc[0,:]
     raw_df = raw_df.iloc[1:,:]
     print(raw_df)
+    sectors = raw_df.groupby('GICS Sector').count().iloc[:,0].sort_values()
+    sectors.plot(kind='bar')
+    plt.ylabel('Number of Constituents')
+    plt.xlabel('Sectors', fontsize=2)
+    plt.title('Sector Constituents in S&P 500 as of 2019')
+    plt.show()
 
 def HistAssetReturns():
     my_url = urlopen('https://www.portfoliovisualizer.com/historical-asset-class-returns')
