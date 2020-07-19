@@ -3,7 +3,7 @@ distlib==0.3.0
 entrypoints==0.3
 # jupyter-console==6.1.0
 # jupyter-core==4.6.3
-# oauthlib==3.1.0
+oauthlib==3.1.0
 parsel==1.6.0
 parso==0.6.2
 pyperclip==1.8.0
@@ -16,7 +16,6 @@ webencodings==0.5.1
 # websockets==8.1
 widgetsnbextension==3.5.1
 wrapt==1.11.2
-xarray==0.15.1
 yarl==1.4.2
 # zipp==3.0.0
 # zope.interface==5.1.0
