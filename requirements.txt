@@ -1,5 +1,5 @@
 distlib==0.3.0
-# Django==3.0.7
+django==3.0.7
 entrypoints==0.3
 # jupyter-console==6.1.0
 # jupyter-core==4.6.3
