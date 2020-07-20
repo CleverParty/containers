@@ -32,7 +32,7 @@ def HistAssetReturns():
     data = []
     for t in soup.find_all('td'):
         data.append(t.text)
-    
+    print(f"column names :{col_names} ")
     del data[-1] # this is essential to re-shape the array
     df_returns = pd.DataFrame(np.array(data).reshape(49,40), columns=col_names)
     df_returns.set_index('Year', inplace=True)
