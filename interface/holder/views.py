@@ -3,11 +3,7 @@ from sympy import *
 # from fenics import *
 # from mshr import *
 import numpy as np
-
-def processOne(request):
-    # < add the process code here >
-    html = "<html><body>Under Construction , hang on! </body></html>" 
-    return HttpResponse(html)
+import datetime
 
 def index(request):
     x = Symbol('x')
@@ -23,4 +19,11 @@ def partial(request):
     html = "<html><body>The Partial Derivate of 6*x*y + x**2*y + 26 is := %s </body></html>" % diff(fa,x)
     return HttpResponse(html)
 
+def processOne(request):
+    # < add the process code here >
+    html = "<html><body>Under Construction , hang on! </body></html>" 
+    return HttpResponse(html)
 
+def currentTime(request):
+    html = f"Current time : {datetime.datetime.now()}"
+    return HttpResponse(html)
