@@ -19,6 +19,6 @@ from django.urls import include, path
 urlpatterns = [
     path('index/', include('holder.urls')), # this path can be edited later as per your requirements, because it can be configured at holder/urls.py (URLconf)
     path('scale/', include('holder.urls')),
-    path('admin/', admin.site.urls), 
+    path('admin/', admin.site.urls),
 ]
 
