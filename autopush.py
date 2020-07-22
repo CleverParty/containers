@@ -1,7 +1,7 @@
 import subprocess
 import time
 s = subprocess.getstatusoutput(f'git status')
-print(s[0])
+print(s[1])
 if (s[0] == 0):
     one = subprocess.getstatusoutput(f'git add .')
     time.sleep(5)
