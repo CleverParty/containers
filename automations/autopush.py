@@ -4,11 +4,12 @@ s = subprocess.getstatusoutput(f'git status')
 print(s)
 uptodate = "Your branch is up to date with 'origin/master'"
 tobestaged = "Changes not staged for commit:"
-
+time.sleep(2)
 if(tobestaged in s[1]) :
     if (s[0] == 0):
         one = subprocess.getstatusoutput(f'git add .')
         print("stage 1 : changes added\n")
+        time.sleep(3)
         print(one[1])
         prnt = input("Enter the commit text\n")
         two = subprocess.getstatusoutput(f'git commit -m \"{prnt}\"')
