@@ -8,7 +8,6 @@ tobestaged = "Changes not staged for commit:"
 if(tobestaged in s[1]) :
     if (s[0] == 0):
         one = subprocess.getstatusoutput(f'git add .')
-        time.sleep(5)
         print("stage 1 : changes added\n")
         print(one[1])
         prnt = input("Enter the commit text\n")
