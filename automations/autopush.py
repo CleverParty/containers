@@ -23,7 +23,8 @@ else :
     print("Everything is up to date don't worry")
 
 
-brnch = input("Enter the branch name\n")
+# brnch = input("Enter the branch name\n")
+brnch = "master"
 four = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
 print("Stage 3 :")
 print(four[1])
