@@ -4,7 +4,11 @@ from sympy import *
 # from mshr import *
 import numpy as np
 import datetime
-from containers import autopush
+import os
+import sys
+
+sys.path.append("containers/automations")
+from .myPackages.autopush import autoPush
 
 def index(request):
     x = Symbol('x')
@@ -30,9 +34,14 @@ def currentTime(request):
     return HttpResponse(html)
 
 def clickPush(request):
+
+    """ from ~/containers/automations/autopush import autopush
+    os.chdir("containers/automations/")
+    from autopush import autoPush """
     html = f"<form method=\"post\"> Button exists here :- <button type=\"submit\" name=\"activate\">Activate</button> </form>"
-    if request.method == 'POST' and 'activate' in request.POST:
+    """ if request.method == 'POST' and 'activate' in request.POST:
         autopush.autoPush()
-        print("inner")
-    autopush.autoPush()
+        print("inner") """
+    autoPush()
+
     return HttpResponse(html)
