@@ -39,9 +39,8 @@ def clickPush(request):
     os.chdir("containers/automations/")
     from autopush import autoPush """
     html = f"<form method=\"post\"> Button exists here :- <button type=\"submit\" name=\"activate\">Activate</button> </form>"
-    """ if request.method == 'POST' and 'activate' in request.POST:
-        autopush.autoPush()
-        print("inner") """
-    autoPush()
+    if request.method == 'POST' and 'activate' in request.POST:
+        autoPush()
+        print("inner") 
 
     return HttpResponse(html)
