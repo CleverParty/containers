@@ -8,7 +8,7 @@ tobestaged = "Changes not staged for commit:"
 def autoPush():
     if(tobestaged in s[1]) :
         one = subprocess.getstatusoutput(f'git add -A')
-        print("stage 1 : changes added\n")
+        print("Stage 1 : changes added\n")
         print(one[1])
         prnt = input("Enter the commit text\n")
         two = subprocess.getstatusoutput(f'git commit -m \"{prnt}\"')
