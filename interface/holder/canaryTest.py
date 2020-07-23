@@ -2,7 +2,6 @@ from django.test import TestCase
 from views import index
 from sympy import * 
 import unittest
-from .myPackages.autopush import autoPush
 
 def testIndex(val):
     x = Symbol('x')
