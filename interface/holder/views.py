@@ -6,9 +6,8 @@ import numpy as np
 import datetime
 import os
 import sys
-
-sys.path.append("containers/automations")
-from .myPackages.autopush import autoPush
+# sys.path.append("containers/automations")
+# from .myPackages.autopush import autoPush
 
 def index(request):
     x = Symbol('x')
@@ -38,9 +37,9 @@ def clickPush(request):
     """ from ~/containers/automations/autopush import autopush
     os.chdir("containers/automations/")
     from autopush import autoPush """
-    html = f"<form method=\"post\"> { csrf_token } Button exists here :- <button type=\"submit\" name=\"activate\">Activate</button> </form>"
-    if request.method == 'POST' and 'activate' in request.POST:
+    html = f"<form method=\"post\"> Button exists here :- <button type=\"submit\" name=\"activate\">Activate</button> </form>"
+    """ if request.method == 'POST' and 'activate' in request.POST:
         autoPush()
-        print("inner") 
+        print("inner") """ # unleash these comments to engage in push
 
     return HttpResponse(html)
