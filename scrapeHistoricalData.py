@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas_datareader
+from pandas_datareader import data
+
+print(pandas_datareader.__version__)
 
 def SandP():
     url = urlopen("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
@@ -19,7 +23,7 @@ def SandP():
     sectors = raw_df.groupby('GICS Sector').count().iloc[:,0].sort_values()
     sectors.plot(kind='pie')
     plt.ylabel('Number of Constituents')
-    plt.xlabel('Sectors', fontsize=2)
+    plt.xlabel('Markets', fontsize=2)
     plt.title('Sector Constituents in S&P 500 as of 2019')
     plt.show()
 
@@ -39,5 +43,14 @@ def HistAssetReturns():
     # df_returns.to_csv('hist.csv') use this command when generating the csv file
     print(df_returns)
 
-SandP()
-HistAssetReturns()
+def liveData():
+    start_date = '1990-01-01'
+    end_date = '2019-02-01'
+    ticker = 'AMZN' # change ticker to test
+    datastock = data.get_data_yahoo(ticker, start_date, end_date)
+    datastock.head()
+    print(datastock.head())
+
+# SandP()
+# HistAssetReturns()
+liveData()

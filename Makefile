@@ -13,5 +13,6 @@ build:
 	python3 nash/actors.py
 	# ./start_server.sh
 dynamic:
+	pip3 install pandas-datareader
 	python3 interface/holder/canaryTest.py
 	python3 scrapeHistoricalData.py
