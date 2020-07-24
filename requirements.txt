@@ -12,11 +12,11 @@ virtualenv==20.0.5
 virtualenv-clone==0.5.4
 virtualenvwrapper==4.8.4
 w3lib==1.21.0
-wcwidth==0.1.9
-webencodings==0.5.1
+# wcwidth==0.1.9
+# webencodings==0.5.1
 # websockets==8.1
 widgetsnbextension==3.5.1
 wrapt==1.11.2
-yarl==1.4.2
+# yarl==1.4.2
 # zipp==3.0.0
 # zope.interface==5.1.0

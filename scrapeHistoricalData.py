@@ -20,13 +20,14 @@ def SandP():
     raw_df = pd.DataFrame(data)
     raw_df.columns = raw_df.iloc[0,:]
     raw_df = raw_df.iloc[1:,:]
-    print(raw_df)
     sectors = raw_df.groupby('GICS Sector').count().iloc[:,0].sort_values()
     sectors.plot(kind='pie')
     plt.ylabel('Number of Constituents')
     plt.xlabel('Markets', fontsize=2)
     plt.title('Sector Constituents in S&P 500 as of 2019')
-    plt.show()
+    # plt.show()
+    rtrn = raw_df.to_numpy()
+    return (rtrn)
 
 def HistAssetReturns():
     my_url = urlopen('https://www.portfoliovisualizer.com/historical-asset-class-returns')
@@ -60,7 +61,8 @@ def liveDataYFinance():
     print(amzn.actions)
     print('Price to Book Ratio is: %.2f' % pb)
 
-# SandP()
+datafromFunc = SandP()
+print(datafromFunc)
 # HistAssetReturns()
-liveDataYahooData()
-liveDataYFinance()
+# liveDataYahooData()
+# liveDataYFinance()

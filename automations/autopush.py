@@ -28,5 +28,5 @@ def autoPush():
 brnch = "master"
 autoPush()
 four = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
-print("Stage 3 :")
+print("Stage 3 : git pushed")
 print(four[1])
