@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas_datareader
 from pandas_datareader import data
+import yfinance as yf
 
 print(pandas_datareader.__version__)
 
@@ -43,16 +44,23 @@ def HistAssetReturns():
     # df_returns.to_csv('hist.csv') use this command when generating the csv file
     print(df_returns)
 
-def liveData():
+def liveDataYahooData():
     start_date = '1990-01-01'
     end_date = '2019-02-01'
     ticker = 'AMZN' # change ticker to test
     datastock = data.get_data_yahoo(ticker, start_date, end_date)
-    datastock.head()
-    data['Adj Close'].plot()
-    plt.show()
+    # datastock.head()
+    # data['Adj Close'].plot()
+    # plt.show()
     print(datastock.head())
+
+def liveDataYFinance():
+    amzn = yf.Ticker("AMZN")
+    pb = amzn.info['priceToBook']
+    print(amzn.actions)
+    print('Price to Book Ratio is: %.2f' % pb)
 
 # SandP()
 # HistAssetReturns()
-liveData()
+liveDataYahooData()
+liveDataYFinance()
