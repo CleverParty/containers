@@ -49,6 +49,8 @@ def liveData():
     ticker = 'AMZN' # change ticker to test
     datastock = data.get_data_yahoo(ticker, start_date, end_date)
     datastock.head()
+    data['Adj Close'].plot()
+    plt.show()
     print(datastock.head())
 
 # SandP()
