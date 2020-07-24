@@ -38,12 +38,11 @@ def HistAssetReturns():
     data = []
     for t in soup.find_all('td'):
         data.append(t.text)
-    print(f"column names :{col_names} ")
     del data[-1] # this is essential to re-shape the array
     df_returns = pd.DataFrame(np.array(data).reshape(49,40), columns=col_names)
     df_returns.set_index('Year', inplace=True)
     # df_returns.to_csv('hist.csv') use this command when generating the csv file
-    print(df_returns)
+    return (df_returns)
 
 def liveDataYahooData():
     start_date = '1990-01-01'
@@ -53,7 +52,7 @@ def liveDataYahooData():
     # datastock.head()
     # data['Adj Close'].plot()
     # plt.show()
-    print(datastock.head())
+    return(datastock.head())
 
 def liveDataYFinance():
     amzn = yf.Ticker("AMZN")
@@ -61,8 +60,9 @@ def liveDataYFinance():
     print(amzn.actions)
     print('Price to Book Ratio is: %.2f' % pb)
 
-datafromFunc = SandP()
+datafromFunc = HistAssetReturns()
 print(datafromFunc)
+# SandP()
 # HistAssetReturns()
 # liveDataYahooData()
 # liveDataYFinance()
