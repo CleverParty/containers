@@ -1,5 +1,10 @@
 import numpy as np
-import nashpy as nashie
+# import nashpy as nashie
+import math, time
+# easy way :-
+from pokereval.card import Card
+from pokereval.hand_evaluator import HandEvaluator
+
 
 seq = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
@@ -15,3 +20,7 @@ def decideHand(hand):
     if(flush):
         print("Flush baby")
     return flush
+
+# easy way :-
+hole = [Card(2, 1), Card(2, 2)]
+score = HandEvaluator.evaluate_hand(hole, [])
