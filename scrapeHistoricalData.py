@@ -59,6 +59,7 @@ def liveDataYFinance():
     pb = amzn.info['priceToBook']
     print(amzn.actions)
     print('Price to Book Ratio is: %.2f' % pb)
+    return(pb)
 
 datafromFunc = HistAssetReturns()
 print(datafromFunc)
@@ -66,3 +67,5 @@ print(datafromFunc)
 # HistAssetReturns()
 # liveDataYahooData()
 # liveDataYFinance()
+# companyData = liveDataYFinance()
+# print(companyData)
