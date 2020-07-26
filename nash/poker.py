@@ -22,5 +22,6 @@ def decideHand(hand):
     return flush
 
 # easy way :-
-hole = [Card(2, 1), Card(2, 2)]
+hole = [Card(10, 1), Card(2, 2)]
 score = HandEvaluator.evaluate_hand(hole, [])
+print(score)
