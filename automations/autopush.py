@@ -13,7 +13,7 @@ def autoPush():
         prnt = input("Enter the commit text \n")
         two = subprocess.getstatusoutput(f'git commit -m \"{prnt}\"')
         time.sleep(5) # if a larger commit, change sleep time
-        print("Stage 2 : Changes commited \n")
+        print("\nStage 2 : Changes commited \n")
         print(two[1])
         three = subprocess.getstatusoutput(f'git status')
         print(three[1])
@@ -28,5 +28,5 @@ def autoPush():
 brnch = "master"
 autoPush()
 four = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
-print("Stage 3 : git pushed changes \n")
+print("\nStage 3 : git pushed changes \n")
 print(four[1])
