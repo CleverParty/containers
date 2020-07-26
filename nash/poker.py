@@ -33,11 +33,12 @@ def decideHand(hand):
 def kinds(hand):
     num = [n for f,n in hand]
     if len(num) == len(set(num)):
-        return True
+        return "Two of a Kind"
     else :
-        return False
+        return "Unique Cards"
     # count = map(lambda x : n if(n in num) else print("values"))
     print ("test")
+
 
 # easy way :-
 """ hole = [Card(10, 1), Card(2, 2)]
