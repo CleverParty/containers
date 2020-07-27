@@ -39,4 +39,4 @@ def prisonersDilemma():
 
 
 print("test git structure")
-rPS()
+rPS('random')
