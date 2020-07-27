@@ -13,4 +13,4 @@ COPY . /current
 ENV AUTHOR="ShanmukhaS"
 # port from the container to expose to host
 EXPOSE 8008
-# CMD /current/start_server.sh
+CMD /current/start_server.sh

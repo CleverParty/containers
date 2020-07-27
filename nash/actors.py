@@ -21,7 +21,6 @@ def rPS(flag):
         print("\nWith random seed generation for each actors (RPS) :\n")
         for i, j in count:
             print(i, j)
-    
 
 def matchingPennies():
     # matching pennies : 
@@ -41,4 +40,4 @@ def prisonersDilemma():
 
 
 print("test git structure")
-rPS('random')
+rPS('normal')

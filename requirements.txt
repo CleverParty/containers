@@ -3,6 +3,7 @@ django==3.0.7
 entrypoints==0.3
 # jupyter-console==6.1.0
 # jupyter-core==4.6.3
+nashpy == 0.0.19
 oauthlib==3.1.0
 parsel==1.6.0
 parso==0.6.2
@@ -11,7 +12,7 @@ pyperclip==1.8.0
 virtualenv==20.0.5
 virtualenv-clone==0.5.4
 virtualenvwrapper==4.8.4
-w3lib==1.21.0
+# w3lib==1.21.0
 # wcwidth==0.1.9
 # webencodings==0.5.1
 # websockets==8.1
