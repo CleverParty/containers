@@ -2,7 +2,6 @@ import nashpy as nash
 import numpy as np
 
 def rPS(flag):
-    A = np.array([[0, -1, 1], [1, 0, -1], [-1, 1, 0]])
     rockPaperScissors= nash.Game(A)
     sigma_r = [0, 0, 1]
     sigma_c = [0, 1, 0]
@@ -26,17 +25,17 @@ def matchingPennies():
     print("Matching pennies results below\n")
     B = np.array([[-1, -1], [-1, 1]]) # row player wins if both heads and coloumn player wins when both are tails
     pennies = nash.Game(B)
-    print(pennies)
+    return pennies
 
 def prisonersDilemma():
+    A = np.array([[0, -1, 1], [1, 0, -1], [-1, 1, 0]])
     # prisoner's dilemma : 
     print("Modified prisoner's dilemma\n")
     C = np.array([[3, 0], [5, 1]])
     D = np.array([[1,3], [0,0]])
     dilemma = nash.Game(C,D)
-    dilemmaOne = nash.Game(A,C) # different combinations for different group of players
+    return dilemma
 
-print(" \/ Modified equilibrium for rock paper scissors \/ \n")
-print(dilemmaOne)
+
 print("test git structure")
 rPS()
