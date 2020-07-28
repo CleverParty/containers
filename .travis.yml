@@ -15,6 +15,7 @@ script:
   - make project
   - make build  
   - make test
+  - pip3 install yfinance
   - make dynamic
   # - ./start_server.sh 
 
