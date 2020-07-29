@@ -4,7 +4,7 @@ s = subprocess.getstatusoutput(f'git status')
 print(s)
 uptodate = "Your branch is up to date with 'origin/master'"
 tobestaged = "Changes not staged for commit:"
-
+flag = False
 def autoPush():
     if(tobestaged in s[1]) :
         one = subprocess.getstatusoutput(f'git add -A')
@@ -18,15 +18,20 @@ def autoPush():
         three = subprocess.getstatusoutput(f'git status')
         print(three[1])
         time.sleep(5)
+        flag = True
     else :
         print("Commit something first thalaiva\n")
-    """ else :
-        print("Everything is up to date don't worry") """
-
+        flag = False
+    return flag
+    
 
 # brnch = input("Enter the branch name \n")
 brnch = "master"
-autoPush()
+rtrn = autoPush()
+if(rtrn == True):
+    print("Everything is up to date don't worry")
+
+    
 four = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
 print("\nStage 3 : git pushed changes \n")
 print(four[1])
