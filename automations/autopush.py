@@ -4,7 +4,7 @@ s = subprocess.getstatusoutput(f'git status')
 print(s)
 uptodate = "Your branch is up to date with 'origin/master'"
 tobestaged = "Changes not staged for commit:"
-
+flag = False
 def autoPush():
     if(tobestaged in s[1]) :
         one = subprocess.getstatusoutput(f'git add -A')
