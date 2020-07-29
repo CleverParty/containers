@@ -19,15 +19,19 @@ def autoPush():
         print(three[1])
         time.sleep(5)
         flag = True
-    elif( flag == True ) :
-        print("Everything is up to date don't worry")
     else :
         print("Commit something first thalaiva\n")
+        flag = False
+    return flag
     
 
 # brnch = input("Enter the branch name \n")
 brnch = "master"
-autoPush()
+rtrn = autoPush()
+if(rtrn == True):
+    print("Everything is up to date don't worry")
+
+    
 four = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
 print("\nStage 3 : git pushed changes \n")
 print(four[1])
