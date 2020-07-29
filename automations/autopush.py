@@ -18,11 +18,12 @@ def autoPush():
         three = subprocess.getstatusoutput(f'git status')
         print(three[1])
         time.sleep(5)
+        flag = True
+    elif( flag == True ) :
+        print("Everything is up to date don't worry")
     else :
         print("Commit something first thalaiva\n")
-    """ else :
-        print("Everything is up to date don't worry") """
-
+    
 
 # brnch = input("Enter the branch name \n")
 brnch = "master"
