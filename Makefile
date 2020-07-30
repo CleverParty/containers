@@ -14,5 +14,6 @@ build:
 	# ./start_server.sh
 dynamic:
 
+	python3 algos/lychrel.py
 	python3 interface/holder/canaryTest.py
 	python3 scrapeHistoricalData.py

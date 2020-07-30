@@ -13,7 +13,7 @@ def lychrel(cargo , iter = 0):
     if(iter > 996):
         print("probably lychrel number")
         return 3
-    # print(sumVal)
+    print(sumVal)
     if(palindrome(sumVal)):
         print(f'this took {iter} iterations')
         return 1
