@@ -30,7 +30,7 @@ def matchingPennies():
     return pennies
 
 def prisonersDilemma():
-    A = np.array([[0, -1, 1], [1, 0, -1], [-1, 1, 0]])
+    A = np.array([[0, -2, 1], [1, 0, -1], [-1, 1, 0]])
     # prisoner's dilemma : 
     print("Modified prisoner's dilemma\n")
     C = np.array([[3, 0], [5, 1]])

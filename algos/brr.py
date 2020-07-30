@@ -14,12 +14,6 @@ def Total(tree):
         return Total(tree.left) + Total(tree.right) + tree.cargo
 
 
-def reverseDigits(number):
-    return int(str(number)[::-1])
-
-
-
-
 
 
 left = Tree(1)
