@@ -4,7 +4,7 @@ test:
 	echo "test Phase has begun"
 build:
 	pip3 install nashpy
-	pip install numpy
+	pip3 install numpy
 	pip3 install matplotlib
 	pip3 install sympy
 	pip3 install beautifulsoup4
@@ -14,5 +14,6 @@ build:
 	# ./start_server.sh
 dynamic:
 
+	python3 algos/lychrel.py
 	python3 interface/holder/canaryTest.py
 	python3 scrapeHistoricalData.py
