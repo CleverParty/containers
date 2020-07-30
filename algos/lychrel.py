@@ -23,8 +23,8 @@ def lychrel(cargo , iter = 0):
 
 
 counter = 0
-print(lychrel(196))
-for n in range(0,10000):
+# print(lychrel(196))
+for n in range(0,1000):
     print(f'for n value:= {n}')
     if(lychrel(n) == 3):
         counter += 1
