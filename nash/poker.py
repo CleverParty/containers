@@ -39,6 +39,11 @@ def kinds(hand):
     # count = map(lambda x : n if(n in num) else print("values"))
     print ("test")
 
+def swap(hand):
+    firstWinningCard = hand[0]
+    return firstWinningCard
+
+
 
 # easy way :-
 """ hole = [Card(10, 1), Card(2, 2)]
@@ -47,3 +52,4 @@ print(score) """
 # print(hands[0])
 # inputFile = pd.read_csv (r'/Users/shanmukhasurapuraju/containers/data/poker.txt')
 # outputFile.to_csv (r'/Users/shanmukhasurapuraju/containers/data/poker.csv', index=None)
+print(swap(hands[0][1]))
