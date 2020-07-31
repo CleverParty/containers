@@ -1,21 +1,30 @@
-num = 10
-
+num = 2
+carry = []
+sumCarry = []
+print(23)
 # result = list(map(lambda x: a ** b, range(num)))
 def sumOfDigits(cargo):
     digitsum = 0
-    while cargo:
-        digitsum += cargo/10
-        cargo//10
+    for arr in carry:
+        while arr:
+            digitsum += arr/10
+            arr//10
+            sumCarry.append(digitsum)
     return digitsum
 
-carry = []
 
-for a in range(num):
-    for b in range(num):
-        power = pow(a,b)
+
+for i in range(100):
+    for j in range(100):
+        carry.append(pow(j,i))
+    
+
+"""for i in range(0,1):
+    for j in range(0,1):
+        power = pow(i,j)
         sum = sumOfDigits(power)
         # now store the highest sum available and check if greater
-        carry.append(sum)
+        carry.append(sum)"""
 
-
-print(carry)
+sumOfDigits(carry)
+print(max(sumCarry))
