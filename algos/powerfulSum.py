@@ -4,13 +4,15 @@ sumCarry = []
 print(23)
 # result = list(map(lambda x: a ** b, range(num)))
 def sumOfDigits(cargo):
-    digitsum = 0
+ 
     for arr in carry:
+        digitsum = 0
         while arr:
-            digitsum += arr/10
-            arr//10
-            sumCarry.append(digitsum)
-    return digitsum
+            dig = arr/10
+            digitsum = digitsum + dig
+            arr = arr//10
+        sumCarry.append(digitsum)
+
 
 
 
@@ -27,4 +29,5 @@ for i in range(100):
         carry.append(sum)"""
 
 sumOfDigits(carry)
-print(max(sumCarry))
+store = max(sumCarry)
+print('%f' % (store))
