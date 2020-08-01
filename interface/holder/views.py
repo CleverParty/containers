@@ -43,3 +43,7 @@ def clickPush(request):
         print("inner") """ # unleash these comments to engage in git push
 
     return HttpResponse(html)
+
+def lychrel(request):
+    html = f"Current time : {datetime.datetime.now()}"
+    return HttpResponse(html)
