@@ -19,9 +19,9 @@ def numeratorDenomenatorForm():
     denomenator = 2
     count = 0
     for i in range(0,1000):
-        nextnumerator = nextnumerator + 2*denomenator
-        nextdenomenator = nextnumerator + denomenator
-        if(len(str(nextnumerator)) > len(str(nextdenomenator))):
+        numerator = numerator + 2*denomenator
+        denomenator = numerator + denomenator
+        if(len(str(numerator)) > len(str(denomenator))):
             count += 1
     return count
 
