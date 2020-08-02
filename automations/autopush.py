@@ -47,7 +47,7 @@ brnch = "master"
 rtrn = autoPush()
 if(rtrn == None):
     print("Everything is up to date don't worry")
-
+    exit()
 
 four = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
 print("\nStage 3 : git pushed changes \n")
