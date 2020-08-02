@@ -13,4 +13,17 @@ def convergent(num):
     sumCon = base +1/(1/2 + convergent(num)) # this just calculates the convergence recursively, for full solution it would be better to find numerator and denominator seperatelty in a for/while loop
     return sumCon
 
+
+def numeratorDenomenatorForm():
+    numerator = 3
+    denomenator = 2
+    count = 0
+    for i in range(0,1000):
+        nextnumerator = nextnumerator + 2*denomenator
+        nextdenomenator = nextnumerator + denomenator
+        if(len(str(nextnumerator)) > len(str(nextdenomenator))):
+            count += 1
+    return count
+
 print(convergent(1000))
+print(f'the number of fractions with more digits in numerator than denomenator are: {numeratorDenomenatorForm()}')
