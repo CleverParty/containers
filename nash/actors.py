@@ -33,13 +33,13 @@ def prisonersDilemma(matrixA,matrixB):
     # prisoner's dilemma : 
     print("Modified prisoner's dilemma\n")
     C = np.array([matrixA[1], matrixA[2]])
-    D = np.array([[matrixB[1], matrixB[2]])
+    D = np.array([matrixB[1], matrixB[2]])
     dilemma = nash.Game(C,D)
     return dilemma
 
 
 print("test git structure")
 rPS('normal')
-matrixA = [[3,0],[5,1]]
-matricB = [[[1,3], [0,0]]
+matrixA = [[3,0], [5,1]]
+matrixB = [[1,3], [0,0]]
 prisonersDilemma(matrixA,matrixB)
