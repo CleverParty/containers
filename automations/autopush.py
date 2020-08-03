@@ -1,5 +1,6 @@
 import subprocess
 import time
+
 s = subprocess.getstatusoutput(f'git status')
 print(s[1])
 uptodate = "Your branch is up to date with 'origin/master'"
