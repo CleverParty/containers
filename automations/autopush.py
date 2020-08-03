@@ -12,7 +12,7 @@ def autoPush():
     if(nothing in s[1]):
         flag = None
     elif(untracked in s[1] and tobestaged in s[1]) :
-        one = subprocess.getstatusoutput(f'git add') # there seems to be an outlier case when the changes to be added are not staged
+        one = subprocess.getstatusoutput(f'git add .') # there seems to be an outlier case when the changes to be added are not staged
         print("\nStage 1 : Changes added \n")
         print(one[1])
         prnt = input("Enter the commit text \n")
