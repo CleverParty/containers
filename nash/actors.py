@@ -32,8 +32,8 @@ def matchingPennies():
 def prisonersDilemma(matrixA,matrixB):
     # prisoner's dilemma : 
     print("Modified prisoner's dilemma\n")
-    C = np.array([matrixA[1], matrixA[2]])
-    D = np.array([matrixB[1], matrixB[2]])
+    C = np.array([matrixA[0], matrixA[1]])
+    D = np.array([matrixB[0], matrixB[1]])
     dilemma = nash.Game(C,D)
     return dilemma
 
