@@ -16,16 +16,16 @@ def convergent(num):
 
 def numeratorDenomenatorForm():
     numerator = 3
-    denomenator = 2
+    denominator = 2
     count = 0
-    for _ in range(0,10):
+    for _ in range(0,1000):
         # print(f'{numerator} and {denomenator}')
         """ if(i==0):
             n = numerator + nextnumerator """
-        denomenator = numerator + denomenator
-        numerator = numerator + 2*denomenator
+        denominator = numerator + denominator
+        numerator = denominator + 2*denominator
         # print(numerator)
-        if(len(str(numerator)) > len(str(denomenator))):
+        if(len(str(numerator)) > len(str(denominator))):
             count += 1
     return count
 
