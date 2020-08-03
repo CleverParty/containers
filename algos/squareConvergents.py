@@ -18,16 +18,16 @@ def numeratorDenomenatorForm():
     numerator = 3
     denomenator = 2
     count = 0
-    for i in range(0,10):
+    for _ in range(0,10):
         # print(f'{numerator} and {denomenator}')
         """ if(i==0):
-            n = numerator + numerator """
+            n = numerator + nextnumerator """
         denomenator = numerator + denomenator
         numerator = numerator + 2*denomenator
-        print(numerator)
+        # print(numerator)
         if(len(str(numerator)) > len(str(denomenator))):
             count += 1
     return count
 
-print(convergent(1000))
+print(convergent(10))
 print(f'the number of fractions with more digits in numerator than denomenator are: {numeratorDenomenatorForm()}')
