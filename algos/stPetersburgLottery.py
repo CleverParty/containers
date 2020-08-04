@@ -23,4 +23,4 @@ def generateOutcomes():
 
 stepfunc = np.heaviside(x, 0.5)
 print(stepfunc)
-generateOutcomes()
+heads , tails = generateOutcomes()
