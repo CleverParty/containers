@@ -7,6 +7,8 @@ uptodate = "Your branch is up to date with 'origin/master'"
 tobestaged = "Changes not staged for commit:"
 untracked = "Untracked files:"
 nothing = "nothing to commit, working tree clean"
+aheadof = "Your branch is ahead of 'origin/master'"
+tobecommited = "Changes to be committed:"
 flag = False
 def autoPush():
     if(nothing in s[1]):
@@ -24,7 +26,7 @@ def autoPush():
         print(three[1])
         time.sleep(7)
         flag = True
-    elif(tobestaged in s[1]):
+    elif(tobestaged in s[1] or tobecommited in s[1]):
         one = subprocess.getstatusoutput(f'git add -A') # there seems to be an outlier case when the changes to be added are not staged
         print("\nStage 1 : Changes added \n")
         print(one[1])
@@ -37,6 +39,10 @@ def autoPush():
         print(three[1])
         time.sleep(7)
         flag = True
+    elif(aheadof in s[1]):
+        pushed = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
+        print(pushed)
+        print("\nStage 3 : git pushed already commited changes \n")
     else :
         print("Commit something first thalaiva\n")
         flag = False
