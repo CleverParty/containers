@@ -9,8 +9,10 @@ def squared(num):
         temp = i*i
         y = re.findall(r"\b1", str(temp))
         z = re.findall(r"0\b", str(temp))
+        regexcompare = re.compile(r'\b1_\b2_\b3_\b4_\b5_\b6_\b7_\b8_\b9_\Z0')
         # print(x)
-        if(y and z):
+        # '-' in regex denotes range
+        if(y and z and regexcompare):
             print(f'the value starting with 1 and ending with 0 is {i}')
             # x = re.search("^The.*Spain$", txt)
 
