@@ -16,7 +16,6 @@ def Total(tree):
 
 
 
-
 left = Tree(1)
 right = Tree(3)
 root = Tree(2)

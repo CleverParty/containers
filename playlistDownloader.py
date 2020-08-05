@@ -6,7 +6,7 @@ import envkey
 
 print(os.environ) # need to fix envkey config
 
-"""api_key = os.environ('YOUTUBE_API')
+api_key = os.environ('YOUTUBE_API')
 
 def get_videos(channel_name):
     api = pyyoutube.Api(api_key=api_key)
@@ -25,4 +25,3 @@ def get_videos(channel_name):
     return videos
 
 
-get_videos("Edgardo Salas")"""

@@ -40,6 +40,10 @@ def clickPush(request):
     html = f"<form method=\"post\"> Button exists here :- <button type=\"submit\" name=\"activate\">Activate</button> </form>"
     """ if request.method == 'POST' and 'activate' in request.POST:
         autoPush()
-        print("inner") """ # unleash these comments to engage in push
+        print("inner") """ # unleash these comments to engage in git push
 
+    return HttpResponse(html)
+
+def lychrel(request):
+    html = f"Current time : {datetime.datetime.now()}"
     return HttpResponse(html)
