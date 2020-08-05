@@ -15,12 +15,28 @@ for i in x:
 # shuffle the possible H/T
 
 def generateOutcomes():
-    for i in range(100):
-        h = r.uniform(0, 0.5)
-        t = 1 - h
+    h = r.uniform(0, 0.5)
+    t = 1 - h
     return h,t
+
+def gamblerOutcome(m,s,heads,tails):
+    base = m # initial pot which either compounds or gets evaporated
+    cost = s # cost per game
+    pot = 0 # base cases are as below
+    if(cost < base):
+        # probability reduces to 0
+        return 0+m
+    if(tails > heads):
+        # game ends if tails is an out come
+        return pot
+    elif(heads > tails):
+        pot = pot + m
+        return pot
+        
 
 
 stepfunc = np.heaviside(x, 0.5)
 print(stepfunc)
 heads , tails = generateOutcomes()
+print(heads)
+print(tails)
