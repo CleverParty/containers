@@ -20,6 +20,8 @@ def squared(num):
         print(val)
         if(val):
             print("found")
+        if(i > 100000):
+            exit() # for ci testing 
         # Note : '-' in regex denotes range
 
 squared(1000000)
