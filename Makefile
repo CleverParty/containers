@@ -2,8 +2,6 @@ project:
 	echo "Running python files"
 test:
 	echo "test Phase has begun"
-	git status
-	git branch
 build:
 	pip3 install nashpy
 	pip3 install numpy

@@ -18,7 +18,7 @@ def generateOutcomes():
     h = r.uniform(0, 0.5)
     t = 1 - h
     return h,t
-
+# markov chain implementaion required?
 def gamblerOutcome(m,s,heads,tails):
     base = m # initial pot which either compounds or gets evaporated
     cost = s # cost per game
