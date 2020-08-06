@@ -2,6 +2,8 @@ language: python
 
 python:
   - "3.7"
+  - "3.8"
+  # - "3.3" - not supported
 
 before_install:
   - python --version
@@ -12,9 +14,9 @@ script:
   - ./miniconda.sh -b
   - export PATH=/home/travis/miniconda2/bin:$PATH # the path given for default miniconda install is wrong, PATH=/home/travis/miniconda/bin:$PATH == X
   - conda update --yes conda 
+  - make test
   - make project
   - make build  
-  - make test
   - pip3 install yfinance
   - make dynamic
   # - ./start_server.sh 

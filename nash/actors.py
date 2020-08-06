@@ -29,15 +29,17 @@ def matchingPennies():
     pennies = nash.Game(B)
     return pennies
 
-def prisonersDilemma():
-    A = np.array([[0, -2, 1], [1, 0, -1], [-1, 1, 0]])
+def prisonersDilemma(matrixA,matrixB):
     # prisoner's dilemma : 
     print("Modified prisoner's dilemma\n")
-    C = np.array([[3, 0], [5, 1]])
-    D = np.array([[1,3], [0,0]])
+    C = np.array([matrixA[0], matrixA[1]])
+    D = np.array([matrixB[0], matrixB[1]])
     dilemma = nash.Game(C,D)
     return dilemma
 
 
 print("test git structure")
 rPS('normal')
+matrixA = [[3,0], [5,1]]
+matrixB = [[1,3], [0,0]]
+prisonersDilemma(matrixA,matrixB)
