@@ -15,15 +15,13 @@ def squared(num):
             yCount += 1
         if(z):
             zCount += 1
-        regexcompare = re.compile(r'\b1_\b2_\b3_\b4_\b5_\b6_\b7_\b8_\b9_\Z0')
-        # print(x)
-        # '-' in regex denotes range
-        if(y and z and regexcompare):
-            # continue
-            print(f'the value starting with 1 and ending with 0 is {i} and the square is {temp} and {yCount} and {zCount}')
-            # x = re.search("^The.*Spain$", txt)
-    print (f'y = {yCount} and z = {zCount}')
+        val = re.findall(r'\d{1,5}',str(temp)) 
+        # val = re.findall(r"[1]\d[2]\d[3]\d[4]\d[5]\d[6]\d[7]\d[8]\d[9]\d[0]",str(temp))
+        print(val)
+        if(val):
+            print("found")
+        # Note : '-' in regex denotes range
 
-squared(10000)
+squared(1000000)
 
         
