@@ -16,6 +16,8 @@ def squared(num):
         if(z):
             zCount += 1
         val = re.findall(r'\d{1,5}',str(temp)) 
+        spl = re.split(r'\d',str(temp))
+        print(spl)
         # val = re.findall(r"[1]\d[2]\d[3]\d[4]\d[5]\d[6]\d[7]\d[8]\d[9]\d[0]",str(temp))
         print(val)
         if(val):
