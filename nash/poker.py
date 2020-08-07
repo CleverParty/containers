@@ -14,7 +14,7 @@ RoyalFlush = False
 cwd = os.getcwd()
 pokertxt = open('/Users/shanmukhasurapuraju/containers/data/poker.txt')
 hands = pokertxt.read().split(',')
-
+TotalTake = 0
 seq = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
 def highCard(hand):
@@ -43,7 +43,16 @@ def swap(hand):
     firstWinningCard = hand[0]
     return firstWinningCard
 
+def thePot(amount, startAmount):
+    TotalTake += amount
+    if TotalTake < startAmount :
+        print("the logical limit of gambling has passed")
+    return TotalTake
 
+def flush(hand):
+    suit = [s for f,s in hand]
+    if(len(suits) == len(set(suits))):
+        print("Flush!")
 
 # easy way :-
 """ hole = [Card(10, 1), Card(2, 2)]
