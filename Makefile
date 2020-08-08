@@ -15,6 +15,7 @@ build:
 dynamic:
 
 	# python3 algos/lychrel.py
+	# python3 nash/poker.py
 	python3 algos/squareConvergents.py
 	python3 interface/holder/canaryTest.py
 	# python3 scrapeHistoricalData.py
