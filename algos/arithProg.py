@@ -10,9 +10,12 @@ def arith(arr,a,n,d):
     sumn = (n/2) * (2*base + (n-1)*d)
     for i in range(0,len(arr)):
         base = arr[i]
+        print(base)
         sn = base + (i-1)*d
         snp1 = base + (i)*d
-        print(f"{base} and + 1 = {snp1}")
+        if(snp1 not in arr):
+            d=d+1
+        print(f'{base} and + 1 = {snp1}')
         apList.append(sn)
     print(apList)
     return(apList,sumn)
