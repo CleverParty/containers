@@ -11,8 +11,7 @@ def arith(a,n,d):
     for i in range(a,n):
         sn = base + (i-1)*d
         snp1 = base + (i)*d
-        print(i)
-        print(f'n + 1 = {snp1}')
+        print(f'{i} and + 1 = {snp1}')
         apList.append(sn)
     print(apList)
     return(apList,sumn)
