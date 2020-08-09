@@ -3,6 +3,7 @@ from datetime import datetime as time
 inA = [0, 4, 8, 16]
 inB = [0, 2, 6, 12, 14, 20] 
 apList = []
+rtnlist = []
 def arith(arr,a,n,d):
     base = a 
     temp = 0
@@ -11,18 +12,19 @@ def arith(arr,a,n,d):
     sumn = (n/2) * (2*base + (n-1)*d)
     for i in range(0,len(arr)):
         base = arr[i]
-        print(base)
+        print("arr:",arr[i])
         sn = base + (i-1)*d
-        snp1 = base + (i-2)*d
+        snp1 = base + (i)*d
         temp = d
         print("snp1 is ",snp1)
         if(snp1 not in arr):
+            temp+=1
             continue
         else:
             print(f'{sn} and + 1 = {snp1}')
-            apList.append(sn)    
+            apList.append(sn)
     print(apList)
-    return(apList,temp)
+    return(apList,sumn)
 
 
 """ def process(arr): # should be sorted before passing it here
@@ -31,9 +33,10 @@ def arith(arr,a,n,d):
 
 def main():
     begin = time.now()
-    # rtnList,sumn = arith(merged,1,10,3)
     merged = inA + inB
     merged.sort()
+    maxi = max(merged)
+    rtnList,sumn = arith(merged,merged[0],maxi,None)
     # merged[-1:] ==> last index (len-1)
     d = 0
 
@@ -42,7 +45,7 @@ def main():
         if(s not in merged):
             d += 1
             print(s)
-
+    print(f'rtnlist is :{rtnlist} and sum of n terms :{sumn}')
     # rtnList, sumn = arith(merged,merged[0],merged[-1],None)
     # print(f'merged = {merged} , max = {maximum}')
     # print(f'the list is {rtnList}, sum = {sumn}')
