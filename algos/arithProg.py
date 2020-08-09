@@ -13,16 +13,25 @@ def arith(arr,a,n,d):
     for i in range(0,len(arr)):
         base = arr[i]
         print("arr:",arr[i])
-        sn = base + (i-1)*d
-        snp1 = base + (i)*d
+        for j in range(0,len(arr)):
+            print("i value is :",j)
+            sn = base + (j-1)*temp
+            snp1 = base + (j)*temp
+            if(snp1 in arr):
+                print("new ele added")
+                apList.append(snp1)
+        sn = base + (i-1)*temp
+        snp1 = base + (i)*temp
         temp = d
         print("snp1 is ",snp1)
         if(snp1 not in arr):
             temp+=1
             continue
-        else:
+        elif(snp1 in arr):
             print(f'{sn} and + 1 = {snp1}')
             apList.append(sn)
+        else:
+            print("outter cond")
     print(apList)
     return(apList,sumn)
 
