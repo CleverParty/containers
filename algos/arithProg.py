@@ -4,7 +4,7 @@ inA = [0, 4, 8, 16]
 inB = [0, 2, 6, 12, 14, 20] 
 apList = []
 def arith(arr,a,n,d):
-    base = a
+    base = a 
     if(d==None):
         d = 0
     sumn = (n/2) * (2*base + (n-1)*d)
@@ -30,6 +30,7 @@ def main():
     # rtnList,sumn = arith(merged,1,10,3)
     merged = inA + inB
     merged.sort()
+    # merged[-1:] ==> last index (len-1)
     rtnList, sumn = arith(merged,merged[0],merged[-1],None)
     # print(f'merged = {merged} , max = {maximum}')
     print(f'the list is {rtnList}, sum = {sumn}')
