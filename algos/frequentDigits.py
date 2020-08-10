@@ -8,14 +8,15 @@ def digitTotal(arr):
     for i in range(0,len(arr)):
         if(str(arr[i]) in str(searchDict.keys())):
             print(f'the values are {arr[i]}')
-            searchDict[i] = arr[i]
+            searchDict[i] += 1
         if(len(str(arr[i])) >= 2):
             n = arr[i]
             while(n>0):
-                n /= 10
+                n //= 10
+                print(n)
                 if(str(n) in str(searchDict.keys())):
-                    print(f'values of the new dict are:{arr[i]}')
-                    searchDict[i] = n
+                    print(f'values of the new dict are:{n}')
+                    searchDict[i] += 1
                 
 digitTotal(list_1)
 print(searchDict)
