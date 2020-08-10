@@ -17,9 +17,7 @@ def digitTotal(arr):
                 if(str(index) in str(searchDict.keys())):
                     searchDict[index] += 1
                     print(searchDict)
-            """if(str(res) in str(searchDict.keys()) or str(res) in str(searchDict.keys()) ):
-                print(f'values of the new dict are:{n}')
-                searchDict[i] += 1"""
+
                 
 digitTotal(list_1)
 print(list_1)
