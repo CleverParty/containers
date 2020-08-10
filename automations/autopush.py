@@ -16,7 +16,7 @@ def autoPush():
     elif(untracked in s[1] and tobestaged in s[1]) :
         one = subprocess.getstatusoutput(f'git add -A') # there seems to be an outlier case when the changes to be added are not staged
         print("\nStage 1 : Changes added \n")
-        print(one[1])
+        print(one[1])   
         prnt = input("Enter the commit text \n")
         two = subprocess.getstatusoutput(f'git commit -m \"{prnt}\"')
         time.sleep(6) # if a larger commit, change sleep time
