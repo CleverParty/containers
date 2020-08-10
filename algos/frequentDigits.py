@@ -11,12 +11,14 @@ def digitTotal(arr):
             searchDict[i] += 1
         if(len(str(arr[i])) >= 2):
             n = arr[i]
-            while(n>0):
-                n //= 10
-                print(n)
-                if(str(n) in str(searchDict.keys())):
-                    print(f'values of the new dict are:{n}')
-                    searchDict[i] += 1
+            j = 0
+            res = [int(x) for x in str(n)] 
+            print("digit is",res)
+            searchDict[j] += 1
+            if(str(res) in str(searchDict.keys()) or str(res) in str(searchDict.keys()) ):
+                print(f'values of the new dict are:{n}')
+                searchDict[i] += 1
                 
 digitTotal(list_1)
+print(list_1)
 print(searchDict)
