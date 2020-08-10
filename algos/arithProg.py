@@ -17,7 +17,7 @@ def arith(arr,a,n,d):
             print("i value is :",j)
             sn = base + (j-1)*temp
             snp1 = base + (j)*temp
-            if(snp1 in arr and sn not in apList):
+            if(snp1 not in arr and sn in apList):
                 print("new ele added")
                 apList.append(sn)
         sn = base + (i-1)*temp
