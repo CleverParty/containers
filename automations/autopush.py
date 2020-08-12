@@ -24,7 +24,7 @@ def autoPush():
         print(two[1])
         three = subprocess.getstatusoutput(f'git status')
         print(three[1])
-        time.sleep(7)
+        time.sleep(5)
         flag = True
     elif(tobestaged in s[1]): 
         one = subprocess.getstatusoutput(f'git add -A') # there seems to be an outlier case when the changes to be added are not staged
@@ -37,7 +37,7 @@ def autoPush():
         print(two[1])
         three = subprocess.getstatusoutput(f'git status')
         print(three[1])
-        time.sleep(7)
+        time.sleep(5)
         flag = True
     elif(aheadof in s[1]):
         pushed = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
