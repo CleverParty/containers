@@ -3,7 +3,7 @@ import os,math
 numList = []
 
 def checkList(arr):
-    length = len(str(numList))
+    length = len(str(arr))
     if(length%2 != 0):
         flag = True
         return(flag,length)
