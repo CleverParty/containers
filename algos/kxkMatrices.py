@@ -6,8 +6,10 @@ GlobalList = [[2, 4, 6], [3, 6, 9], [4, 8, 12]]
 def matrix(arr):
     res = [c for c in arr]
     print(res[0][2])
-    for i in range(0,3):
-        for j in range(0,3):
+    for i in range(0,len(arr[0])):
+        for j in range(0, len(arr[0])):
+            if(j == (i+1)):
+                print(f'{i} and {j}')
             print(res[i][j])
     # sub = [c,x for x in arr]
 
