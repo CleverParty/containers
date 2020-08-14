@@ -46,7 +46,7 @@ def main():
     # merged[-1:] ==> last index (len-1)
     d = 0
 
-    for i in range(0,len(merged)-1):
+    for i in range(0,len(merged)):
         s = merged[i] + (i-1)*d 
         if(s not in merged):
             d += 1
