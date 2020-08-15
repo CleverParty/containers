@@ -19,6 +19,7 @@ def main():
     arr = [12341345,234158292,8002842985]
     flag,length = checkList(arr)
     print(flag,length)
+    checkList(arr*8)
     print(GlobalStore)
 
 
