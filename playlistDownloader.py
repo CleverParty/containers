@@ -3,8 +3,7 @@ import os
 import envkey
 
 # my_var = envkey.get("YOUTUBE_PLAYLIST_API_key")
-
-print(os.environ) # need to fix envkey config
+# need to fix envkey config
 
 api_key = os.environ('YOUTUBE_API')
 
