@@ -8,11 +8,11 @@ def checkList(arr):
     if(length%2 != 0):
         flag = True
         GlobalStore = length**2
-        return(flag,length)
+        return(flag,GlobalStore)
     else:
         res = [x for x in arr]
         flag = False
-        return(flag,length)
+        return(res,length)
 
 
 def main():

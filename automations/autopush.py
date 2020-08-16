@@ -40,7 +40,7 @@ def autoPush():
         time.sleep(5)
         flag = True
     elif(aheadof in s[1]):
-        pushed = subprocess.getstatusoutput(f'git push origin {brnch}') # test with origin later
+        pushed = subprocess.getstatusoutput(f'git push') # test with origin later
         print(pushed)
         print("\nStage 3 : git pushed already commited changes \n")
     else :
