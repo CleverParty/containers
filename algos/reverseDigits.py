@@ -7,7 +7,7 @@ def checkList(arr):
     length = len(str(arr))
     if(length%2 != 0):
         flag = True
-        GlobalStore = length**2
+        GlobalStore = (length*2)**3
         return(flag,GlobalStore)
     else:
         res = [x for x in arr]
