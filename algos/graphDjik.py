@@ -36,8 +36,6 @@ def generateWeights(edges):
 def main():
     edges = generateEdges(graph)
     weights = generateWeights(edges)
-    for vertex in example_graph:
-        print(vertex) 
     print(weights)
     print(edges)
 
