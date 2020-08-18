@@ -1,6 +1,8 @@
 import os,math
 import random as r
 
+q = []
+distance = []
 # default elegant graph format
 graph = { "a" : ["c"], 
           "b" : ["c", "e"],
@@ -32,6 +34,13 @@ def generateWeights(edges):
         weightsInner.append(r.randint(1,10))
     return weightsInner
    
+def djik(graph,start):
+    distance[start] = 0
+    for v in graph:
+        if v == start :
+            distance[start] = -1
+        q.append(distance[v])
+
 
 def main():
     edges = generateEdges(graph)
