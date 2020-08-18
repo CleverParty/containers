@@ -32,7 +32,6 @@ def arith(arr,a,n,d):
     print(apList)
     return(apList,sumn)
 
-
 """ def process(arr): # should be sorted before passing it here
     for i in range(0,100): # put range max element size from a and b arrays
 """
@@ -62,6 +61,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
