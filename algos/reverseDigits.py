@@ -1,5 +1,3 @@
-import os,math
-
 numList = []
 GlobalStore = 0
 

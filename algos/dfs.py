@@ -1,5 +1,3 @@
-import random
-import os, math
 visited = []
 # example graph :
 graph = { "a" : ["c"], 
@@ -11,11 +9,11 @@ graph = { "a" : ["c"],
         }
 
 def search(value):
-    if(value == graph[value]):
-        print(f'here')
+    # if(value == graph[value]):
+    #     print(f'here')
     # if(value in graph):
     #     print(f'logix')
-    elif(value not in visited):
+    if(value not in visited):
         print(f'already here')
         visited.append(value)
         for current in graph[value]:
@@ -23,7 +21,7 @@ def search(value):
 
 
 def main():
-    search("c")
+    search("a")
 
 if __name__ == "__main__":
     main()
