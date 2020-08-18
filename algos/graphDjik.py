@@ -41,7 +41,6 @@ def djik(graph,start):
             distance[start] = -1
         q.append(distance[v])
 
-
 def main():
     edges = generateEdges(graph)
     weights = generateWeights(edges)
