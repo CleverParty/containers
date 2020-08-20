@@ -13,8 +13,6 @@ def search(value):
     #     print(f'here')
     # if(value in graph):
     #     print(f'logix')
-    if(graph.has_key(value)):
-        print(f'logix')
     if(value not in visited):
         print(f'already here')
         visited.append(value)
