@@ -1,4 +1,3 @@
-import os,math
 import random as r
 
 q = []
@@ -38,14 +37,13 @@ def djik(graph,start):
     distance[start] = 0
     for v in graph:
         if v == start :
-            distance[start] = -1
+            distance[start] = None
         q.append(distance[v])
+
 
 def main():
     edges = generateEdges(graph)
     weights = generateWeights(edges)
-    print(weights)
-    print(edges)
 
 if __name__ == "__main__":
     main()

@@ -17,7 +17,6 @@ def arith(arr,a,n,d):
             sn = base + (j-1)*temp
             snp1 = base + (j)*temp
             if((snp1 not in arr) and (sn in apList)):
-                print("new ele added")
                 apList.append(sn)
         sn = base + (i-1)*temp
         snp1 = base + (i)*temp
@@ -28,7 +27,6 @@ def arith(arr,a,n,d):
             continue
         else:
             print(f'filler')
-    print(apList)
     return(apList,sumn)
 
 
