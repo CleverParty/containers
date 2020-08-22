@@ -44,6 +44,7 @@ def djik(graph,start):
 def main():
     edges = generateEdges(graph)
     weights = generateWeights(edges)
+    print(weights)
 
 if __name__ == "__main__":
     main()
