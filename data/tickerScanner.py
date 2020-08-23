@@ -1,13 +1,11 @@
-import quandl
 import numpy as np 
 import requests
-from sklearn.linear_model import LinearRegression
-from sklearn.svm import SVR
-from sklearn.model_selection import train_test_split
+import datetime
+# import SVR from Sklearn
 
 stripped = ""
 
-accessfile = open("access.txt","r")
+# accessfile = open("access.txt","r")
 with open("access.txt","r") as access:
         line = access.readline()
         cnt = 1
@@ -20,15 +18,17 @@ with open("access.txt","r") as access:
             if(cnt>2):
                 break
 
-# limit 30/sec base
-r = requests.get('https://finnhub.io/api/v1/company-news?symbol=TSLA&from=2020-04-30&to=2020-05-01&token=',stripped)
-print(r.json())
-print(stripped)
-accessfile.close()
+
+
+def unixTimeStamp():
+    timenow = datetime.datetime.now()
+    epoch = datetime.datetime.utcfromtimestamp(0)
+    value = (timenow - epoch).total_seconds() * 1000.0
+    return(value,timenow)
 
 def genWebHook():
     r = requests.post('https://finnhub.io/api/v1/webhook/add?token=', stripped , json={'event': 'earnings', 'symbol': 'TSLA'})
-    res = r.json()
+    res = r.json() # limit 30/sec base
     print(res)
     webhook_id = res['id']
     # List webhook
@@ -37,13 +37,15 @@ def genWebHook():
     print(res)
 
 def main():
-    genWebHook()
+    utc , _ = unixTimeStamp()
+    print(utc)
+    # genWebHook()
+
 
 if __name__ == "__main__":
     main()
 
 # quandl.ApiConfig.api_key = contents
 # data = quandl.get('WIKI/TSLA', start_date='2019-12-26', end_date='2020-7-28')
-
 # tsla = quandl.get("EOD/TSLA")
 # print(tsla.head())
