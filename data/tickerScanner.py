@@ -1,7 +1,7 @@
 import numpy as np 
 import requests
 import datetime
-# import SVR from Sklearn
+# import SVR from Sklearn here
 
 stripped = ""
 
@@ -18,8 +18,6 @@ with open("access.txt","r") as access:
             if(cnt>2):
                 break
 
-
-
 def unixTimeStamp():
     timenow = datetime.datetime.now()
     epoch = datetime.datetime.utcfromtimestamp(0)
@@ -29,11 +27,6 @@ def unixTimeStamp():
 def genWebHook():
     r = requests.post('https://finnhub.io/api/v1/webhook/add?token=', stripped , json={'event': 'earnings', 'symbol': 'TSLA'})
     res = r.json() # limit 30/sec base
-    print(res)
-    webhook_id = res['id']
-    # List webhook
-    r = requests.get('https://finnhub.io/api/v1/webhook/list?token=bt0rj6748v6ptb8skvpg')
-    res = r.json()
     print(res)
 
 def main():
