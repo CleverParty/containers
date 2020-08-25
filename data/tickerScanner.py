@@ -1,22 +1,30 @@
 import keras
 import numpy as np 
-import pandas as pd
 import requests
 import datetime
+import pandas as pd
+import pandas_datareader.data as reader
 from sklearn.svm import SVR
 from keras.layers import Dense
 from keras.layers import LSTM
 from keras.layers import Dropout
-import pandas_datareader.data as reader
 import matplotlib.pyplot as plt
 from matplotlib import style
 
 style.use('ggplot')
 start = datetime.datetime(2020,3,11)
-end = datetime.datetime(2020,8,1)
-# end = datetime.date.today()
+# end = datetime.datetime(2020,8,1)
+end = datetime.date.today()
 df = reader.DataReader("TSLA", 'yahoo', start, end)
-print(df)
+# sort by date
+df = df.sort_values('Date')
+df = df.sort_values('Date')
+
+# fix the date 
+df.reset_index(inplace=True)
+df.set_index("Date", inplace=True)
+df.reset_index(inplace=True)
+df.set_index("Date", inplace=True)
 
 stripped = ""
 # adding noise to the data process:
@@ -48,12 +56,8 @@ def genWebHook():
 def main():
     utc , _ = unixTimeStamp()
     print(utc)
+    print(df.columns)
     # genWebHook()
-    # reading dataset:
-    dataset = pd.read_csv('Position_Salaries.csv')
-    X = dataset.iloc[:, 1:2].values
-    Y = dataset.iloc[:, 2].values
-
 if __name__ == "__main__":
     main()
 
