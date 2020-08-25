@@ -1,10 +1,13 @@
 import numpy as np 
 import requests
 import datetime
-# import SVR from Sklearn here
+from sklearn.svm import SVR
+import matplotlib.pyplot as plt
+import pandas as pd
 
 stripped = ""
-
+# adding noise to the data process:
+# data[::5] += 3 * (0.5 - np.random.rand(5))
 # accessfile = open("access.txt","r")
 with open("access.txt","r") as access:
         line = access.readline()
@@ -33,7 +36,10 @@ def main():
     utc , _ = unixTimeStamp()
     print(utc)
     # genWebHook()
-
+    # reading dataset:
+    dataset = pd.read_csv('Position_Salaries.csv')
+    X = dataset.iloc[:, 1:2].values
+    Y = dataset.iloc[:, 2].values
 
 if __name__ == "__main__":
     main()
