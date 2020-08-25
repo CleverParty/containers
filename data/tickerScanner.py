@@ -1,9 +1,22 @@
+import keras
 import numpy as np 
+import pandas as pd
 import requests
 import datetime
 from sklearn.svm import SVR
+from keras.layers import Dense
+from keras.layers import LSTM
+from keras.layers import Dropout
+import pandas_datareader.data as reader
 import matplotlib.pyplot as plt
-import pandas as pd
+from matplotlib import style
+
+style.use('ggplot')
+start = datetime.datetime(2020,3,11)
+end = datetime.datetime(2020,8,1)
+# end = datetime.date.today()
+df = reader.DataReader("TSLA", 'yahoo', start, end)
+print(df)
 
 stripped = ""
 # adding noise to the data process:
