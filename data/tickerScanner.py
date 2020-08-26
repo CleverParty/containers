@@ -24,9 +24,9 @@ df.reset_index(inplace=True)
 df.set_index("Date", inplace=True)
 df.reset_index(inplace=True)
 df.set_index("Date", inplace=True)
+stripped = ""
 
 def accessGrant():
-    stripped = ""
     # adding noise to the data process:
     # data[::5] += 3 * (0.5 - np.random.rand(5))
     # accessfile = open("access.txt","r")
