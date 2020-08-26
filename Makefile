@@ -3,7 +3,6 @@ project:
 test:
 	echo "test Phase has begun"
 build:
-	pip3 --upgrade setuptools
 	pip3 install nashpy
 	pip3 install numpy
 	pip3 install matplotlib
