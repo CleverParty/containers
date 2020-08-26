@@ -13,12 +13,11 @@ from matplotlib import style
 
 stripped = ""
 
-
 def ticker():
     start = datetime.datetime(2020,3,11)
     # end = datetime.datetime(2020,8,1)
     end = datetime.date.today()
-    df = reader.DataReader("AMZN", 'yahoo', start, end)
+    df = reader.DataReader("EBAY", 'yahoo', start, end)
     # sort by date
     df = df.sort_values('Date')
     df = df.sort_values('Date')
