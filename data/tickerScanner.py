@@ -11,20 +11,27 @@ from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
 
-start = datetime.datetime(2020,3,11)
-# end = datetime.datetime(2020,8,1)
-end = datetime.date.today()
-df = reader.DataReader("AMZN", 'yahoo', start, end)
-# sort by date
-df = df.sort_values('Date')
-df = df.sort_values('Date')
-
-# fix the date 
-df.reset_index(inplace=True)
-df.set_index("Date", inplace=True)
-df.reset_index(inplace=True)
-df.set_index("Date", inplace=True)
 stripped = ""
+
+
+def ticker():
+    start = datetime.datetime(2020,3,11)
+    # end = datetime.datetime(2020,8,1)
+    end = datetime.date.today()
+    df = reader.DataReader("AMZN", 'yahoo', start, end)
+    # sort by date
+    df = df.sort_values('Date')
+    df = df.sort_values('Date')
+    # fix the date 
+    df.reset_index(inplace=True)
+    df.set_index("Date", inplace=True)
+    df.reset_index(inplace=True)
+    df.set_index("Date", inplace=True)
+
+def genData(x):    
+    r = [a/10 for a in x]
+    y = np.sin(x)+np.random.uniform(-.5, .2, len(x))
+    return np.array(y+r)
 
 def accessGrant():
     # adding noise to the data process:
@@ -56,7 +63,14 @@ def genWebHook():
 def main():
     utc , _ = unixTimeStamp()
     print(utc)
-    print(df)
+    # x_train , y_train, x_test , y_train = train_test_split(date,y)
+    # y_pred = svrTickerRBF.predict()
+    n = 100
+    x = [i/100 for i in range(n)]
+    y = genData(x)
+    x = np.array(x).reshape(-1,1)
+    plt.scatter(x, y, s=5, color="green")
+    plt.show()
     # genWebHook()
 if __name__ == "__main__":
     main()
