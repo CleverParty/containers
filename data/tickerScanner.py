@@ -11,11 +11,10 @@ from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
 
-style.use('ggplot')
 start = datetime.datetime(2020,3,11)
 # end = datetime.datetime(2020,8,1)
 end = datetime.date.today()
-df = reader.DataReader("TSLA", 'yahoo', start, end)
+df = reader.DataReader("AMZN", 'yahoo', start, end)
 # sort by date
 df = df.sort_values('Date')
 df = df.sort_values('Date')
@@ -26,21 +25,22 @@ df.set_index("Date", inplace=True)
 df.reset_index(inplace=True)
 df.set_index("Date", inplace=True)
 
-stripped = ""
-# adding noise to the data process:
-# data[::5] += 3 * (0.5 - np.random.rand(5))
-# accessfile = open("access.txt","r")
-with open("access.txt","r") as access:
-        line = access.readline()
-        cnt = 1
-        while line:
-            if ("finnhub" in line):
-                print(f'Line {cnt}: {line.strip("finnhub=~")}')
-            stripped = line.strip("finnhub=~")
+def accessGrant():
+    stripped = ""
+    # adding noise to the data process:
+    # data[::5] += 3 * (0.5 - np.random.rand(5))
+    # accessfile = open("access.txt","r")
+    with open("access.txt","r") as access:
             line = access.readline()
-            cnt += 1
-            if(cnt>2):
-                break
+            cnt = 1
+            while line:
+                if ("finnhub" in line):
+                    print(f'Line {cnt}: {line.strip("finnhub=~")}')
+                stripped = line.strip("finnhub=~")
+                line = access.readline()
+                cnt += 1
+                if(cnt>2):
+                    break
 
 def unixTimeStamp():
     timenow = datetime.datetime.now()
@@ -56,7 +56,7 @@ def genWebHook():
 def main():
     utc , _ = unixTimeStamp()
     print(utc)
-    print(df.columns)
+    print(df)
     # genWebHook()
 if __name__ == "__main__":
     main()

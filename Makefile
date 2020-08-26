@@ -19,7 +19,7 @@ dynamic:
 	# python3 algos/reverseDigits.py
 	# python3 algos/squareConvergents.py
 	echo "algo test sequence"
-	# python3 data/tickerScanner.py , generate access.txt in a private repo
+	python3 data/tickerScanner.py 
 	python3 algos/dfs.py
 	python3 algos/graphDjik.py
 	python3 interface/holder/canaryTest.py
