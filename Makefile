@@ -10,6 +10,8 @@ build:
 	pip3 install beautifulsoup4
 	pip3 install pandas-datareader
 	pip3 install keras
+	pip install tensorflow
+	pip3 install tensorflow
 	# source game/bin/activate , Using a "." instead of source also works 
 	# python3 nash/actors.py
 	# ./start_server.sh
