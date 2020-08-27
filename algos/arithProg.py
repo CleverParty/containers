@@ -12,24 +12,21 @@ def arith(arr,a,n,d):
     sumn = (n/2) * (2*base + (n-1)*d)
     for i in range(0,len(arr)):
         base = arr[i]
-        print("arr:",arr[i])
         for j in range(0,len(arr)):
-            print("i value is :",j)
+            print(f'i value is :{j}')
             sn = base + (j-1)*temp
             snp1 = base + (j)*temp
-            if(snp1 not in arr and sn in apList):
-                print("new ele added")
+            if((snp1 not in arr) and (sn in apList)):
                 apList.append(sn)
         sn = base + (i-1)*temp
         snp1 = base + (i)*temp
         temp = d
-        print("snp1 is ",snp1)
+        print(f'snp1 is {snp1}')
         if(snp1 not in arr):
             temp+=1
             continue
         else:
-            print("outter cond")
-    print(apList)
+            print(f'filler')
     return(apList,sumn)
 
 
