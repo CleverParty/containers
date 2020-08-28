@@ -4,6 +4,7 @@ import requests
 import datetime
 import pandas as pd
 import pandas_datareader.data as reader
+import sklearn
 from sklearn.svm import SVR
 from keras.layers import Dense
 from keras.layers import LSTM
