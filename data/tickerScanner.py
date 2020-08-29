@@ -27,6 +27,7 @@ def ticker():
     df.set_index("Date", inplace=True)
     df.reset_index(inplace=True)
     df.set_index("Date", inplace=True)
+    print(df.head())
 
 def genData(x):    
     r = [a/10 for a in x]
@@ -69,8 +70,9 @@ def main():
     x = [i/100 for i in range(n)]
     y = genData(x)
     x = np.array(x).reshape(-1,1)
-    plt.scatter(x, y, s=5, color="green")
-    plt.show()
+    # plt.scatter(x, y, s=5, color="green")
+    # plt.show()
+    ticker()
     # genWebHook()
 if __name__ == "__main__":
     main()
