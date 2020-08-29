@@ -3,8 +3,10 @@ project:
 test:
 	echo "test Phase has begun"
 build:
+	pip install websocket_client
 	pip3 install nashpy
 	pip3 install numpy
+	pip3 install websocket
 	pip3 install matplotlib
 	pip3 install sympy
 	pip3 install beautifulsoup4
