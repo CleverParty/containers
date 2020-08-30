@@ -5,7 +5,6 @@ test:
 build:
 	pip3 install websocket_client
 	pip3 install nashpy
-	pip3 install numpy
 	pip3 install websocket
 	pip3 install matplotlib
 	pip3 install sympy
