@@ -56,8 +56,8 @@ def accessGrant():
             line = access.readline()
             cnt = 1
             while line:
-                if ("finnhub" in line):
-                    print(f'Line {cnt}: {line.strip("finnhub=")}')
+                # if ("finnhub" in line):
+                #     print(f'Line {cnt}: {line.strip("finnhub=")}')
                 stripped = line.strip("finnhub=")
                 line = access.readline()
                 cnt += 1
@@ -65,16 +65,31 @@ def accessGrant():
                     break
     return stripped
 
+def getTickerNews(category):
+    extracted = accessGrant()
+    cargo = f'https://finnhub.io/api/v1/news?category={category}&token=b{extracted}'
+    r = requests.get(cargo)
+    print(f'General news from finnhub')
+    print(r.json())
+
 def unixTimeStamp():
     timenow = datetime.datetime.now()
     epoch = datetime.datetime.utcfromtimestamp(0)
     value = (timenow - epoch).total_seconds() * 1000.0
     return(value,timenow)
 
-def genWebHook(event,symbol):
-    r = requests.post('https://finnhub.io/api/v1/webhook/add?token=', stripped , json={'event': event, 'symbol': symbol})
-    res = r.json() # limit 30/sec base
-    print(res)
+def genWebHook():
+    # r = requests.post('https://finnhub.io/api/v1/webhook/add?token=', stripped , json={'event': event, 'symbol': symbol})
+    # res = r.json() # limit 30/sec base
+    websocket.enableTrace(True)
+    searchStr = "wss://ws.finnhub.io?token=b" + extracted
+    ws = websocket.WebSocketApp(searchStr,
+                              on_message = on_message,
+                              on_error = on_error,
+                              on_close = on_close)
+    ws.symbolsFinn = symbolsFinn
+    # ws.run_forever()
+
 def workaround_LSTM():
     # x_train , y_train, x_test , y_train = train_test_split(date,y)
     # y_pred = svrTickerRBF.predict()
@@ -86,20 +101,8 @@ def workaround_LSTM():
     plt.show()
 
 def main():
-    utc , _ = unixTimeStamp()
-    print(utc)
-    # genWebHook('earnings','OKTA')
-    websocket.enableTrace(True)
-    extracted = accessGrant()
-    print(extracted)
-    searchStr = "wss://ws.finnhub.io?token=b" + extracted
-    ws = websocket.WebSocketApp(searchStr,
-                              on_message = on_message,
-                              on_error = on_error,
-                              on_close = on_close)
-    ws.symbolsFinn = symbolsFinn
-    ws.run_forever()
-    # genWebHook()
+    getTickerNews("general")
+
 if __name__ == "__main__":
     main()
 
