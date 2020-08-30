@@ -57,12 +57,13 @@ def accessGrant():
             cnt = 1
             while line:
                 if ("finnhub" in line):
-                    print(f'Line {cnt}: {line.strip("finnhub=~")}')
-                stripped = line.strip("finnhub=~")
+                    print(f'Line {cnt}: {line.strip("finnhub=")}')
+                stripped = line.strip("finnhub=")
                 line = access.readline()
                 cnt += 1
                 if(cnt>2):
                     break
+    return stripped
 
 def unixTimeStamp():
     timenow = datetime.datetime.now()
@@ -89,7 +90,10 @@ def main():
     print(utc)
     # genWebHook('earnings','OKTA')
     websocket.enableTrace(True)
-    ws = websocket.WebSocketApp("wss://ws.finnhub.io?token=bt0rj6748v6ptb8skvpg",
+    extracted = accessGrant()
+    print(extracted)
+    searchStr = "wss://ws.finnhub.io?token=b" + extracted
+    ws = websocket.WebSocketApp(searchStr,
                               on_message = on_message,
                               on_error = on_error,
                               on_close = on_close)
