@@ -3,7 +3,8 @@ project:
 test:
 	echo "test Phase has begun"
 build:
-	sudo pip3 install --upgrade pip && sudo pip3 install numpy
+	pip3 install --upgrade pip
+	pip3 install --upgrade setuptools
 	pip3 install websocket_client
 	pip3 install nashpy
 	pip3 install websocket
