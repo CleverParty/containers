@@ -21,10 +21,10 @@ dynamic:
 	# python3 algos/lychrel.py
 	# python3 algos/frequentDigits.py
 	# python3 algos/reverseDigits.py
-	# python3 algos/squareConvergents.py
+	python3 algos/squareConvergents.py
 	echo "algo test sequence"
-	# python3 data/tickerScanner.py 
+	python3 data/tickerScanner.py 
 	python3 algos/dfs.py
 	python3 algos/graphDjik.py
 	python3 interface/holder/canaryTest.py
-	python3 scrapeHistoricalData.py
+
