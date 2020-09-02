@@ -2,6 +2,7 @@ import keras
 import numpy as np 
 import requests
 import datetime
+import finnhub 
 import pandas as pd
 import websocket
 import pandas_datareader.data as reader
@@ -101,7 +102,8 @@ def workaround_LSTM():
     plt.show()
 
 def main():
-    getTickerNews("general")
+    client = finnhub.Client(api_key=stripped)
+    print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
     main()
