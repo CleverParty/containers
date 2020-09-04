@@ -20,7 +20,7 @@ def ticker():
     start = datetime.datetime(2020,3,11)
     # end = datetime.datetime(2020,8,1)
     end = datetime.date.today()
-    df = reader.DataReader("EBAY", 'yahoo', start, end)
+    df = reader.DataReader("AAPL", 'yahoo', start, end)
     # sort by date
     df = df.sort_values('Date')
     df = df.sort_values('Date')
@@ -46,7 +46,7 @@ def on_error(ws, error):
     print(error)
 
 def symbolsFinn(ws):
-    ws.send('{"type":"subscribe","symbol":"OKTA"}')
+    ws.send('{"type":"subscribe","symbol":"AAPL"}')
     ws.send('{"type":"subscribe","symbol":"BINANCE:BTCUSDT"}')
 
 def accessGrant():
