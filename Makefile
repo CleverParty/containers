@@ -15,6 +15,7 @@ build:
 	pip3 install tensorflow
 	pip3 install keras
 	pip3 install finnhub-python
+	pip3 install sklearn
 	# source game/bin/activate , Using a "." instead of source also works 
 	# python3 nash/actors.py
 	# ./start_server.sh
