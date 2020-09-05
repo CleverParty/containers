@@ -17,18 +17,19 @@ Pro-Tip :-
 
 (C) When in the base env, you can change the env by loading the required env through the source command,  and it will work like a charm.
 
-# notes : 
+## notes : 
 
-# to start server : zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+to start server : 
+- zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
-# simplified steps for kafka:
+## simplified steps for kafka:
 step 1 : brew install kafka
 step 2 : start brokers, and kafka cluster requirements
 step 3 : create topics , producers and consumers on said topic
 step 4 : enjoy TCP protocol speeds
 default is set to localhost:9092 to change default port edit file at : vim /usr/local/etc/kafka/server.properties
 
-# ==> Caveats
+## caveats
 To have launchd start kafka now and restart at login:
 brew services start kafka
 To have launchd start zookeeper now and restart at login:
