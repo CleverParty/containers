@@ -16,6 +16,15 @@ from matplotlib import style
 
 stripped = ""
 
+def create(symbol,start,end):
+    style.use('ggplot')
+    df = reader.DataReader("AAPL", 'yahoo', start, end)
+    # sort by date
+    df = df.sort_values('Date') 
+    # fix the date 
+    df.reset_index(inplace=True)
+    return(df,df.head())
+
 def ticker():
     start = datetime.datetime(2020,3,11)
     # end = datetime.datetime(2020,8,1)
@@ -29,7 +38,7 @@ def ticker():
     df.set_index("Date", inplace=True)
     df.reset_index(inplace=True)
     df.set_index("Date", inplace=True)
-    print(df.head())
+    print(df)
 
 def genData(x):    
     r = [a/10 for a in x]
@@ -102,8 +111,12 @@ def workaround_LSTM():
     plt.show()
 
 def main():
+    start = datetime.datetime(2020,8,1) # format :- year,month,day
+    end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    print(client.company_profile(cusip='679295105'))
+    _,head = create("AAPl",start,end)
+    print(head)
+    # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
     main()
