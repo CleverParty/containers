@@ -107,14 +107,14 @@ def workaround_LSTM():
     x = [i/100 for i in range(n)]
     y = genData(x)
     x = np.array(x).reshape(-1,1)
-    plt.scatter(x, y, s=5, color="green")
+    plt.scatter(x, y, s=5, color="blue")
     plt.show()
 
 def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    _,head = create("OKTA",start,end)
+    _,head = create("F",start,end)
     print(head)
     # print(client.company_profile(cusip='679295105'))
 
