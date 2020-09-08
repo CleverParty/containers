@@ -114,14 +114,12 @@ def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    _,head = create("AAPl",start,end)
+    _,head = create("OKTA",start,end)
     print(head)
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
     main()
-
-
 
 # quandl.ApiConfig.api_key = contents
 # data = quandl.get('WIKI/TSLA', start_date='2019-12-26', end_date='2020-7-28')
