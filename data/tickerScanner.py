@@ -18,7 +18,7 @@ stripped = ""
 
 def create(symbol,start,end):
     style.use('ggplot')
-    df = reader.DataReader("AAPL", 'yahoo', start, end)
+    df = reader.DataReader(symbol, 'yahoo', start, end)
     # sort by date
     df = df.sort_values('Date') 
     # fix the date 
@@ -55,7 +55,6 @@ def on_error(ws, error):
     print(error)
 
 def symbolsFinn(ws):
-    ws.send('{"type":"subscribe","symbol":"AAPL"}')
     ws.send('{"type":"subscribe","symbol":"BINANCE:BTCUSDT"}')
 
 def accessGrant():
