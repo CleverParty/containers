@@ -5,7 +5,6 @@ import pandas
 from kafka import KafkaConsumer
 import tickerScanner as ticker
 
-
 def main():
     consumer = KafkaConsumer(
         'livedata',

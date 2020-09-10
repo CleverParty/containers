@@ -29,7 +29,8 @@ import tickerScanner as ticker
 def main():
     start = datetime.datetime(2019,8,1) # format :- year,month,day
     end = datetime.datetime.today()
-    dataframe,head = ticker.create("AAPL",start,end)
+    symbol = "OKTA"
+    dataframe,head = ticker.create(symbol,start,end)
     producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
                          value_serializer=lambda x: 
                          dumps(x).encode('utf-8'))
