@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import pandas as pd
-# import nashpy as nashie
+# import nashpy as nash
 import math, time
 # easy way :-
 from pokereval.card import Card
