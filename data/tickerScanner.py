@@ -14,7 +14,6 @@ from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
 import yfinance as yf
-
 stripped = ""
 
 def create(symbol,start,end):
@@ -111,7 +110,9 @@ def workaround_LSTM():
     plt.scatter(x, y, s=5, color="blue")
     plt.show()
 
-def laggingVWAP():
+def laggingVWAP(symbol,start,end):
+    entire,_ = create(symbol,start,end)
+    print(entire["high"])
     high = 123
     low = 111
     close = 120
@@ -119,14 +120,12 @@ def laggingVWAP():
     cumTypicalPrice = volume * typicalPrice 
     rtrnValue = cumTypicalPrice / cumVolume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
 
-
 def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    entire,dividends= create("AAPL",start,end)
-    print(entire)
-    print(dividends)
+    #entire,dividends= create("AAPL",start,end)
+    laggingVWAP("F",start,end)
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
