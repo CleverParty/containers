@@ -33,6 +33,6 @@ def squared(num):
             exit() # for ci testing 
         # Note : '-' in regex denotes range
 
-squared(1000000)
+squared(100000)
 
         

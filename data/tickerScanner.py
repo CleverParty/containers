@@ -13,6 +13,7 @@ from keras.layers import LSTM
 from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
+import yfinance as yf
 
 stripped = ""
 
@@ -23,13 +24,14 @@ def create(symbol,start,end):
     df = df.sort_values('Date') 
     # fix the date 
     df.reset_index(inplace=True)
-    return(df,df.head())
+    stockTicker = yf.Ticker(symbol)
+    return(df,stockTicker.dividends)
 
 def ticker():
     start = datetime.datetime(2020,3,11)
     # end = datetime.datetime(2020,8,1)
     end = datetime.date.today()
-    df = reader.DataReader("AAPL", 'yahoo', start, end)
+    df = reader.DataReader("CRWD", 'yahoo', start, end)
     # sort by date
     df = df.sort_values('Date')
     df = df.sort_values('Date')
@@ -109,12 +111,22 @@ def workaround_LSTM():
     plt.scatter(x, y, s=5, color="blue")
     plt.show()
 
+def laggingVWAP():
+    high = 123
+    low = 111
+    close = 120
+    typicalPrice = 119.7
+    cumTypicalPrice = volume * typicalPrice 
+    rtrnValue = cumTypicalPrice / cumVolume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
+
+
 def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    _,head = create("F",start,end)
-    print(head)
+    entire,dividends= create("AAPL",start,end)
+    print(entire)
+    print(dividends)
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
