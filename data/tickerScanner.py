@@ -1,4 +1,4 @@
-import keras
+# import keras
 import numpy as np 
 import requests
 import datetime
@@ -6,11 +6,11 @@ import finnhub
 import pandas as pd
 import websocket
 import pandas_datareader.data as reader
-import sklearn
-from sklearn.svm import SVR
+# import sklearn
+"""from sklearn.svm import SVR
 from keras.layers import Dense
 from keras.layers import LSTM
-from keras.layers import Dropout
+from keras.layers import Dropout"""
 import matplotlib.pyplot as plt
 from matplotlib import style
 import yfinance as yf
@@ -113,19 +113,20 @@ def workaround_LSTM():
 def laggingVWAP(symbol,start,end):
     entire,_ = create(symbol,start,end)
     print(entire["high"])
-    high = 123
+    high = entire["high"]
     low = 111
     close = 120
     typicalPrice = 119.7
     cumTypicalPrice = volume * typicalPrice 
     rtrnValue = cumTypicalPrice / cumVolume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
+    return rt
 
 def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
     #entire,dividends= create("AAPL",start,end)
-    laggingVWAP("F",start,end)
+    print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
