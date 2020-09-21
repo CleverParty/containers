@@ -1,4 +1,4 @@
-# import keras
+import keras
 import numpy as np 
 import requests
 import datetime
@@ -6,11 +6,11 @@ import finnhub
 import pandas as pd
 import websocket
 import pandas_datareader.data as reader
-# import sklearn
-"""from sklearn.svm import SVR
+import sklearn
+from sklearn.svm import SVR
 from keras.layers import Dense
 from keras.layers import LSTM
-from keras.layers import Dropout"""
+from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
 import yfinance as yf
