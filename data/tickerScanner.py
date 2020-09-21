@@ -110,6 +110,12 @@ def workaround_LSTM():
     plt.scatter(x, y, s=5, color="blue")
     plt.show()
 
+def finnhubCreate(symbol): # current prices
+    extracted = accessGrant()
+    cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
+    r = requests.get(cargo)
+    print(r.json())
+
 def laggingVWAP(symbol,start,end):
     entire,_ = create(symbol,start,end)
     print(entire["high"])
@@ -125,8 +131,9 @@ def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
+    finnhubCreate("F")
     #entire,dividends= create("AAPL",start,end)
-    print(laggingVWAP("F",start,end))
+    #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__":
