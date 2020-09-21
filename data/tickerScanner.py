@@ -107,14 +107,16 @@ def workaround_LSTM():
     x = [i/100 for i in range(n)]
     y = genData(x)
     x = np.array(x).reshape(-1,1)
-    plt.scatter(x, y, s=5, color="blue")
+    plt.scatter(x, y, s=5, color="green")
     plt.show()
 
 def finnhubCreate(symbol): # current prices
     extracted = accessGrant()
     cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
+    cargoPriceTarget = f'https://finnhub.io/api/v1/stock/price-target?symbol={symbol}&token=b{extracted}'
     r = requests.get(cargo)
-    print(r.json())
+    rPC = requests.get(cargoPriceTarget)
+    return r.json(),rPC.json()
 
 def laggingVWAP(symbol,start,end):
     entire,_ = create(symbol,start,end)
@@ -135,12 +137,13 @@ def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    finnhubCreate("F")
+    print(finnhubCreate("F"))
+    print(finnhubCreate("AAPL"))
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
 
-if __name__ == "__main__":
+if __name__ == "__main__" :
     main()
 
 # quandl.ApiConfig.api_key = contents
