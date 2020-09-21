@@ -125,7 +125,11 @@ def laggingVWAP(symbol,start,end):
     typicalPrice = 119.7
     cumTypicalPrice = volume * typicalPrice 
     rtrnValue = cumTypicalPrice / cumVolume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
-    return rt
+    return rtrnValue
+
+def sentimentAnalysisInBuilt(symbol,start,end):
+    bearOrBull = 1
+    return bearOrBull
 
 def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
