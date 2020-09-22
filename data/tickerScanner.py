@@ -118,15 +118,15 @@ def finnhubCreate(symbol): # current prices
     rPC = requests.get(cargoPriceTarget)
     return r.json(),rPC.json()
 
-def laggingVWAP(symbol,start,end):
-    entire,_ = create(symbol,start,end)
-    print(entire["high"])
-    high = entire["high"]
-    low = 111
-    close = 120
-    typicalPrice = 119.7
-    cumTypicalPrice = volume * typicalPrice 
-    rtrnValue = cumTypicalPrice / cumVolume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
+def laggingVWAP(symbol):
+    entire,priceTarget = finnhubCreate(symbol)
+    high = entire["h"]
+    low = entire["l"]
+    close = entire["c"]
+    timeStamp = entire["t"]
+    volume = 100000
+    cumTypicalPrice = volume * ((high+low+close)/3) 
+    rtrnValue = cumTypicalPrice / volume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
     return rtrnValue
 
 def sentimentAnalysisInBuilt(symbol,start,end):
@@ -138,7 +138,8 @@ def main():
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
     print(finnhubCreate("F"))
-    print(finnhubCreate("AAPL"))
+    print(finnhubCreate("OKTA"))
+    print(laggingVWAP("F"))
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
