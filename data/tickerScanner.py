@@ -16,6 +16,16 @@ from matplotlib import style
 import yfinance as yf
 stripped = ""
 
+class yfinanceCreateContainer():
+    def __init__(self,symbol):
+        self.symbol = symbol 
+    
+    def symbolHist(self,start,end):
+        ticker = yf.Ticker(self.symbol)
+        print(ticker)
+
+    
+
 def create(symbol,start,end):
     style.use('ggplot')
     df = reader.DataReader(symbol, 'yahoo', start, end)
@@ -123,6 +133,7 @@ def finnhubCreate(symbol): # current prices
 def iexCreate(symbol):
     return cargoDataFrame, cargoIexPricetarget
 
+
 def laggingVWAP(symbol):
     entire,priceTarget,_ = finnhubCreate(symbol)
     high = entire["h"]
@@ -145,6 +156,8 @@ def main():
     print(finnhubCreate("F"))
     print(finnhubCreate("OKTA"))
     print(laggingVWAP("F"))
+    okta = yfinanceCreateContainer("OKTA")
+    okta.symbolHist(start=start,end=end)
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
