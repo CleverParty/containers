@@ -22,7 +22,12 @@ class yfinanceCreateContainer():
     
     def symbolHist(self,start,end):
         ticker = yf.Ticker(self.symbol)
-        print(ticker)
+        historicalData = ticker.history(start= start,end= end, interval="5m") # calls on yfinace pkg through a wrapper
+        print(historicalData)
+    
+    def symbolDownloadHistoricalData(self,start,end):
+        data = yf.download(symbol,start,end)
+        print(data)
 
     
 
@@ -51,7 +56,7 @@ def ticker():
     df.set_index("Date", inplace=True)
     print(df)
 
-def genData(x):    
+def generateData(x):    
     r = [a/10 for a in x]
     y = np.sin(x)+np.random.uniform(-.5, .2, len(x))
     return np.array(y+r)
@@ -65,7 +70,7 @@ def on_close(ws):
 def on_error(ws, error):
     print(error)
 
-def symbolsFinn(ws):
+def symbolsFinnhub(ws):
     ws.send('{"type":"subscribe","symbol":"BINANCE:BTCUSDT"}')
 
 def accessGrant():
@@ -153,8 +158,7 @@ def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
     client = finnhub.Client(api_key=stripped)
-    print(finnhubCreate("F"))
-    print(finnhubCreate("OKTA"))
+    # print(finnhubCreate("F"))
     print(laggingVWAP("F"))
     okta = yfinanceCreateContainer("OKTA")
     okta.symbolHist(start=start,end=end)
