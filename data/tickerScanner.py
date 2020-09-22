@@ -114,18 +114,21 @@ def finnhubCreate(symbol): # current prices
     extracted = accessGrant()
     cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
     cargoPriceTarget = f'https://finnhub.io/api/v1/stock/price-target?symbol={symbol}&token=b{extracted}'
+    cargoIPO = f'https://finnhub.io/api/v1/calendar/ipo?from=2020-01-01&to=2020-12-30&token=b{extracted}'
     r = requests.get(cargo)
     rPC = requests.get(cargoPriceTarget)
-    return r.json(),rPC.json()
+    rIPO = requests.get(cargoIPO)
+    return r.json(),rPC.json(),rIPO.json()
 
 def laggingVWAP(symbol):
-    entire,priceTarget = finnhubCreate(symbol)
+    entire,priceTarget,_ = finnhubCreate(symbol)
+
     high = entire["h"]
     low = entire["l"]
     close = entire["c"]
     timeStamp = entire["t"]
     volume = 100000
-    cumTypicalPrice = volume * ((high+low+close)/3) 
+    cumTypicalPrice = volume * ((high+low+close)/3)
     rtrnValue = cumTypicalPrice / volume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
     return rtrnValue
 
