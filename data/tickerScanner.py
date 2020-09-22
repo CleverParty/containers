@@ -120,9 +120,11 @@ def finnhubCreate(symbol): # current prices
     rIPO = requests.get(cargoIPO)
     return r.json(),rPC.json(),rIPO.json()
 
+def iexCreate(symbol):
+    return cargoDataFrame, cargoIexPricetarget
+
 def laggingVWAP(symbol):
     entire,priceTarget,_ = finnhubCreate(symbol)
-
     high = entire["h"]
     low = entire["l"]
     close = entire["c"]
