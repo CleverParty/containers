@@ -44,7 +44,7 @@ def main():
     d = 0
 
     for i in range(0,len(merged)):
-        s = merged[i] + (i-1)*d 
+        s = merged[i] + (i-1)*d*i
         if(s not in merged):
             d += 1
             print(s)

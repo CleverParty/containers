@@ -1,25 +1,54 @@
-import keras
+# import keras
 import numpy as np 
 import requests
 import datetime
+import finnhub 
 import pandas as pd
 import websocket
 import pandas_datareader.data as reader
 import sklearn
-from sklearn.svm import SVR
-from keras.layers import Dense
-from keras.layers import LSTM
-from keras.layers import Dropout
+import plotly.graph_objects as plotit
+# from sklearn.svm import SVR
+# from keras.layers import Dense
+# from keras.layers import LSTM
+# from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
-
+import yfinance as yf
 stripped = ""
+
+class yfinanceCreateContainer():
+    def __init__(self,symbol):
+        self.symbol = symbol 
+    
+    def symbolHist(self,start,end,interval):
+        ticker = yf.Ticker(self.symbol)
+        historicalData = ticker.history(start = start,end = end, interval = interval) # calls on yfinace pkg through a wrapper
+        print(historicalData)
+        return historicalData
+    
+    def symbolDownloadHistoricalData(self,start,end):
+        entireData = yf.download(symbol,start,end)
+        print(entireData)
+        return entireData
+
+
+    
+def create(symbol,start,end):
+    style.use('ggplot')
+    df = reader.DataReader(symbol, 'yahoo', start, end)
+    # sort by date
+    df = df.sort_values('Date') 
+    # fix the date 
+    df.reset_index(inplace=True)
+    stockTicker = yf.Ticker(symbol)
+    return(df,stockTicker.dividends)
 
 def ticker():
     start = datetime.datetime(2020,3,11)
     # end = datetime.datetime(2020,8,1)
     end = datetime.date.today()
-    df = reader.DataReader("EBAY", 'yahoo', start, end)
+    df = reader.DataReader("CRWD", 'yahoo', start, end)
     # sort by date
     df = df.sort_values('Date')
     df = df.sort_values('Date')
@@ -28,9 +57,9 @@ def ticker():
     df.set_index("Date", inplace=True)
     df.reset_index(inplace=True)
     df.set_index("Date", inplace=True)
-    print(df.head())
+    print(df)
 
-def genData(x):    
+def generateData(x):    
     r = [a/10 for a in x]
     y = np.sin(x)+np.random.uniform(-.5, .2, len(x))
     return np.array(y+r)
@@ -44,8 +73,7 @@ def on_close(ws):
 def on_error(ws, error):
     print(error)
 
-def symbolsFinn(ws):
-    ws.send('{"type":"subscribe","symbol":"OKTA"}')
+def symbolsFinnhub(ws):
     ws.send('{"type":"subscribe","symbol":"BINANCE:BTCUSDT"}')
 
 def accessGrant():
@@ -100,13 +128,61 @@ def workaround_LSTM():
     plt.scatter(x, y, s=5, color="green")
     plt.show()
 
+def visualizeYfinanceHistoricalData(symbol):
+    ticker = yf.Ticker(symbol)
+    data = ticker.history(start="2010-01-01",  end="2020-07-21")
+    fig = plotit.Figure(data=[plotit.Candlestick(x=data['Date'],high=data['High'],low=data['Low'],close=data['Close'])])  
+    fig.show() 
+
+def finnhubCreate(symbol): # current prices
+    extracted = accessGrant()
+    cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
+    cargoPriceTarget = f'https://finnhub.io/api/v1/stock/price-target?symbol={symbol}&token=b{extracted}'
+    cargoIPO = f'https://finnhub.io/api/v1/calendar/ipo?from=2020-01-01&to=2020-12-30&token=b{extracted}'
+    r = requests.get(cargo)
+    rPC = requests.get(cargoPriceTarget)
+    rIPO = requests.get(cargoIPO)
+    return r.json(),rPC.json(),rIPO.json()
+
+def iexCreate(symbol):
+    return cargoDataFrame, cargoIexPricetarget
+
+def laggingVWAP(symbol,start,end,interval):
+    ticker = yfinanceCreateContainer(symbol)
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
+    for i in range(0,2000):
+        high = entireDataframe.iloc[i,1]
+        low = entireDataframe.iloc[i,2]
+        close = entireDataframe.iloc[i,3]
+        volume = entireDataframe.iloc[i,4]
+        print(f'high = {high} , low = {low} , close = {close}, volume = {volume}')
+        cumTypicalPrice = volume * ((high+low+close)/3)
+        rtrnValue = cumTypicalPrice / volume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
+        print (f'vwap value : {rtrnValue}')
+
+    return rtrnValue
+
+def sentimentAnalysisInBuilt(symbol,start,end):
+    bearOrBull = 1
+    return bearOrBull
+
 def main():
-    getTickerNews("general")
+    start = datetime.datetime(2020,8,1) # format :- year,month,day
+    end = datetime.datetime.today()
+    # client = finnhub.Client(api_key=stripped)
+    # print(finnhubCreate("F"))
+    # print(laggingVWAP("F"))
+    ticker = yfinanceCreateContainer("F")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="5m")
+    # visualizeYfinanceHistoricalData("F")
+    laggingVWAP("F",start,end,interval="5m")
 
-if __name__ == "__main__":
+    #entire,dividends= create("AAPL",start,end)
+    #print(laggingVWAP("F",start,end))
+    # print(client.company_profile(cusip='679295105'))
+
+if __name__ == "__main__" :
     main()
-
-
 
 # quandl.ApiConfig.api_key = contents
 # data = quandl.get('WIKI/TSLA', start_date='2019-12-26', end_date='2020-7-28')
