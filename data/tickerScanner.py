@@ -157,9 +157,9 @@ def sentimentAnalysisInBuilt(symbol,start,end):
 def main():
     start = datetime.datetime(2020,8,1) # format :- year,month,day
     end = datetime.datetime.today()
-    client = finnhub.Client(api_key=stripped)
+    # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
-    print(laggingVWAP("F"))
+    # print(laggingVWAP("F"))
     okta = yfinanceCreateContainer("OKTA")
     okta.symbolHist(start=start,end=end)
     #entire,dividends= create("AAPL",start,end)
