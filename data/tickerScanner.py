@@ -7,6 +7,7 @@ import pandas as pd
 import websocket
 import pandas_datareader.data as reader
 import sklearn
+import plotly.graph_objects as plotit
 # from sklearn.svm import SVR
 # from keras.layers import Dense
 # from keras.layers import LSTM
@@ -30,6 +31,7 @@ class yfinanceCreateContainer():
         entireData = yf.download(symbol,start,end)
         print(entireData)
         return entireData
+
 
     
 def create(symbol,start,end):
@@ -126,6 +128,12 @@ def workaround_LSTM():
     plt.scatter(x, y, s=5, color="green")
     plt.show()
 
+def visualizeYfinanceHistoricalData(symbol):
+    ticker = yf.Ticker(symbol)
+    data = ticker.history(start="2010-01-01",  end="2020-07-21")
+    fig = plotit.Figure(data=[plotit.Candlestick(x=data['Date'],high=data['High'],low=data['Low'],close=data['Close'])])  
+    fig.show() 
+
 def finnhubCreate(symbol): # current prices
     extracted = accessGrant()
     cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
@@ -164,7 +172,11 @@ def main():
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
+    ticker = yfinanceCreateContainer("F")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="5m")
+    # visualizeYfinanceHistoricalData("F")
     laggingVWAP("F",start,end,interval="5m")
+
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
