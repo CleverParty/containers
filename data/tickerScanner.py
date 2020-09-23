@@ -139,15 +139,19 @@ def finnhubCreate(symbol): # current prices
 def iexCreate(symbol):
     return cargoDataFrame, cargoIexPricetarget
 
-def laggingVWAP(symbol):
-    entire,priceTarget,_ = finnhubCreate(symbol)
-    high = entire["h"]
-    low = entire["l"]
-    close = entire["c"]
-    timeStamp = entire["t"]
-    volume = 100000
-    cumTypicalPrice = volume * ((high+low+close)/3)
-    rtrnValue = cumTypicalPrice / volume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
+def laggingVWAP(symbol,start,end):
+    ticker = yfinanceCreateContainer(symbol)
+    entireDataframe = ticker.symbolHist(start=start,end=end)
+    for i in range(0,2000):
+        high = entireDataframe.iloc[i,1]
+        low = entireDataframe.iloc[i,2]
+        close = entireDataframe.iloc[i,3]
+        volume = entireDataframe.iloc[i,4]
+        print(f'high = {high} , low = {low} , close = {close}, volume = {volume}')
+        cumTypicalPrice = volume * ((high+low+close)/3)
+        rtrnValue = cumTypicalPrice / volume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
+        print (rtrnValue)
+
     return rtrnValue
 
 def sentimentAnalysisInBuilt(symbol,start,end):
@@ -160,8 +164,7 @@ def main():
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
-    okta = yfinanceCreateContainer("OKTA")
-    okta.symbolHist(start=start,end=end)
+    laggingVWAP("F",start,end)
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
