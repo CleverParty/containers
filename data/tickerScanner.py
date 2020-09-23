@@ -24,13 +24,14 @@ class yfinanceCreateContainer():
         ticker = yf.Ticker(self.symbol)
         historicalData = ticker.history(start= start,end= end, interval="5m") # calls on yfinace pkg through a wrapper
         print(historicalData)
+        return historicalData
     
     def symbolDownloadHistoricalData(self,start,end):
-        data = yf.download(symbol,start,end)
-        print(data)
+        entireData = yf.download(symbol,start,end)
+        print(entireData)
+        return entireData
 
     
-
 def create(symbol,start,end):
     style.use('ggplot')
     df = reader.DataReader(symbol, 'yahoo', start, end)
@@ -137,7 +138,6 @@ def finnhubCreate(symbol): # current prices
 
 def iexCreate(symbol):
     return cargoDataFrame, cargoIexPricetarget
-
 
 def laggingVWAP(symbol):
     entire,priceTarget,_ = finnhubCreate(symbol)
