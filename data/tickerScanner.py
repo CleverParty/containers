@@ -20,9 +20,9 @@ class yfinanceCreateContainer():
     def __init__(self,symbol):
         self.symbol = symbol 
     
-    def symbolHist(self,start,end):
+    def symbolHist(self,start,end,interval):
         ticker = yf.Ticker(self.symbol)
-        historicalData = ticker.history(start= start,end= end, interval="5m") # calls on yfinace pkg through a wrapper
+        historicalData = ticker.history(start = start,end = end, interval = interval) # calls on yfinace pkg through a wrapper
         print(historicalData)
         return historicalData
     
@@ -139,8 +139,8 @@ def finnhubCreate(symbol): # current prices
 def iexCreate(symbol):
     return cargoDataFrame, cargoIexPricetarget
 
-def laggingVWAP(symbol,start,end):
-    ticker = yfinanceCreateContainer(symbol)
+def laggingVWAP(symbol,start,end,interval):
+    ticker = yfinanceCreateContainer(symbol,interval)
     entireDataframe = ticker.symbolHist(start=start,end=end)
     for i in range(0,2000):
         high = entireDataframe.iloc[i,1]
@@ -164,7 +164,7 @@ def main():
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
-    laggingVWAP("F",start,end)
+    laggingVWAP("F",start,end,interval="5m")
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
