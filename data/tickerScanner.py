@@ -140,8 +140,8 @@ def iexCreate(symbol):
     return cargoDataFrame, cargoIexPricetarget
 
 def laggingVWAP(symbol,start,end,interval):
-    ticker = yfinanceCreateContainer(symbol,interval)
-    entireDataframe = ticker.symbolHist(start=start,end=end)
+    ticker = yfinanceCreateContainer(symbol)
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
     for i in range(0,2000):
         high = entireDataframe.iloc[i,1]
         low = entireDataframe.iloc[i,2]
