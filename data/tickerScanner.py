@@ -150,7 +150,7 @@ def laggingVWAP(symbol,start,end):
         print(f'high = {high} , low = {low} , close = {close}, volume = {volume}')
         cumTypicalPrice = volume * ((high+low+close)/3)
         rtrnValue = cumTypicalPrice / volume # the first return value or the weighted period of VWAP, will always be equivalent to the first period's volume
-        print (rtrnValue)
+        print (f'vwap value : {rtrnValue}')
 
     return rtrnValue
 
