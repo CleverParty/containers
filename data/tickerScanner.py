@@ -45,7 +45,7 @@ def create(symbol,start,end):
     return(df,stockTicker.dividends)
 
 def ticker():
-    start = datetime.datetime(2020,3,11)
+    start = datetime.datetime(2020,8,7)
     # end = datetime.datetime(2020,8,1)
     end = datetime.date.today()
     df = reader.DataReader("CRWD", 'yahoo', start, end)
