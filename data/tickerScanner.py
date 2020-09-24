@@ -32,8 +32,7 @@ class yfinanceCreateContainer():
         print(entireData)
         return entireData
 
-
-    
+   
 def create(symbol,start,end):
     style.use('ggplot')
     df = reader.DataReader(symbol, 'yahoo', start, end)
@@ -162,6 +161,14 @@ def laggingVWAP(symbol,start,end,interval):
 
     return rtrnValue
 
+def exponentialMovingAverageNumpy(data, window):
+    multiplier = 2 / float(1+window)
+    weights = np.exp(np.linspace(-1., 0., window))
+    weights /= weights.sum()
+    a =  np.convolve(data, weights, mode='full')[:len(values)]
+    a[:window] = a[window]
+    return a
+
 def sentimentAnalysisInBuilt(symbol,start,end):
     bearOrBull = 1
     return bearOrBull
@@ -174,8 +181,10 @@ def main():
     # print(laggingVWAP("F"))
     ticker = yfinanceCreateContainer("F")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="5m")
+    rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
+    print(rtrnEmaValue)
     # visualizeYfinanceHistoricalData("F")
-    laggingVWAP("F",start,end,interval="5m")
+    # laggingVWAP("F",start,end,interval="5m")
 
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
