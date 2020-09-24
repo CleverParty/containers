@@ -169,6 +169,9 @@ def exponentialMovingAverageNumpy(data, window):
     a[:window] = a[window]
     return a
 
+def exponentialMovingAverageScratch(data, window):
+    return arrayOfEma
+
 def sentimentAnalysisInBuilt(symbol,start,end):
     bearOrBull = 1
     return bearOrBull
