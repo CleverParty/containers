@@ -17,6 +17,8 @@ from matplotlib import style
 import yfinance as yf
 stripped = ""
 
+MA_PERIOD = 20 # default moving average period is set to 20 "periods"
+
 class yfinanceCreateContainer():
     def __init__(self,symbol):
         self.symbol = symbol 
@@ -160,6 +162,9 @@ def laggingVWAP(symbol,start,end,interval):
         print (f'vwap value : {rtrnValue}')
 
     return rtrnValue
+
+def macdEma(interval):
+
 
 def exponentialMovingAverageNumpy(data, window):
     multiplier = 2 / float(1+window)
