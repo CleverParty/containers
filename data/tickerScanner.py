@@ -158,7 +158,7 @@ def finnhubCreate(symbol): # current prices
 def iexCreate(symbol):
     return cargoDataFrame, cargoIexPricetarget
 
-def laggingVWAP(symbol,start,end,interval):
+def laggingVWAP(symbol, start, end, interval):
     ticker = yfinanceCreateContainer(symbol)
     entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
     for i in range(0,2000):
@@ -173,7 +173,12 @@ def laggingVWAP(symbol,start,end,interval):
 
     return rtrnValue
 
-def macd(symbol,interval):
+def sma(data, period):
+    sumCloseThree = data["Close"][0] + data["Close"][1] + data["Close"][2] 
+    avgCloseThree = sumCloseThree / period 
+    return avgCloseThree
+
+def macd(symbol, interval):
     # if sma(10/20) < sma(50/100) ... release
     # elif sma(50/100) > sma(10/20) ... aquire
     signal = False
@@ -209,7 +214,9 @@ def main():
     # print(laggingVWAP("F"))
     ticker = yfinanceCreateContainer("AAPL")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
-    csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
+    # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
+    print(entireDataframe)
+    print(sma(entireDataframe,3))
     # if entireDataframe["time"]
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
