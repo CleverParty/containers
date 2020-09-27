@@ -203,8 +203,12 @@ def exponentialMovingAverageScratch(data, window):
     return entireDataframe["Low"]
 
 def sentimentAnalysisScratch(symbol,start,end):
-    bearOrBull = 1
+    bearOrBull = False
     return bearOrBull
+
+def altmanZScore():
+    zscoreFormulaic = (1.4*
+
 
 def main():
     start = datetime.datetime(2020,9,12) # format :- year,month,day
