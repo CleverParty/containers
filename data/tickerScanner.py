@@ -15,6 +15,7 @@ import plotly.graph_objects as plotit
 import matplotlib.pyplot as plt
 from matplotlib import style
 import yfinance as yf
+
 stripped = ""
 
 MA_PERIOD = 20 # default moving average period is set to 20 "periods"
@@ -29,8 +30,13 @@ class yfinanceCreateContainer():
         print(historicalData)
         return historicalData
     
+    def downloadSymbolHist(self,symbol,start,end):
+        tickerHist = yf.download(symbol, start=start, end=end, progress=False )
+        print(tickerHist)
+        return tickerHist
+    
     def symbolDownloadHistoricalData(self,start,end):
-        entireData = yf.download(symbol,start,end)
+        entireData = yf.download(self.symbol,start,end)
         print(entireData)
         return entireData
 
@@ -135,6 +141,10 @@ def visualizeYfinanceHistoricalData(symbol):
     fig = plotit.Figure(data=[plotit.Candlestick(x=data['Date'],high=data['High'],low=data['Low'],close=data['Close'])])  
     fig.show() 
 
+def createPinkfishSymbol(symbol):
+    tsData = pf.fetch_timeseries(symbol)
+    print(tsData.tail())
+
 def finnhubCreate(symbol): # current prices
     extracted = accessGrant()
     cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
@@ -163,7 +173,7 @@ def laggingVWAP(symbol,start,end,interval):
 
     return rtrnValue
 
-def macdEma(interval):
+def maConvergenceDivergenceExponentialMovingAverage(interval):
     ema = exponentialMovingAverageScratch()
     return rtrnMacd,rtrnEma
 
