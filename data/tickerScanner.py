@@ -164,7 +164,8 @@ def laggingVWAP(symbol,start,end,interval):
     return rtrnValue
 
 def macdEma(interval):
-
+    ema = exponentialMovingAverageScratch()
+    return rtrnMacd,rtrnEma
 
 def exponentialMovingAverageNumpy(data, window):
     multiplier = 2 / float(1+window)
@@ -175,22 +176,26 @@ def exponentialMovingAverageNumpy(data, window):
     return a
 
 def exponentialMovingAverageScratch(data, window):
-    return arrayOfEma
+    ticker = yfinanceCreateContainer(symbol)
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
+    print(entireDataframe["High"])
+    return entireDataframe["Low"]
 
-def sentimentAnalysisInBuilt(symbol,start,end):
+def sentimentAnalysisScratch(symbol,start,end):
     bearOrBull = 1
     return bearOrBull
 
 def main():
-    start = datetime.datetime(2020,8,1) # format :- year,month,day
-    end = datetime.datetime.today()
+    start = datetime.datetime(2020,9,12) # format :- year,month,day
+    end = datetime.datetime(2020,9,16)
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
-    ticker = yfinanceCreateContainer("F")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="5m")
-    rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
-    print(rtrnEmaValue)
+    ticker = yfinanceCreateContainer("AAPL")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
+    csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
+    # if entireDataframe["time"]
+    # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
     # laggingVWAP("F",start,end,interval="5m")
 
