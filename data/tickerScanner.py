@@ -15,6 +15,13 @@ import plotly.graph_objects as plotit
 import matplotlib.pyplot as plt
 from matplotlib import style
 import yfinance as yf
+import json
+try:
+    # For Python 3.0 and later
+    from urllib.request import urlopen
+except ImportError:
+    # Fall back to Python 2's urllib2
+    from urllib2 import urlopen
 
 stripped = ""
 
@@ -207,12 +214,24 @@ def sentimentAnalysisScratch(symbol,start,end):
     return bearOrBull
 
 def altmanZScore():
-    zscoreFormulaic = (1.4*
+    # working capital 
+    extracted  = accessGrant()
+    r = urlopen(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbolDefault}&token=b{extracted}')
+    data = r.read().decode("utf-8")
+    jsonData = json.loads(data)
+    print(jsonData["marketCaptlization"])
 
+    A = workingCap / totalAssets
+    B = retainedEarnings / totalAssets
+    C = rawEarnings / totalAssets
+    D = marketValueEquity / totalLiability
+    E = sale / totalAssets
+    zscoreFormula = (1.2 * A) + (1.4 * B) + (3.3 * C) + ( 0.6 * D ) + ( E ) 
 
 def main():
     start = datetime.datetime(2020,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
+    symbolDefault = "AMZN"
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
@@ -221,6 +240,9 @@ def main():
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(entireDataframe)
     print(sma(entireDataframe,3))
+    # variable A = market cap / total assets
+
+
     # if entireDataframe["time"]
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
