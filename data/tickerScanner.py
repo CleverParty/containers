@@ -213,25 +213,28 @@ def sentimentAnalysisScratch(symbol,start,end):
     bearOrBull = False
     return bearOrBull
 
-def altmanZScore():
+def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValueEquity, sales, totalLiability):
     # working capital 
     extracted  = accessGrant()
-    r = urlopen(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbolDefault}&token=b{extracted}')
+    r = urlopen(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token=b{extracted}')
     data = r.read().decode("utf-8")
     jsonData = json.loads(data)
-    print(jsonData["marketCaptlization"])
-
+    print(jsonData)
+    print(jsonData["marketCapitalization"])
+    workingCap = jsonData["marketCapitalization"] * 1000000
+    revenueCurrent = 259000000000
     A = workingCap / totalAssets
-    B = retainedEarnings / totalAssets
+    B = retainedEarnings / totalAssets # retained earnings in this step
     C = rawEarnings / totalAssets
     D = marketValueEquity / totalLiability
-    E = sale / totalAssets
-    zscoreFormula = (1.2 * A) + (1.4 * B) + (3.3 * C) + ( 0.6 * D ) + ( E ) 
+    E = sales / totalAssets
+    zscoreFormula = ( 1.2 * A ) + ( 1.4 * B ) + ( 3.3 * C ) + ( 0.6 * D ) + ( E )
+    return zscoreFormula 
 
 def main():
     start = datetime.datetime(2020,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
-    symbolDefault = "AMZN"
+    symbolDefault = "AAPL"
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
@@ -240,7 +243,9 @@ def main():
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(entireDataframe)
     print(sma(entireDataframe,3))
-    # variable A = market cap / total assets
+    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    print(score)
+    # variable A = market capital / total assets
 
 
     # if entireDataframe["time"]
