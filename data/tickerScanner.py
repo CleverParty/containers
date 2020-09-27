@@ -163,7 +163,7 @@ def finnhubCreate(symbol): # current prices
     return r.json(),rPC.json(),rIPO.json()
 
 def iexCreate(symbol):
-    return cargoDataFrame, cargoIexPricetarget
+    return (cargoDataFrame, cargoIexPricetarget)
 
 def laggingVWAP(symbol, start, end, interval):
     ticker = yfinanceCreateContainer(symbol)
@@ -213,14 +213,12 @@ def sentimentAnalysisScratch(symbol,start,end):
     bearOrBull = False
     return bearOrBull
 
-def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValueEquity, sales, totalLiability):
+def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValueEquity, totalLiability, sales):
     # working capital 
     extracted  = accessGrant()
     r = urlopen(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token=b{extracted}')
     data = r.read().decode("utf-8")
     jsonData = json.loads(data)
-    print(jsonData)
-    print(jsonData["marketCapitalization"])
     workingCap = jsonData["marketCapitalization"] * 1000000
     revenueCurrent = 259000000000
     A = workingCap / totalAssets
@@ -243,18 +241,15 @@ def main():
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(entireDataframe)
     print(sma(entireDataframe,3))
-    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    score = altmanZScore(symbol = "F", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(score)
     # variable A = market capital / total assets
-
-
     # if entireDataframe["time"]
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
     # laggingVWAP("F",start,end,interval="5m")
-
-    #entire,dividends= create("AAPL",start,end)
-    #print(laggingVWAP("F",start,end))
+    # entire,dividends= create("AAPL",start,end)
+    # print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__" :
