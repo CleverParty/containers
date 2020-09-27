@@ -173,8 +173,14 @@ def laggingVWAP(symbol,start,end,interval):
 
     return rtrnValue
 
-def maConvergenceDivergenceExponentialMovingAverage(interval):
-    ema = exponentialMovingAverageScratch()
+def macd(symbol,interval):
+    # if sma(10/20) < sma(50/100) ... release
+    # elif sma(50/100) > sma(10/20) ... aquire
+    signal = False
+    return signal
+
+def maConvergenceDivergenceExponentialMovingAverage(symbol,interval):
+    ema = exponentialMovingAverageScratch(symbol)
     return rtrnMacd,rtrnEma
 
 def exponentialMovingAverageNumpy(data, window):
