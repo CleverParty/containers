@@ -17,6 +17,8 @@ from matplotlib import style
 import yfinance as yf
 stripped = ""
 
+MA_PERIOD = 20 # default moving average period is set to 20 "periods"
+
 class yfinanceCreateContainer():
     def __init__(self,symbol):
         self.symbol = symbol 
@@ -32,8 +34,7 @@ class yfinanceCreateContainer():
         print(entireData)
         return entireData
 
-
-    
+   
 def create(symbol,start,end):
     style.use('ggplot')
     df = reader.DataReader(symbol, 'yahoo', start, end)
@@ -45,7 +46,7 @@ def create(symbol,start,end):
     return(df,stockTicker.dividends)
 
 def ticker():
-    start = datetime.datetime(2020,3,11)
+    start = datetime.datetime(2020,8,7)
     # end = datetime.datetime(2020,8,1)
     end = datetime.date.today()
     df = reader.DataReader("CRWD", 'yahoo', start, end)
@@ -162,20 +163,41 @@ def laggingVWAP(symbol,start,end,interval):
 
     return rtrnValue
 
-def sentimentAnalysisInBuilt(symbol,start,end):
+def macdEma(interval):
+    ema = exponentialMovingAverageScratch()
+    return rtrnMacd,rtrnEma
+
+def exponentialMovingAverageNumpy(data, window):
+    multiplier = 2 / float(1+window)
+    weights = np.exp(np.linspace(-1., 0., window))
+    weights /= weights.sum()
+    a =  np.convolve(data, weights, mode='full')[:len(values)]
+    a[:window] = a[window]
+    return a
+
+def exponentialMovingAverageScratch(data, window):
+    ticker = yfinanceCreateContainer(symbol)
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
+    print(entireDataframe["High"])
+    return entireDataframe["Low"]
+
+def sentimentAnalysisScratch(symbol,start,end):
     bearOrBull = 1
     return bearOrBull
 
 def main():
-    start = datetime.datetime(2020,8,1) # format :- year,month,day
-    end = datetime.datetime.today()
+    start = datetime.datetime(2020,9,12) # format :- year,month,day
+    end = datetime.datetime(2020,9,16)
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
-    ticker = yfinanceCreateContainer("F")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="5m")
+    ticker = yfinanceCreateContainer("AAPL")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
+    csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
+    # if entireDataframe["time"]
+    # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
-    laggingVWAP("F",start,end,interval="5m")
+    # laggingVWAP("F",start,end,interval="5m")
 
     #entire,dividends= create("AAPL",start,end)
     #print(laggingVWAP("F",start,end))
