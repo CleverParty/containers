@@ -71,7 +71,7 @@ def ticker():
     df.set_index("Date", inplace=True)
     df.reset_index(inplace=True)
     df.set_index("Date", inplace=True)
-    print(df)
+    return (df)
 
 def generateData(x):    
     r = [a/10 for a in x]
@@ -241,7 +241,7 @@ def main():
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(entireDataframe)
     print(sma(entireDataframe,3))
-    score = altmanZScore(symbol = "F", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(score)
     # variable A = market capital / total assets
     # if entireDataframe["time"]
