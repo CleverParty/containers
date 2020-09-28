@@ -6,10 +6,6 @@ import random
 
 # project imports
 
-def createPinkfishSymbol(symbol):
-    tsData = pf.fetch_timeseries(symbol)
-    print(tsData.tail())
-
 class merkle:
     def __init__(self,root,prevTransactions):
         self.root = root
@@ -30,6 +26,7 @@ def main():
     rtrnHash = hashlib.sha256()
     rtrnHash.update(b'hash initialised')
     print(rtrnHash.digest())
+    print(rtrnHash.digest_size)
 
 if __name__ == "__main__" :
     main()
