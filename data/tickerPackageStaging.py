@@ -38,11 +38,22 @@ class merkle():
         self.completeTransactions = self.prevTransactions
         self.currentHash = hashlib.sha256(currentTransaction)
     
-    def doubleHash(self,cargo): # double hashing within the inner node itself for easier access to cargo
+    def doubleHash(self,cargo): # Double hashing within the inner node itself for easier access to cargo
         self.status = hashlib.sha256(str.encode(self.cargo))
         print(self.status.hexdigest())
         self.currentHash = hashlib.sha256()
         return (self.currentHash)
+
+def createMerkleTreeLevel(root,leftCargo,rightCargo):
+    merkleCargo = root.cargo
+    leftElement = merkleLeaf(cargo = leftCargo)         
+    rightElement = merkleLeaf(cargo = rightCargo)
+    tempLeftHash = leftElement.cargoHash()
+    tempRightHash = rightElement.cargoHash()
+
+    print(f"left hashed cargo : {tempLeftHash} and right hashed cargo : {tempRightHash}")
+    return True
+
     
 def main():
     start = datetime.datetime(2020,9,12) # format :- year,month,day
@@ -57,6 +68,7 @@ def main():
     prntTest = node.doubleHash(hashTest)
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f"z-score :{score}")
+    createMerkleTreeLevel(tran1,leftCargo="2",rightCargo="3")
 
 if __name__ == "__main__" :
     main()
