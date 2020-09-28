@@ -1,4 +1,4 @@
-from tickerScanner import yfinanceCreateContainer
+from tickerScanner import yfinanceCreateContainer,altmanZScore
 import matplotlib.pyplot as plt
 import datetime
 import hashlib
@@ -56,7 +56,8 @@ def main():
     print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("23")
     print(tran1.cargoHash())
-
+    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    print(f"z-score :{score}")
 
 if __name__ == "__main__" :
     main()
