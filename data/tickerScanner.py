@@ -219,8 +219,8 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     r = urlopen(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token=b{extracted}')
     data = r.read().decode("utf-8")
     jsonData = json.loads(data)
-    workingCap = jsonData["marketCapitalization"] * 1000000
-    revenueCurrent = 259000000000
+    workingCap = jsonData["marketCapitalization"] * 1000000 # per million units
+    revenueCurrent = retainedEarnings
     A = workingCap / totalAssets
     B = retainedEarnings / totalAssets # retained earnings in this step
     C = rawEarnings / totalAssets

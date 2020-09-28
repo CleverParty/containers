@@ -1,6 +1,8 @@
 from tickerScanner import yfinanceCreateContainer
 import matplotlib.pyplot as plt
 import datetime
+import hashlib
+
 # project imports
 
 def createPinkfishSymbol(symbol):
