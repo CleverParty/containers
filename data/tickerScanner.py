@@ -7,7 +7,6 @@ import pandas as pd
 import websocket
 import pandas_datareader.data as reader
 import sklearn
-import plotly.graph_objects as plotit
 # from sklearn.svm import SVR
 # from keras.layers import Dense
 # from keras.layers import LSTM
@@ -15,6 +14,14 @@ import plotly.graph_objects as plotit
 import matplotlib.pyplot as plt
 from matplotlib import style
 import yfinance as yf
+import json
+try:
+    # For Python 3.0 and later
+    from urllib.request import urlopen
+except ImportError:
+    # Fall back to Python 2's urllib2
+    from urllib2 import urlopen
+
 stripped = ""
 
 MA_PERIOD = 20 # default moving average period is set to 20 "periods"
@@ -29,8 +36,13 @@ class yfinanceCreateContainer():
         print(historicalData)
         return historicalData
     
+    def downloadSymbolHist(self,symbol,start,end):
+        tickerHist = yf.download(symbol, start=start, end=end, progress=False )
+        print(tickerHist)
+        return tickerHist
+    
     def symbolDownloadHistoricalData(self,start,end):
-        entireData = yf.download(symbol,start,end)
+        entireData = yf.download(self.symbol,start,end)
         print(entireData)
         return entireData
 
@@ -58,7 +70,7 @@ def ticker():
     df.set_index("Date", inplace=True)
     df.reset_index(inplace=True)
     df.set_index("Date", inplace=True)
-    print(df)
+    return (df)
 
 def generateData(x):    
     r = [a/10 for a in x]
@@ -135,6 +147,10 @@ def visualizeYfinanceHistoricalData(symbol):
     fig = plotit.Figure(data=[plotit.Candlestick(x=data['Date'],high=data['High'],low=data['Low'],close=data['Close'])])  
     fig.show() 
 
+def createPinkfishSymbol(symbol):
+    tsData = pf.fetch_timeseries(symbol)
+    print(tsData.tail())
+
 def finnhubCreate(symbol): # current prices
     extracted = accessGrant()
     cargo = f'https://finnhub.io/api/v1/quote?symbol={symbol}&token=b{extracted}'
@@ -146,9 +162,9 @@ def finnhubCreate(symbol): # current prices
     return r.json(),rPC.json(),rIPO.json()
 
 def iexCreate(symbol):
-    return cargoDataFrame, cargoIexPricetarget
+    return (cargoDataFrame, cargoIexPricetarget)
 
-def laggingVWAP(symbol,start,end,interval):
+def laggingVWAP(symbol, start, end, interval):
     ticker = yfinanceCreateContainer(symbol)
     entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
     for i in range(0,2000):
@@ -163,8 +179,19 @@ def laggingVWAP(symbol,start,end,interval):
 
     return rtrnValue
 
-def macdEma(interval):
-    ema = exponentialMovingAverageScratch()
+def sma(data, period):
+    sumCloseThree = data["Close"][0] + data["Close"][1] + data["Close"][2] 
+    avgCloseThree = sumCloseThree / period 
+    return avgCloseThree
+
+def macd(symbol, interval):
+    # if sma(10/20) < sma(50/100) ... release
+    # elif sma(50/100) > sma(10/20) ... aquire
+    signal = False
+    return signal
+
+def maConvergenceDivergenceExponentialMovingAverage(symbol,interval):
+    ema = exponentialMovingAverageScratch(symbol)
     return rtrnMacd,rtrnEma
 
 def exponentialMovingAverageNumpy(data, window):
@@ -182,25 +209,46 @@ def exponentialMovingAverageScratch(data, window):
     return entireDataframe["Low"]
 
 def sentimentAnalysisScratch(symbol,start,end):
-    bearOrBull = 1
+    bearOrBull = False
     return bearOrBull
+
+def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValueEquity, totalLiability, sales):
+    # working capital 
+    extracted  = accessGrant()
+    r = urlopen(f'https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token=b{extracted}')
+    data = r.read().decode("utf-8")
+    jsonData = json.loads(data)
+    workingCap = jsonData["marketCapitalization"] * 1000000 # per units
+    revenueCurrent = retainedEarnings
+    A = workingCap / totalAssets
+    B = retainedEarnings / totalAssets # retained earnings in this step
+    C = rawEarnings / totalAssets
+    D = marketValueEquity / totalLiability
+    E = sales / totalAssets
+    zscoreFormula = ( 1.2 * A ) + ( 1.4 * B ) + ( 3.3 * C ) + ( 0.6 * D ) + ( E )
+    return zscoreFormula 
 
 def main():
     start = datetime.datetime(2020,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
+    symbolDefault = "AAPL"
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("F"))
     ticker = yfinanceCreateContainer("AAPL")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
-    csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
+    # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
+    print(entireDataframe)
+    print(sma(entireDataframe,3))
+    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    print(score)
+    # variable A = market capital / total assets
     # if entireDataframe["time"]
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
     # laggingVWAP("F",start,end,interval="5m")
-
-    #entire,dividends= create("AAPL",start,end)
-    #print(laggingVWAP("F",start,end))
+    # entire,dividends= create("AAPL",start,end)
+    # print(laggingVWAP("F",start,end))
     # print(client.company_profile(cusip='679295105'))
 
 if __name__ == "__main__" :
