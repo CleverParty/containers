@@ -14,8 +14,6 @@ def Total(tree):
         return Total(tree.left) + Total(tree.right) + tree.cargo
 
 
-
-
 left = Tree(1)
 right = Tree(3)
 root = Tree(2)
