@@ -8,14 +8,17 @@ import random
 
 class merkleLeaf():
     def __init__(self,cargo,left=None,right=None):
-        tempHash = hashlib.sha256()
-        if(type(cargo) is str):
-            print("String")
-        tempHash.update(str.encode(cargo))
-        print(tempHash.hexdigest())
         self.cargo = cargo
         self.left = left
         self.right = right
+    
+    def cargoHash(self):
+        if(type(self.cargo) is str):
+            tempHash = hashlib.sha256()
+            print("String Cargo")
+            tempHash.update(str.encode(self.cargo))
+            print(tempHash.hexdigest())
+        return (tempHash.hexdigest())
 
     def __str__(self):
         print(f'the merkle node {self.cargo} has following representation')
@@ -52,7 +55,7 @@ def main():
     rtrnHash.update(b"the test string")
     print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("23")
-    print(tran1)
+    print(tran1.cargoHash())
 
 
 if __name__ == "__main__" :
