@@ -17,7 +17,6 @@ class merkleLeaf():
             tempHash = hashlib.sha256()
             print("String Cargo")
             tempHash.update(str.encode(self.cargo))
-            print(tempHash.hexdigest())
         return (tempHash.hexdigest())
 
     def __str__(self):
@@ -68,6 +67,8 @@ def main():
     prntTest = node.doubleHash(hashTest)
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f"z-score :{score}")
+    tran2 = merkleLeaf(str(score))
+    print(tran2.cargoHash())
     createMerkleTreeLevel(tran1,leftCargo="2",rightCargo="3")
 
 if __name__ == "__main__" :
