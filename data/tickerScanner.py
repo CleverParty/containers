@@ -7,7 +7,6 @@ import pandas as pd
 import websocket
 import pandas_datareader.data as reader
 import sklearn
-import plotly.graph_objects as plotit
 # from sklearn.svm import SVR
 # from keras.layers import Dense
 # from keras.layers import LSTM
