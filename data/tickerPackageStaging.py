@@ -32,14 +32,14 @@ class merkle():
         self.prevTransactions = prevTransactions
         self.currentHash = hashlib.sha256()
         self.status = None
+        self.cargo = ""
     
     def create(self):
         self.completeTransactions = self.prevTransactions
         self.currentHash = hashlib.sha256(currentTransaction)
     
-    def doubleHash(self):
-        self.status = hashlib.sha256(b"two-level hash")
-        self.status.update(b"node has been hashed")
+    def doubleHash(self,cargo): # double hashing within the inner node itself for easier access to cargo
+        self.status = hashlib.sha256(str.encode(self.cargo))
         print(self.status.hexdigest())
         self.currentHash = hashlib.sha256()
         return (self.currentHash)
@@ -50,12 +50,11 @@ def main():
     tickerSymbol = yfinanceCreateContainer("AAPL")
     tickerSymbol.symbolDownloadHistoricalData(start,end)
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
-    node.doubleHash()
-    rtrnHash = hashlib.sha256()
-    rtrnHash.update(b"the test string")
-    print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
+    # print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("23")
     print(tran1.cargoHash())
+    hashTest = tran1.cargoHash()
+    prntTest = node.doubleHash(hashTest)
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f"z-score :{score}")
 
