@@ -2,6 +2,7 @@ from tickerScanner import yfinanceCreateContainer
 import matplotlib.pyplot as plt
 import datetime
 import hashlib
+import random
 
 # project imports
 
@@ -9,8 +10,8 @@ def createPinkfishSymbol(symbol):
     tsData = pf.fetch_timeseries(symbol)
     print(tsData.tail())
 
-class merkle(self):
-    def __init__(self,root,originalChain):
+class merkle:
+    def __init__(self,root,prevTransactions):
         self.root = root
         self.completeTransactions = completeTransactions
         self.prevTransactions = prevTransactions
@@ -26,6 +27,9 @@ def main():
     end = datetime.datetime(2020,9,16)
     tickerSymbol = yfinanceCreateContainer("AAPL")
     tickerSymbol.symbolDownloadHistoricalData(start,end)
+    rtrnHash = hashlib.sha256()
+    rtrnHash.update(b'hash initialised')
+    print(rtrnHash.digest())
 
 if __name__ == "__main__" :
     main()
