@@ -13,19 +13,26 @@ def sma(prices,period):
     print(movingAvg)
     return movingAvg
 
-movingAverages = sma(prices=prices,period=7)
+movingAverages = sma(prices=prices,period=3)
 print(movingAverages)
 def buySell(prices,period):
     signals = []
     j=0
     for i in range(0,len(prices)):
-        if( i<=period and prices[i] < defaultStartAvg):
-            signals.append("B")
-            print(f'with price:{prices[i]}, we are to "B"')
-        elif( i>period and prices[i] > movingAverages[j]):
-            signals.append("S")
-            j+=1
-            print(f'with price:{prices[i]}, we are to "S"')
+        if( i<=period ):
+            if( prices[i] < defaultStartAvg ):
+                signals.append("B")
+                print(f'with price:{prices[i]}, with current average : {defaultStartAvg}  we are to "B"')
+            else:
+                signals.append("S")
+        elif( i> (len(prices)-period) ):
+            if(prices[i] > movingAverages[j]):
+                signals.append("S")
+                print(f'with price:{prices[i]}, with moving average : {movingAverages[j]} we are to "S"')
+                j+=1
+            else:
+                signals.append("S")
+                j+=1
         else:
             signals.append("S")
         print(signals)
@@ -36,3 +43,4 @@ def buySell(prices,period):
 # EMA = (K * ( C - P )) + P 
 # MA-crossover with 10/20/30/40/50 periods 
 buySell(prices=prices,period=3)
+print(movingAverages)
