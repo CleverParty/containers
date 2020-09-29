@@ -22,11 +22,9 @@ def ema(prices,period):
     multiplier = 2 / ( period + 1 ) # smoothing constant
     j = 1
     for i in range(period,len(prices)):
-        print(i)
         exponentialMovingAvg.append(((prices[i] - exponentialMovingAvg[j-1]) * multiplier) + exponentialMovingAvg[j-1])
         j += 1
-        print(exponentialMovingAvg)
-    return initEma
+    return exponentialMovingAvg
 
 movingAverages = sma(prices=prices,period=3)
 print(movingAverages)
