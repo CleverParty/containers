@@ -19,11 +19,11 @@ def sma(prices,period):
 def ema(prices,period):
     initEma = avgUpdater(prices=prices,period=period)
     exponentialMovingAvg = [initEma]
-    multiplier = int( 2 / (period + 1 )) # smoothing constant
+    multiplier = 2 / ( period + 1 ) # smoothing constant
     j = 1
     for i in range(period,len(prices)):
         print(i)
-        exponentialMovingAvg += ((prices[i] - exponentialMovingAvg[j-1]) * multiplier) + exponentialMovingAvg[j-1]
+        exponentialMovingAvg.append(((prices[i] - exponentialMovingAvg[j-1]) * multiplier) + exponentialMovingAvg[j-1])
         j += 1
         print(exponentialMovingAvg)
     return initEma
