@@ -17,13 +17,12 @@ def sma(prices,period):
     return movingAvg
 
 def ema(prices,period):
-    exponentialMovingAvg = []
     initEma = avgUpdater(prices=prices[:period],period=period)
-    emaMultiplier = ( 2 / period + 1 ) # smoothing constant
+    exponentialMovingAvg = [initEma]
+    multiplier = ( 2 / period + 1 ) # smoothing constant
+    for i in range(period,len(prices)):
+        exponentialMovingAvg += (prices[i] - ema(prices=prices[i:period],period=period)) * multiplier + exponentialMovingAvg[i-1]
     return initEma
-
-
-
 
 movingAverages = sma(prices=prices,period=3)
 print(movingAverages)
