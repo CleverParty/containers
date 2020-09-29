@@ -6,7 +6,7 @@ def avgUpdater(prices,period):
     tempSum = 0
     for i in range(0,period):
         tempSum += prices[i]
-    return (tempSum/period)
+    return int(tempSum/period)
 
 def sma(prices,period):
     movingAvg = []
@@ -17,11 +17,15 @@ def sma(prices,period):
     return movingAvg
 
 def ema(prices,period):
-    initEma = avgUpdater(prices=prices[:period],period=period)
+    initEma = avgUpdater(prices=prices,period=period)
     exponentialMovingAvg = [initEma]
-    multiplier = ( 2 / period + 1 ) # smoothing constant
+    multiplier = int( 2 / (period + 1 )) # smoothing constant
+    j = 1
     for i in range(period,len(prices)):
-        exponentialMovingAvg += (prices[i] - ema(prices=prices[i:period],period=period)) * multiplier + exponentialMovingAvg[i-1]
+        print(i)
+        exponentialMovingAvg += ((prices[i] - exponentialMovingAvg[j-1]) * multiplier) + exponentialMovingAvg[j-1]
+        j += 1
+        print(exponentialMovingAvg)
     return initEma
 
 movingAverages = sma(prices=prices,period=3)
@@ -36,7 +40,7 @@ def buySell(prices,period):
                 print(f'with price:{prices[i]}, with current average : {defaultStartAvg}  we are to "B"')
             else:
                 signals.append("S")
-        elif( i> len(prices)-period ):
+        elif( i > len(prices)-period ):
             if(prices[i] > movingAverages[j]):
                 signals.append("S")
                 print(f'with price:{prices[i]}, with moving average : {movingAverages[j]} we are to "S"')
