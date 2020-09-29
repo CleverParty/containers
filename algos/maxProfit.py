@@ -2,16 +2,28 @@ prices = [3,3,5,0,0,3,1,4]
 defaultStartAvg = sum(prices)/len(prices)
 print(defaultStartAvg)
 
-def avgUpdater(index,prices,period):
-    return((prices[index] + prices[index + 1] + prices[index - 1])/period)
+def avgUpdater(prices,period):
+    tempSum = 0
+    for i in range(0,period):
+        tempSum += prices[i]
+    return (tempSum/period)
 
 def sma(prices,period):
     movingAvg = []
     for i in range(0,len(prices)-period):
-        avg  = (prices[i] + prices[i + 1] + prices[i + 2])/period
+        avg  = sum(prices[i:i+period])/period
         movingAvg.append(avg)
     print(movingAvg)
     return movingAvg
+
+def ema(prices,period):
+    exponentialMovingAvg = []
+    initEma = avgUpdater(prices=prices[:period],period=period)
+    emaMultiplier = ( 2 / period + 1 ) # smoothing constant
+    return initEma
+
+
+
 
 movingAverages = sma(prices=prices,period=3)
 print(movingAverages)
@@ -42,5 +54,6 @@ def buySell(prices,period):
 # because of price fluctuations in the short term
 # EMA = (K * ( C - P )) + P 
 # MA-crossover with 10/20/30/40/50 periods 
-buySell(prices=prices,period=4)
-print(movingAverages)
+buySell(prices=prices,period=3)
+print(f"the moving averages are {movingAverages}")
+ema(prices=prices,period=3)
