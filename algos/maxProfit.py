@@ -3,7 +3,7 @@ defaultStartAvg = sum(prices)/len(prices)
 print(defaultStartAvg)
 
 def avgUpdater(index,prices,period):
-    return((prices[index] + prices[index] + prices[index - 1])/period)
+    return((prices[index] + prices[index] + prices[index - 1])/period)g
 
 def sma(prices,period):
     movingAvg = []
@@ -29,7 +29,7 @@ def buySell(prices,period):
         print(signals)
     return signals
 
-
-
+# if len(prices) >> 1000 or 10000, we are to use EMA rather than SMA
+# because of price fluctuations in the short term
 # EMA = (K * ( C - P )) + P 
 buySell(prices=prices,period=3)
