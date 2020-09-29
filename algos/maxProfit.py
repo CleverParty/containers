@@ -1,9 +1,9 @@
-prices = [7,6,4,3,1]
+prices = [3,3,5,0,0,3,1,4]
 defaultStartAvg = sum(prices)/len(prices)
 print(defaultStartAvg)
 
 def avgUpdater(index,prices,period):
-    return((prices[index] + prices[index] + prices[index - 1])/period)g
+    return((prices[index] + prices[index] + prices[index - 1])/period)
 
 def sma(prices,period):
     movingAvg = []
@@ -17,12 +17,14 @@ movingAverages = sma(prices=prices,period=3)
 print(movingAverages)
 def buySell(prices,period):
     signals = []
+    j=0
     for i in range(0,len(prices)):
         if( i<=period and prices[i] < defaultStartAvg):
             signals.append("B")
             print(f'with price:{prices[i]}, we are to "B"')
-        elif( i>period and prices[i] > movingAverages[i]):
+        elif( i>period and prices[i] > movingAverages[j]):
             signals.append("S")
+            j+=1
             print(f'with price:{prices[i]}, we are to "S"')
         else:
             signals.append("S")
