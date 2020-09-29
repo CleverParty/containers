@@ -3,12 +3,12 @@ defaultStartAvg = sum(prices)/len(prices)
 print(defaultStartAvg)
 
 def avgUpdater(index,prices,period):
-    return((prices[index] + prices[index] + prices[index - 1])/period)
+    return((prices[index] + prices[index + 1] + prices[index - 1])/period)
 
 def sma(prices,period):
     movingAvg = []
-    for i in range(0,len(prices)-2):
-        avg  = (prices[i] + prices[i+1] + prices[i+2])/period
+    for i in range(0,len(prices)-period):
+        avg  = (prices[i] + prices[i + 1] + prices[i + 2])/period
         movingAvg.append(avg)
     print(movingAvg)
     return movingAvg
@@ -25,7 +25,7 @@ def buySell(prices,period):
                 print(f'with price:{prices[i]}, with current average : {defaultStartAvg}  we are to "B"')
             else:
                 signals.append("S")
-        elif( i> (len(prices)-period) ):
+        elif( i> len(prices)-period ):
             if(prices[i] > movingAverages[j]):
                 signals.append("S")
                 print(f'with price:{prices[i]}, with moving average : {movingAverages[j]} we are to "S"')
@@ -42,5 +42,5 @@ def buySell(prices,period):
 # because of price fluctuations in the short term
 # EMA = (K * ( C - P )) + P 
 # MA-crossover with 10/20/30/40/50 periods 
-buySell(prices=prices,period=3)
+buySell(prices=prices,period=4)
 print(movingAverages)
