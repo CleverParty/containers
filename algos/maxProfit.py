@@ -13,7 +13,7 @@ def sma(prices,period):
     print(movingAvg)
     return movingAvg
 
-movingAverages = sma(prices=prices,period=3)
+movingAverages = sma(prices=prices,period=7)
 print(movingAverages)
 def buySell(prices,period):
     signals = []
@@ -34,4 +34,5 @@ def buySell(prices,period):
 # if len(prices) >> 1000 or 10000, we are to use EMA rather than SMA
 # because of price fluctuations in the short term
 # EMA = (K * ( C - P )) + P 
+# MA-crossover with 10/20/30/40/50 periods 
 buySell(prices=prices,period=3)
