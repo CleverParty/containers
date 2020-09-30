@@ -1,4 +1,4 @@
-prices = [3,4,2,0,1,4,3,2,5]
+prices = [3,3,5,0,0,3,1,4]
 defaultStartAvg = sum(prices)/len(prices)
 print(defaultStartAvg)
 
