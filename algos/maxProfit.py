@@ -1,4 +1,4 @@
-prices = [3,3,5,0,0,3,1,4]
+prices = [3,4,2,0,1,4,3,2,5]
 defaultStartAvg = sum(prices)/len(prices)
 print(defaultStartAvg)
 
@@ -51,6 +51,17 @@ def buySell(prices,period):
         print(signals)
     return signals
 
+def profiCalc(prices,period):
+    tempDiff = []
+    diff = 0
+    for i in range(0,len(prices)):
+        for j in range(i,len(prices)):
+            print(i,j)
+            diff = abs(prices[j]-prices[i])
+            print(f"for prices = {prices[i]} and {prices[j]} , the profit would be : {diff}")
+            tempDiff.append(diff)
+    print(max(tempDiff))
+    return tempDiff
 # if len(prices) >> 1000 or 10000, we are to use EMA rather than SMA
 # because of price fluctuations in the short term
 # EMA = (K * ( C - P )) + P 
@@ -58,3 +69,4 @@ def buySell(prices,period):
 buySell(prices=prices,period=3)
 print(f"the moving averages are {movingAverages}")
 ema(prices=prices,period=3)
+profiCalc(prices=prices,period=3)
