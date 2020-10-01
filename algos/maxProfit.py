@@ -54,7 +54,7 @@ def buySell(prices,period):
 def profiCalc(prices,period):
     tempDiff = []
     diff = 0
-    for i in range(0,len(prices)):
+    for i in range(0,len(prices)-1):
         for j in range(i,len(prices)):
             print(i,j)
             diff = abs(prices[j]-prices[i])
