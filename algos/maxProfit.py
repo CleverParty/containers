@@ -60,6 +60,8 @@ def profiCalc(prices,period):
             diff = abs(prices[j]-prices[i])
             print(f"for prices = {prices[i]} and {prices[j]} , the profit would be : {diff}")
             tempDiff.append(diff)
+            if((j-i) < (period/2)+1 ):
+                print(f"the transactions at {i} and {j}")
     print(max(tempDiff))
     return tempDiff
 # if len(prices) >> 1000 or 10000, we are to use EMA rather than SMA
