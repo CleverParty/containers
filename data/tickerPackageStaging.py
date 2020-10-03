@@ -53,12 +53,22 @@ def createMerkleTreeLevel(root,leftCargo,rightCargo):
     print(f"left hashed cargo : {tempLeftHash} and right hashed cargo : {tempRightHash}")
     return True
 
+def anolmalyPriceDetection(data,period):
+    print(data.iloc[0,0])
+    index = 0
+    for value in data["Close"]:
+        print(f'{data.iloc[index,3]} for period {index}')
+        index += 1
+        rtrnVal = data.iloc[index,3]
+        print(rtrnVal)
+    return (index*10)
     
 def main():
-    start = datetime.datetime(2020,9,12) # format :- year,month,day
+    start = datetime.datetime(2020,7,1) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
     tickerSymbol = yfinanceCreateContainer("AAPL")
-    tickerSymbol.symbolDownloadHistoricalData(start,end)
+    rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
+    rtrnVal = anolmalyPriceDetection(rtrnData,3)
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
     # print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("23")
