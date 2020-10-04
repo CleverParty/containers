@@ -53,7 +53,7 @@ def createMerkleTreeLevel(root,leftCargo,rightCargo):
     print(f"left hashed cargo : {tempLeftHash} and right hashed cargo : {tempRightHash}")
     return True
 
-def anolmalyPriceDetection(data,period):
+def anomalyPriceDetection(data,period):
     print(data.iloc[0,0])
     index = 0
     for value in data["Close"]:
@@ -68,7 +68,7 @@ def main():
     end = datetime.datetime(2020,9,16)
     tickerSymbol = yfinanceCreateContainer("AAPL")
     rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
-    rtrnVal = anolmalyPriceDetection(rtrnData,3)
+    # rtrnAnomaly  = anomalyPriceDetection(rtrnData,3)
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
     # print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("23")
@@ -80,12 +80,19 @@ def main():
     tran2 = merkleLeaf(str(score))
     print(tran2.cargoHash())
     tempCargo = []
-    for j in range(len(node)):
+    """for j in range(len(node)):
         print(j)
         tempCargo[j] = (2*cos(theta)*tempCargo[j-1]) - tempCargo[j-1]
-        rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]
+        rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]"""
         
     createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
+
+    # adding leaves
+    valueInput = "ditto was a pidgeon"
+    tran3 = merkleLeaf(valueInput)
+    print(tran3.cargoHash())
+    valueToBePrinted = str(tran1.cargoHash()) + str(tran2.cargoHash()) + str(tran3.cargoHash())
+    print(valueToBePrinted)
 
 if __name__ == "__main__" :
     main()
