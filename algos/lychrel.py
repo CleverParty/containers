@@ -21,8 +21,6 @@ def lychrel(cargo , iter = 0):
         lychrel(sumVal, iter+1 )
         return 2
 
-
-
 def main():
     counter = 0
     print(lychrel(197)) # checking with a lychrel number(196)

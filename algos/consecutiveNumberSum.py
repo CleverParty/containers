@@ -11,7 +11,6 @@ import math
             return 0
         return sumOfFew """
 
-
 def consecutiveNumberSum(number):
     sumOfFew = 0
     for i in range(1,number):
