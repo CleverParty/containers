@@ -38,12 +38,10 @@ class yfinanceCreateContainer():
     
     def downloadSymbolHist(self,symbol,start,end):
         tickerHist = yf.download(symbol, start=start, end=end, progress=False )
-        print(tickerHist)
         return tickerHist
     
     def symbolDownloadHistoricalData(self,start,end):
         entireData = yf.download(self.symbol,start,end)
-        print(entireData)
         return entireData
 
    
