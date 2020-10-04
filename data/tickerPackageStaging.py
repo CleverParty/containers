@@ -85,7 +85,7 @@ def main():
         tempCargo[j] = (2*cos(theta)*tempCargo[j-1]) - tempCargo[j-1]
         rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]
         
-    createMerkleTreeLevel(tran1,leftCargo="2",rightCargo="3")
+    createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
 
 if __name__ == "__main__" :
     main()
