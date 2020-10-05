@@ -10,16 +10,16 @@ import math
         elif( i > lastNumb ):
             return 0
         return sumOfFew """
+arrayOfInt = [1,2,3,4,5]
 
-def consecutiveNumberSum(number):
-    sumOfFew = 0
-    for i in range(1,number):
-        for j in range(1,i):
-            print(j)
-            sumOfFew += j
-            print(sumOfFew)
-            if ( sumOfFew == 5 ):
-                print(i)
 
-consecutiveNumberSum(5)
+def consecutiveNumberSum(arrayOfInt,startIndex,endIndex,sumSet=0):
+    if (startIndex > endIndex):
+        print(f'{sumSet} and {startIndex} , {endIndex}')
+    consecutiveNumberSum(arrayOfInt,startIndex+1,endIndex,sumSet + arrayOfInt[startIndex])
+    return sumSet
+
+rtrnSum = consecutiveNumberSum(arrayOfInt=arrayOfInt, endIndex=len(arrayOfInt), startIndex=0)
+print(rtrnSum)
+
 
