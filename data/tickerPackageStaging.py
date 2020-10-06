@@ -64,8 +64,10 @@ def anomalyPriceDetection(data,period):
     return (index*10)
 
 # def marketCapLive(data):
-    
-    
+# Daily Margin Interest (Short Position) = The Daily Market Value of the Borrowed Stocks when Market Closes* Stock Loan Rate for That Stock/360.
+# also the typivcal fee for Stock loan rate in the usa is 0.30% per annum, and might increase to 20-30% per annum
+# when returning the stock, the loan fee and the divendends are to be paid to lender.
+# 
 def main():
     start = datetime.datetime(2020,7,1) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
@@ -87,7 +89,6 @@ def main():
         print(j)
         tempCargo[j] = (2*cos(theta)*tempCargo[j-1]) - tempCargo[j-1]
         rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]"""
-        
     createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
     # adding leaves
     valueInput = "ditto was a pidgeon"
