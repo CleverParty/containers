@@ -7,13 +7,15 @@ import pandas as pd
 import websocket
 import pandas_datareader.data as reader
 import sklearn
+import yahoofinancials
 # from sklearn.svm import SVR
 # from keras.layers import Dense
 # from keras.layers import LSTM
 # from keras.layers import Dropout
 import matplotlib.pyplot as plt
 from matplotlib import style
-import yfinance as yf
+import yfinance as yf 
+from yahoofinance import BalanceSheet 
 import json
 try:
     # For Python 3.0 and later
@@ -227,6 +229,7 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     return zscoreFormula 
 
 def main():
+    req = BalanceSheet('AAPL')
     start = datetime.datetime(2020,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
     symbolDefault = "AAPL"

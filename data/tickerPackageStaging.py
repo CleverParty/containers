@@ -62,6 +62,9 @@ def anomalyPriceDetection(data,period):
         rtrnVal = data.iloc[index,3]
         print(rtrnVal)
     return (index*10)
+
+# def marketCapLive(data):
+    
     
 def main():
     start = datetime.datetime(2020,7,1) # format :- year,month,day
