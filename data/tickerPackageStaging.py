@@ -86,7 +86,6 @@ def main():
         rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]"""
         
     createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
-
     # adding leaves
     valueInput = "ditto was a pidgeon"
     tran3 = merkleLeaf(valueInput)
