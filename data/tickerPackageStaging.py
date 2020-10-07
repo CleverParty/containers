@@ -6,7 +6,7 @@ import random
 
 # project imports
 
-class merkleLeaf():
+class merkleLeaf(): # extenuate this with a base class
     def __init__(self,cargo,left=None,right=None):
         self.cargo = cargo
         self.left = left
