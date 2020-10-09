@@ -132,6 +132,7 @@ def genWebHook():
                               on_error = on_error,
                               on_close = on_close)
     ws.symbolsFinn = symbolsFinn
+    ws.symbolDefault = symbolsDefault
     # ws.run_forever()
 
 def workaround_LSTM():
