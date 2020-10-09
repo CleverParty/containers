@@ -75,6 +75,9 @@ def ticker():
 def generateData(x):    
     r = [a/10 for a in x]
     y = np.sin(x)+np.random.uniform(-.5, .2, len(x))
+    Z = np.linspace(0,101)
+    print(Z)
+    # created entities
     return np.array(y+r)
 
 def on_message(ws, message):
