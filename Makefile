@@ -4,6 +4,7 @@ test:
 	echo "test Phase has begun"
 build:
 	pip3 install --upgrade pip
+	pip3 install --upgrade pip3
 	pip3 install --upgrade setuptools
 	pip3 install websocket_client
 	pip3 install nashpy

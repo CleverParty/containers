@@ -230,6 +230,7 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     D = marketValueEquity / totalLiability
     E = sales / totalAssets
     zscoreFormula = ( 1.2 * A ) + ( 1.4 * B ) + ( 3.3 * C ) + ( 0.6 * D ) + ( E )
+    # testing score efficacy 
     return zscoreFormula 
 
 def main():
@@ -244,7 +245,6 @@ def main():
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
-    print(entireDataframe)
     print(sma(entireDataframe,3))
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
     # altman Z-Score example usage :
