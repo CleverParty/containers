@@ -171,7 +171,7 @@ def iexCreate(symbol):
 def laggingVWAP(symbol, start, end, interval):
     ticker = yfinanceCreateContainer(symbol)
     entireDataframe = ticker.symbolHist(start=start,end=end,interval=interval)
-    for i in range(0,2000):
+    for i in range(0,500):
         high = entireDataframe.iloc[i,1]
         low = entireDataframe.iloc[i,2]
         close = entireDataframe.iloc[i,3]
@@ -247,9 +247,11 @@ def main():
     start = datetime.datetime(2020,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
     symbolDefault = "OKTA"
+    stripped = "b" + accessGrant()
     client = finnhub.Client(api_key=stripped)
+    print(client.covid19())
     # print(finnhubCreate("F"))
-    print(laggingVWAP("F"))
+    print(laggingVWAP("F", start=start, end=end, interval = '1m'))
     ticker = yfinanceCreateContainer("AAPL")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
@@ -259,7 +261,6 @@ def main():
     # altman Z-Score example usage :
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f'Altman Z-score : {score}')
-    # variable A = market capital / total assets
     # if entireDataframe["time"]
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
