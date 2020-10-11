@@ -233,14 +233,21 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     # testing score efficacy 
     return zscoreFormula 
 
+def bollingerBands()
+    # upperBollingerBand = SMA(Typical price(trend price),number of smoothing periods) + number of standard deviations * standard deviationbs of last 'n' periods
+    # lowerBollingerBand = SMA(Typical price(trend price),number of smoothing periods) - number of standard deviations * standard deviationbs of last 'n' periods
+    # where, typical price = high + low + close / 3
+    # band is to be a tuple of current bollinger band range
+    return bands
+
 def main():
     req = BalanceSheet('AAPL')
     start = datetime.datetime(2020,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
-    symbolDefault = "AAPL"
-    # client = finnhub.Client(api_key=stripped)
+    symbolDefault = "OKTA"
+    client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
-    # print(laggingVWAP("F"))
+    print(laggingVWAP("F"))
     ticker = yfinanceCreateContainer("AAPL")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
