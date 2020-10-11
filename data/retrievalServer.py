@@ -1,5 +1,6 @@
 from time import sleep
 from json import dumps
+import numpy as np
 import datetime
 import pandas 
 from kafka import KafkaConsumer
@@ -11,7 +12,7 @@ def main():
         bootstrap_servers=['localhost:9092'],
         auto_offset_reset='earliest',
         enable_auto_commit=True,
-        group_id='test-group')
+        group_id='my-group')
     start = datetime.datetime(2020,8,1)
     end = datetime.datetime.today()
     # print(client.company_profile(cusip='679295105'))
