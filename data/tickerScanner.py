@@ -233,7 +233,7 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     # testing score efficacy 
     return zscoreFormula 
 
-def bollingerBands(data,period)
+def bollingerBands(data,period):
     # upperBollingerBand = SMA(Typical price(trend price),number of smoothing periods) + number of standard deviations * standard deviations of last 'n' periods
     # lowerBollingerBand = SMA(Typical price(trend price),number of smoothing periods) - number of standard deviations * standard deviations of last 'n' periods
     # where, typical price = high + low + close / 3
