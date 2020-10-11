@@ -30,7 +30,7 @@ dynamic:
 	python3 algos/maxProfit.py
 	echo "algo test sequence"
 	# python3 data/tickerScanner.py
-	# python3 data/tickerPackageStaging.py
+	python3 data/tickerPackageStaging.py
 	# python3 data/arithproj.py
 	# python3 interface/holder/canaryTest.py
 
