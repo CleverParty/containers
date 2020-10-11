@@ -4,7 +4,6 @@ test:
 	echo "test Phase has begun"
 build:
 	pip3 install --upgrade pip
-	pip3 install --upgrade pip3
 	pip3 install --upgrade setuptools
 	pip3 install websocket_client
 	pip3 install nashpy
@@ -17,6 +16,7 @@ build:
 	pip3 install keras
 	pip3 install finnhub-python
 	pip3 install sklearn
+	pip3 install finnhub
 	# pip3 install plotit , dependency for tickerScanner.py
 	# source game/bin/activate , Using a "." instead of source also works 
 	# python3 nash/actors.py
