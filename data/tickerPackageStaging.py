@@ -77,7 +77,8 @@ def main():
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
     # print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("23")
-    print(tran1.cargoHash())
+    # print(tran1.cargoHash()) # to test merkle tree implemenatation
+    print(print(np.std(entireDataframe["Close"])))
     hashTest = tran1.cargoHash()
     prntTest = node.doubleHash(hashTest)
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)

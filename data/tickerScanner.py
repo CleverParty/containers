@@ -233,12 +233,14 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     # testing score efficacy 
     return zscoreFormula 
 
-def bollingerBands()
-    # upperBollingerBand = SMA(Typical price(trend price),number of smoothing periods) + number of standard deviations * standard deviationbs of last 'n' periods
-    # lowerBollingerBand = SMA(Typical price(trend price),number of smoothing periods) - number of standard deviations * standard deviationbs of last 'n' periods
+def bollingerBands(data,period)
+    # upperBollingerBand = SMA(Typical price(trend price),number of smoothing periods) + number of standard deviations * standard deviations of last 'n' periods
+    # lowerBollingerBand = SMA(Typical price(trend price),number of smoothing periods) - number of standard deviations * standard deviations of last 'n' periods
     # where, typical price = high + low + close / 3
     # band is to be a tuple of current bollinger band range
-    return bands
+    # upperBollingerBand = sma(data,period) 
+    std = sqrt(mean(abs(data.mean())))**2 # period is to be added to sma 
+    return std
 
 def main():
     req = BalanceSheet('AAPL')
@@ -252,7 +254,7 @@ def main():
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
-    print(sma(entireDataframe,3))
+    print(sma(entireDataframe,3)) # number is :
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
     # altman Z-Score example usage :
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
