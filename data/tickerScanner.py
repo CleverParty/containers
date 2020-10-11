@@ -239,7 +239,7 @@ def bollingerBands(data,period):
     # where, typical price = high + low + close / 3
     # band is to be a tuple of current bollinger band range
     # upperBollingerBand = sma(data,period) 
-    std = sqrt(mean(abs(data.mean())))**2 # period is to be added to sma 
+    std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
     return std
 
 def main():
