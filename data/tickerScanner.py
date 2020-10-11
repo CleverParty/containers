@@ -249,7 +249,6 @@ def main():
     symbolDefault = "OKTA"
     stripped = "b" + accessGrant()
     client = finnhub.Client(api_key=stripped)
-    print(client.covid19())
     # print(finnhubCreate("F"))
     print(laggingVWAP("F", start=start, end=end, interval = '1m'))
     ticker = yfinanceCreateContainer("AAPL")
