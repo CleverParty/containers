@@ -17,6 +17,7 @@ class merkleLeaf(): # extenuate this with a base clas
         if(type(self.cargo) is str):
             tempHash = hashlib.sha256()
             print("String Cargo")
+            print(str.encode(self.cargo))
             tempHash.update(str.encode(self.cargo))
         return (tempHash.hexdigest())
     

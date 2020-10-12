@@ -26,7 +26,7 @@ except ImportError:
 
 stripped = ""
 
-MA_PERIOD = 20 # default moving average period is set to 20 "periods"
+MA_PERIOD = 50 # default moving average period is set to 20 "periods"
 
 class yfinanceCreateContainer():
     def __init__(self,symbol):
