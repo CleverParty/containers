@@ -258,7 +258,7 @@ def main():
     print(f'entire data frame contents')
     print(sma(entireDataframe,3)) # number is :
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
-    # altman Z-Score example usage :
+    # altman Z-Score example usage :``
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f'Altman Z-score : {score}')
     # if entireDataframe["time"]

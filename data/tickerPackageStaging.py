@@ -4,6 +4,7 @@ import datetime
 import hashlib
 import random
 import numpy as np
+from yahoofinance import BalanceSheet 
 # project imports
 
 class merkleLeaf(): # extenuate this with a base clas
@@ -18,6 +19,14 @@ class merkleLeaf(): # extenuate this with a base clas
             print("String Cargo")
             tempHash.update(str.encode(self.cargo))
         return (tempHash.hexdigest())
+    
+    def currHash(self):
+        if(type(self.cargo) in range(0,len(self.cargo))):
+            tempHash = hashlib.sha256()
+            print("internal test structure")
+        else:
+            return self.cargo
+        return self.left,self.right
 
     def __str__(self):
         print(f'the merkle node {self.cargo} has following representation')
@@ -97,6 +106,8 @@ def main():
     print(tran3.cargoHash())
     valueToBePrinted = str(tran1.cargoHash()) + str(tran2.cargoHash()) + str(tran3.cargoHash())
     print(valueToBePrinted)
+    req = BalanceSheet('AAPL')
+    print(req)
 
 if __name__ == "__main__" :
     main()
