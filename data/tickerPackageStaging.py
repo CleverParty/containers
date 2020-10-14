@@ -7,7 +7,7 @@ import numpy as np
 from yahoofinance import BalanceSheet 
 # project imports
 
-class merkleLeaf(): # extenuate this with a base clas
+class merkleLeaf(): # extenuate this with a base class
     def __init__(self,cargo,left=None,right=None):
         self.cargo = cargo
         self.left = left
@@ -32,6 +32,9 @@ class merkleLeaf(): # extenuate this with a base clas
     def __str__(self):
         print(f'the merkle node {self.cargo} has following representation')
         return(str(self.cargo))
+    
+    def interator(self):
+        return iter(self.cargo)
     
 
 class merkle():
