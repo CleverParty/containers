@@ -100,7 +100,8 @@ def accessGrant():
                 # if ("finnhub" in line):
                 #     print(f'Line {cnt}: {line.strip("finnhub=")}')
                 stripped = line.strip("finnhub=")
-                line = access.readline()
+                # line = access.readline()
+                line += access.readline(())
                 cnt += 1
                 if(cnt>2):
                     break
