@@ -11,7 +11,6 @@ def matrix(arr,k):
             if((i+j) == (i+1) and j == (i+1)):
                 print((i*j)/2)
             if(j == (i+1)/2):
-                print(f'{i} and {j}')
                 print(res[i][j])
     # sub = [c,x for x in arr]
 

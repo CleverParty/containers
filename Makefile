@@ -16,6 +16,7 @@ build:
 	pip3 install keras
 	pip3 install finnhub-python
 	pip3 install sklearn
+	pip3 install finnhub
 	# pip3 install plotit , dependency for tickerScanner.py
 	# source game/bin/activate , Using a "." instead of source also works 
 	# python3 nash/actors.py
@@ -29,7 +30,7 @@ dynamic:
 	python3 algos/maxProfit.py
 	echo "algo test sequence"
 	# python3 data/tickerScanner.py
-	# python3 data/tickerPackageStaging.py
+	python3 data/tickerPackageStaging.py
 	# python3 data/arithproj.py
 	# python3 interface/holder/canaryTest.py
 

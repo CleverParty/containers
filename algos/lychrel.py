@@ -21,14 +21,17 @@ def lychrel(cargo , iter = 0):
         lychrel(sumVal, iter+1 )
         return 2
 
+def main():
+    counter = 0
+    print(lychrel(197)) # checking with a lychrel number(196)
+    for n in range(0,1000):
+        print(f'for n value:= {n}')
+        if(lychrel(n) == 3):
+            counter += 1
+        else:
+            print(f'plaindrome setting was found')
 
-counter = 0
-print(lychrel(197)) # checking with a lychrel number(196)
-for n in range(0,1000):
-    print(f'for n value:= {n}')
-    if(lychrel(n) == 3):
-        counter += 1
-    else:
-        print(f'plaindrome setting was found')
-
+if __name__ == "__main__" :
+    main()
+    
 # print(counter)
