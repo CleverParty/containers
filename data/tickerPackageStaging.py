@@ -20,18 +20,13 @@ class merkleLeaf(): # extenuate this with a base class
             print(str.encode(self.cargo))
             tempHash.update(str.encode(self.cargo))
         return (tempHash.hexdigest())
-    
-    def currHash(self):
-        if(type(self.cargo) in range(0,len(self.cargo))):
-            tempHash = hashlib.sha256()
-            print("internal test structure")
-        else:
-            return self.cargo
-        return self.left,self.right
 
     def __str__(self):
         print(f'the merkle node {self.cargo} has following representation')
         return(str(self.cargo))
+    
+    def __len__(self):
+        print(f'the tree weight: {self.cargo},{self.left},{self.right}')
     
     def interator(self):
         return iter(self.cargo)
