@@ -46,7 +46,6 @@ class yfinanceCreateContainer():
         entireData = yf.download(self.symbol,start,end)
         return entireData
 
-   
 def create(symbol,start,end):
     style.use('ggplot')
     df = reader.DataReader(symbol, 'yahoo', start, end)
