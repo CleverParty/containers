@@ -89,24 +89,24 @@ def main():
     print(print(np.std(rtrnData["Close"])))
     hashTest = tran1.cargoHash()
     prntTest = node.doubleHash(hashTest)
-    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
-    print(f"z-score :{score}")
-    tran2 = merkleLeaf(str(score))
-    print(tran2.cargoHash())
-    tempCargo = []
+    # score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    # print(f"z-score :{score}")
+    # tran2 = merkleLeaf(str(score))
+    # print(tran2.cargoHash())
+    # tempCargo = []
     """for j in range(len(node)):
         print(j)
         tempCargo[j] = (2*cos(theta)*tempCargo[j-1]) - tempCargo[j-1]
         rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]"""
-    createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
+    # createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
     # adding leaves
-    valueInput = "ditto was a pidgeon"
-    tran3 = merkleLeaf(valueInput)
-    print(tran3.cargoHash())
-    valueToBePrinted = str(tran1.cargoHash()) + str(tran2.cargoHash()) + str(tran3.cargoHash())
-    print(valueToBePrinted)
-    req = BalanceSheet('AAPL')
-    print(req)
+    # valueInput = "ditto was a pidgeon"
+    # tran3 = merkleLeaf(valueInput)
+    # print(tran3.cargoHash())
+    # valueToBePrinted = str(tran1.cargoHash()) + str(tran2.cargoHash()) + str(tran3.cargoHash())
+    # print(valueToBePrinted)
+    # req = BalanceSheet('AAPL')
+    # print(req)
 
 if __name__ == "__main__" :
     main()
