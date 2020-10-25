@@ -19,7 +19,7 @@ build:
 	pip3 install finnhub
 	# pip3 install plotit , dependency for tickerScanner.py
 	# source game/bin/activate , Using a "." instead of source also works 
-	# python3 nash/actors.py
+	python3 nash/actors.py
 	# ./start_server.sh
 dynamic:
 	# python3 nash/poker.py
