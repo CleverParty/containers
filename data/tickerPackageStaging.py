@@ -78,7 +78,7 @@ def anomalyPriceDetection(data,period):
 # 
 def main():
     start = datetime.datetime(2020,7,1) # format :- year,month,day
-    end = datetime.datetime(2020,9,16)
+    end = datetime.datetime(2020,10,16)
     tickerSymbol = yfinanceCreateContainer("AAPL")
     rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
     # rtrnAnomaly  = anomalyPriceDetection(rtrnData,3)
