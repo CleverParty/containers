@@ -256,12 +256,10 @@ def main():
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
     print(entireDataframe)
-    print(sma(entireDataframe,3)) # number is :
+    print(sma(entireDataframe,3))
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
-    # altman Z-Score example usage :``
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f'Altman Z-score : {score}')
-    # if entireDataframe["time"]
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
     # laggingVWAP("F",start,end,interval="5m")
