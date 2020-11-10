@@ -244,18 +244,18 @@ def bollingerBands(data,period):
 
 def main():
     req = BalanceSheet('AAPL')
-    start = datetime.datetime(2020,9,12) # format :- year,month,day
+    start = datetime.datetime(2018,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
-    symbolDefault = "OKTA"
-    stripped = "b" + accessGrant()
-    client = finnhub.Client(api_key=stripped)
-    print(client.covid19())
+    symbolDefault = "BB"
+    # stripped = "b" + accessGrant()
+    # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
-    print(laggingVWAP("F", start=start, end=end, interval = '1m'))
-    ticker = yfinanceCreateContainer("AAPL")
+    print(laggingVWAP("BB", start=start, end=end, interval = '1mo'))
+    ticker = yfinanceCreateContainer("BB")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
+    print(entireDataframe)
     print(sma(entireDataframe,3)) # number is :
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
     # altman Z-Score example usage :``

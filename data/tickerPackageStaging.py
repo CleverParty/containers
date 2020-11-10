@@ -7,7 +7,7 @@ import numpy as np
 from yahoofinance import BalanceSheet 
 # project imports
 
-class merkleLeaf(): # extenuate this with a base class
+class merkleLeaf(): # extend this with a base class
     def __init__(self,cargo,left=None,right=None):
         self.cargo = cargo
         self.left = left
@@ -75,11 +75,11 @@ def anomalyPriceDetection(data,period):
 # Daily Margin Interest (Short Position) = The Daily Market Value of the Borrowed Stocks when Market Closes* Stock Loan Rate for That Stock/360.
 # also the typivcal fee for Stock loan rate in the usa is 0.30% per annum, and might increase to 20-30% per annum
 # when returning the stock, the loan fee and the divendends are to be paid to lender.
-# 
+
 def main():
     start = datetime.datetime(2020,7,1) # format :- year,month,day
     end = datetime.datetime(2020,10,16)
-    tickerSymbol = yfinanceCreateContainer("AAPL")
+    tickerSymbol = yfinanceCreateContainer("BB")
     rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
     # rtrnAnomaly  = anomalyPriceDetection(rtrnData,3)
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
