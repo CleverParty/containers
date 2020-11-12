@@ -18,7 +18,7 @@ build:
 	pip3 install sklearn
 	pip3 install finnhub-python
 	# pip3 install plotit , dependency for tickerScanner.py
-	# source game/bin/activate , Using a "." instead of source also works 
+	# source game/bin/activate , Using a "." instead of source also works
 	python3 nash/actors.py
 	# ./start_server.sh
 dynamic:
@@ -33,4 +33,3 @@ dynamic:
 	python3 data/tickerPackageStaging.py
 	# python3 data/arithproj.py
 	# python3 interface/holder/canaryTest.py
-
