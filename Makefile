@@ -25,7 +25,8 @@ dynamic:
 	# python3 nash/poker.py
 	# python3 algos/lychrel.py
 	# python3 algos/frequentDigits.py
-	# python3 algos/reverseDigits.py
+	python3 algos/reverseDigits.py
+	echo "reversing digits works"
 	python3 algos/squareConvergents.py
 	python3 algos/maxProfit.py
 	echo "algo test sequence"
