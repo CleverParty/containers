@@ -1,5 +1,6 @@
 from time import sleep
 from json import dumps
+import numpy as np
 import datetime
 import pandas 
 from kafka import KafkaConsumer
