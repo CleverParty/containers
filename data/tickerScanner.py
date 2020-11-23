@@ -243,22 +243,22 @@ def bollingerBands(data,period):
     return std
 
 def main():
-    req = BalanceSheet('AAPL')
+    req = BalanceSheet('AGCO')
     start = datetime.datetime(2018,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
-    symbolDefault = "BB"
+    symbolDefault = "AGCO"
     # stripped = "b" + accessGrant()
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
-    print(laggingVWAP("BB", start=start, end=end, interval = '1mo'))
-    ticker = yfinanceCreateContainer("BB")
+    print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
+    ticker = yfinanceCreateContainer("AGCO")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
     print(entireDataframe)
     print(sma(entireDataframe,3))
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
-    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    score = altmanZScore(symbol = "AGCO", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f'Altman Z-score : {score}')
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")

@@ -22,6 +22,7 @@ build:
 	python3 nash/actors.py
 	# ./start_server.sh
 dynamic:
+	# re-read PEP 20 for code practices, and then read PEP 20 again. 
 	# python3 nash/poker.py
 	# python3 algos/lychrel.py
 	# python3 algos/frequentDigits.py
