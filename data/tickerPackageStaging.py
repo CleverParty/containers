@@ -1,10 +1,14 @@
-from tickerScanner import yfinanceCreateContainer,altmanZScore
+from tickerScanner import yfinanceCreateContainer,altmanZScore,bollingerBands
 import matplotlib.pyplot as plt
+plt.style.use('ggplot')
 import datetime
 import hashlib
 import random
 import numpy as np
 from yahoofinance import BalanceSheet 
+# fault handler for segmentation fault in pycore, is it due to matplotlib?
+import faulthandler
+faulthandler.enable()
 # project imports
 
 class merkleLeaf(): # extend this with a base class
@@ -76,8 +80,18 @@ def anomalyPriceDetection(data,period):
 # also the typivcal fee for Stock loan rate in the usa is 0.30% per annum, and might increase to 20-30% per annum
 # when returning the stock, the loan fee and the divendends are to be paid to lender.
 
+def justDisplayWhatever(data):
+    # use chart plotting and diaplays in either an interactive python window or a notebook.
+    plt.plot(data['Close'],label= 'Close')
+    plt.plot(data['Close'].rolling(window=5).mean(),label= 'MA 9 days')
+    # print(plt.plot(rtrnDataFrame['Close'].rolling(2, min_periods=1).mean())) --> straight-forward way to directly get sma of thedesired window
+    # plt.plot(data['Close'].rolling(window=10).mean(),label= 'MA 21 days')
+    plt.legend(loc='best')
+    plt.title('AGCO \nClose and Moving Averages')
+    plt.show() 
+
 def main():
-    start = datetime.datetime(2020,7,1) # format :- year,month,day
+    start = datetime.datetime(2019,7,19) # format :- year,month,day
     end = datetime.datetime(2020,10,16)
     tickerSymbol = yfinanceCreateContainer("BB")
     rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
@@ -89,6 +103,8 @@ def main():
     print(print(np.std(rtrnData["Close"])))
     hashTest = tran1.cargoHash()
     prntTest = node.doubleHash(hashTest)
+    ticker = yfinanceCreateContainer("AGCO")
+    rtrnDataFrame = ticker.symbolHist(start=start,end=end,interval="1h")
     # score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     # print(f"z-score :{score}")
     # tran2 = merkleLeaf(str(score))

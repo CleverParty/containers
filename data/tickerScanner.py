@@ -233,23 +233,23 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     # testing score efficacy 
     return zscoreFormula 
 
-def bollingerBands(data,period):
+def bollingerBands(data):
     # upperBollingerBand = SMA(Typical price(trend price),number of smoothing periods) + number of standard deviations * standard deviations of last 'n' periods
     # lowerBollingerBand = SMA(Typical price(trend price),number of smoothing periods) - number of standard deviations * standard deviations of last 'n' periods
     # where, typical price = high + low + close / 3
     # band is to be a tuple of current bollinger band range
     # upperBollingerBand = sma(data,period) 
     # will use pandas --> pandas.DataFrame.rolling
-    upperBollingerBand = data.rolling(window=5).mean()
+    upperBollingerBand = data['Close'].rolling(window=5).mean().plot()
     print(upperBollingerBand)
-    std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
+    # std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
     return upperBollingerBand
 
 def main():
     req = BalanceSheet('AGCO')
     print(req)
-    start = datetime.datetime(2018,9,12) # format :- year,month,day
-    end = datetime.datetime(2020,9,16)
+    start = datetime.datetime(2019,9,12) # format :- year,month,day
+    end = datetime.datetime(2020,11,16)
     symbolDefault = "AGCO"
     # stripped = "b" + accessGrant()
     # client = finnhub.Client(api_key=stripped)
@@ -257,7 +257,8 @@ def main():
     # print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
     print("ACTUALLY HERE")
     ticker = yfinanceCreateContainer("AGCO")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="3mo")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1h")
+    bollingerBands(entireDataframe)
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
     print(entireDataframe)
