@@ -24,7 +24,7 @@ build:
 dynamic:
 	# re-read PEP 20 for code practices, and then read PEP 20 again.
 	# in koyfin, track gold fluctuations
-	# also utilize, quantconnect for factor analysis and back-testing
+	# utilize, quantconnect for factor analysis and back-testing
 	# python3 nash/poker.py
 	# python3 algos/lychrel.py
 	# python3 algos/frequentDigits.py

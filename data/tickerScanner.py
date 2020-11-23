@@ -142,7 +142,7 @@ def workaround_LSTM():
     x = [i/100 for i in range(n)]
     y = genData(x)
     x = np.array(x).reshape(-1,1)
-    plt.scatter(x, y, s=5, color="green")
+    plt.scatter(x, y, s=5, color="maroon")
     plt.show()
 
 def visualizeYfinanceHistoricalData(symbol):
@@ -239,27 +239,32 @@ def bollingerBands(data,period):
     # where, typical price = high + low + close / 3
     # band is to be a tuple of current bollinger band range
     # upperBollingerBand = sma(data,period) 
+    # will use pandas --> pandas.DataFrame.rolling
+    upperBollingerBand = data.rolling(window=5).mean()
+    print(upperBollingerBand)
     std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
-    return std
+    return upperBollingerBand
 
 def main():
     req = BalanceSheet('AGCO')
+    print(req)
     start = datetime.datetime(2018,9,12) # format :- year,month,day
     end = datetime.datetime(2020,9,16)
     symbolDefault = "AGCO"
     # stripped = "b" + accessGrant()
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
-    print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
+    # print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
+    print("ACTUALLY HERE")
     ticker = yfinanceCreateContainer("AGCO")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="3mo")
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
     print(entireDataframe)
     print(sma(entireDataframe,3))
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
-    score = altmanZScore(symbol = "AGCO", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
-    print(f'Altman Z-score : {score}')
+    # score = altmanZScore(symbol = "AGCO", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    # print(f'Altman Z-score : {score}')
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
     # laggingVWAP("F",start,end,interval="5m")
