@@ -107,6 +107,8 @@ def main():
     prntTest = node.doubleHash(hashTest)
     ticker = yfinanceCreateContainer("AGCO")
     rtrnDataFrame = ticker.symbolHist(start=start,end=end,interval="1h")
+    rtrnValue = bollingerBands(rtrnDataFrame)
+    print(rtrnValue)
     # score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     # print(f"z-score :{score}")
     # tran2 = merkleLeaf(str(score))

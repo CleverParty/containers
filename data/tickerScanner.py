@@ -21,7 +21,7 @@ try:
     # For Python 3.0 and later
     from urllib.request import urlopen
 except ImportError:
-    # Fall back to Python 2's urllib2
+    # Fall back to Python2's urllib2
     from urllib2 import urlopen
 
 stripped = ""
@@ -240,8 +240,9 @@ def bollingerBands(data):
     # band is to be a tuple of current bollinger band range
     # upperBollingerBand = sma(data,period) 
     # will use pandas --> pandas.DataFrame.rolling
-    upperBollingerBand = data['Close'].rolling(window=5).mean().plot()
-    print(upperBollingerBand)
+    upperBollingerBand = data['Close'].rolling(window=5).mean()
+    lowerBollingerBand = data['Low'].rolling(window=5).mean()
+    print(upperBollingerBand,lowerBollingerBand)
     # std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
     return upperBollingerBand
 
