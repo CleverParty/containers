@@ -1,4 +1,5 @@
 # import keras
+import math
 import numpy as np 
 import requests
 import datetime
@@ -21,7 +22,7 @@ try:
     # For Python 3.0 and later
     from urllib.request import urlopen
 except ImportError:
-    # Fall back to Python 2's urllib2
+    # Fall back to Python2's urllib2
     from urllib2 import urlopen
 
 stripped = ""
@@ -142,7 +143,7 @@ def workaround_LSTM():
     x = [i/100 for i in range(n)]
     y = genData(x)
     x = np.array(x).reshape(-1,1)
-    plt.scatter(x, y, s=5, color="green")
+    plt.scatter(x, y, s=5, color="maroon")
     plt.show()
 
 def visualizeYfinanceHistoricalData(symbol):
@@ -233,33 +234,41 @@ def altmanZScore(symbol, totalAssets, retainedEarnings, rawEarnings, marketValue
     # testing score efficacy 
     return zscoreFormula 
 
-def bollingerBands(data,period):
+def bollingerBands(data):
     # upperBollingerBand = SMA(Typical price(trend price),number of smoothing periods) + number of standard deviations * standard deviations of last 'n' periods
     # lowerBollingerBand = SMA(Typical price(trend price),number of smoothing periods) - number of standard deviations * standard deviations of last 'n' periods
     # where, typical price = high + low + close / 3
     # band is to be a tuple of current bollinger band range
     # upperBollingerBand = sma(data,period) 
-    std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
-    return std
+    # will use pandas --> pandas.DataFrame.rolling
+    upperBollingerBand = data['High'].rolling(window=5).mean()
+    lowerBollingerBand = data['Low'].rolling(window=5).mean()
+    print(upperBollingerBand,lowerBollingerBand)
+    std = math.sqrt(abs(data.mean())) # standard deviation calculation
+    print(std)
+    return upperBollingerBand
 
 def main():
-    req = BalanceSheet('AAPL')
-    start = datetime.datetime(2018,9,12) # format :- year,month,day
-    end = datetime.datetime(2020,9,16)
-    symbolDefault = "BB"
+    req = BalanceSheet('AGCO')
+    print(req)
+    start = datetime.datetime(2019,9,12) # format :- year,month,day
+    end = datetime.datetime(2020,11,16)
+    symbolDefault = "AGCO"
     # stripped = "b" + accessGrant()
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
-    print(laggingVWAP("BB", start=start, end=end, interval = '1mo'))
-    ticker = yfinanceCreateContainer("BB")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1m")
+    # print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
+    print("ACTUALLY HERE")
+    ticker = yfinanceCreateContainer("AGCO")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1h")
+    bollingerBands(entireDataframe)
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
     print(entireDataframe)
     print(sma(entireDataframe,3))
     print(f'Period : {3} simple moving average gives : {sma(entireDataframe,3)}')
-    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
-    print(f'Altman Z-score : {score}')
+    # score = altmanZScore(symbol = "AGCO", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    # print(f'Altman Z-score : {score}')
     # rtrnEmaValue = exponentialMovingAverageNumpy(entireDataframe,10)
     # visualizeYfinanceHistoricalData("F")
     # laggingVWAP("F",start,end,interval="5m")
