@@ -9,6 +9,7 @@ from yahoofinance import BalanceSheet
 # fault handler for segmentation fault in pycore, is it due to matplotlib?
 import faulthandler
 faulthandler.enable()
+# execute "python3 -Xfaulthandler tickerPackageStaging.py" for the faulthandler
 # project imports
 
 class merkleLeaf(): # extend this with a base class
