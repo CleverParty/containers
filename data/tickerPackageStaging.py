@@ -48,7 +48,7 @@ class merkle():
     
     def create(self):
         self.completeTransactions = self.prevTransactions
-        self.currentHash = hashlib.sha256(currentTransaction)
+        self.currentHash = hashlib.sha256(self.completeTransactions)
     
     def doubleHash(self,cargo): # Double hashing within the inner node itself for easier access to cargo
         self.status = hashlib.sha256(str.encode(self.cargo))
