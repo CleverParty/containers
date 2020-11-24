@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//testing docker containerisation on golang:alpine package
+// testing docker containerisation on golang:alpine package
 
 func main() {
 	router := gin.Default()
