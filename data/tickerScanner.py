@@ -96,6 +96,7 @@ def accessGrant():
     # adding noise to the data process:
     # data[::5] += 3 * (0.5 - np.random.rand(5))
     # accessfile = open("access.txt","r")
+    strVal = ""
     with open("access.txt","r") as access:
             line = access.readline()
             cnt = 1
@@ -103,12 +104,15 @@ def accessGrant():
                 # if ("finnhub" in line):
                 #     print(f'Line {cnt}: {line.strip("finnhub=")}')
                 stripped = line.strip("finnhub=")
-                # line = access.readline()
-                line += access.readline(())
+                line += access.readline()
+                # line += access.readline(())
                 cnt += 1
                 if(cnt>2):
                     break
-    return stripped
+    val = [val for index,val in enumerate(stripped) if index>37] # = = 37
+    for i in val:
+        strVal += i
+    return strVal
 
 def getTickerNews(category):
     extracted = accessGrant()
@@ -244,8 +248,7 @@ def bollingerBands(data):
     upperBollingerBand = data['High'].rolling(window=5).mean()
     lowerBollingerBand = data['Low'].rolling(window=5).mean()
     print(upperBollingerBand,lowerBollingerBand)
-    std = math.sqrt(abs(data.mean())) # standard deviation calculation
-    print(std)
+    # std = math.sqrt(abs(data.mean())) # seems to be a math package issue during std dev calculation
     return upperBollingerBand
 
 def main():
