@@ -1,4 +1,5 @@
 # import keras
+import math
 import numpy as np 
 import requests
 import datetime
@@ -243,7 +244,8 @@ def bollingerBands(data):
     upperBollingerBand = data['High'].rolling(window=5).mean()
     lowerBollingerBand = data['Low'].rolling(window=5).mean()
     print(upperBollingerBand,lowerBollingerBand)
-    # std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
+    std = math.sqrt(abs(data.mean())) # standard deviation calculation
+    print(std)
     return upperBollingerBand
 
 def main():
