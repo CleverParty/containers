@@ -49,6 +49,7 @@ class merkle():
     def create(self):
         self.completeTransactions = self.prevTransactions
         self.currentHash = hashlib.sha256(self.completeTransactions)
+        self.currentHash = hashlib.sha256(self.currentHash)
     
     def doubleHash(self,cargo): # Double hashing within the inner node itself for easier access to cargo
         self.status = hashlib.sha256(str.encode(self.cargo))
@@ -77,9 +78,9 @@ def anomalyPriceDetection(data,period):
     return (index*10)
 
 # def marketCapLive(data):
-# Daily Margin Interest (Short Position) = The Daily Market Value of the Borrowed Stocks when Market Closes* Stock Loan Rate for That Stock/360.
-# also the typivcal fee for Stock loan rate in the usa is 0.30% per annum, and might increase to 20-30% per annum
-# when returning the stock, the loan fee and the divendends are to be paid to lender.
+# Daily Margin Interest (Short Position) = The Daily Market Value of the Borrowed Stocks, when Market Closes * Stock Loan Rate for That Stock/360.
+# also the typical fee for Stock loan rate in the usa is 0.30% per annum, and might increase to 20-30% per annum
+# when returning the stock, the loan fee and the dividends are to be paid to lender.
 
 def justDisplayWhatever(data):
     # use chart plotting and diaplays in either an interactive python window or a notebook.
