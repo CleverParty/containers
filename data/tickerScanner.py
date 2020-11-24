@@ -240,7 +240,7 @@ def bollingerBands(data):
     # band is to be a tuple of current bollinger band range
     # upperBollingerBand = sma(data,period) 
     # will use pandas --> pandas.DataFrame.rolling
-    upperBollingerBand = data['Close'].rolling(window=5).mean()
+    upperBollingerBand = data['High'].rolling(window=5).mean()
     lowerBollingerBand = data['Low'].rolling(window=5).mean()
     print(upperBollingerBand,lowerBollingerBand)
     # std = sqrt(mean(abs(data.mean())))**2 # standard deviation calculation
