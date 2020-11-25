@@ -85,9 +85,11 @@ def on_message(ws, message):
 
 def on_close(ws):
     print("service has ended")
+    return True
 
 def on_error(ws, error):
     print(error)
+    return True
 
 def symbolsFinnhub(ws):
     ws.send('{"type":"subscribe","symbol":"BINANCE:BTCUSDT"}')
@@ -262,7 +264,6 @@ def main():
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
-    print("ACTUALLY HERE")
     ticker = yfinanceCreateContainer("AGCO")
     entireDataframe = ticker.symbolHist(start=start,end=end,interval="1mo")
     bollingerBands(entireDataframe)
