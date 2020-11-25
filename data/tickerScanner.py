@@ -254,7 +254,8 @@ def bollingerBands(data):
 def main():
     req = BalanceSheet('AGCO')
     print(req)
-    start = datetime.datetime(2019,9,12) # format :- year,month,day
+    start = datetime.datetime(2018,11,12) # format :- year,month,day
+    print(start)
     end = datetime.datetime(2020,11,16)
     symbolDefault = "AGCO"
     # stripped = "b" + accessGrant()
@@ -263,7 +264,7 @@ def main():
     # print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
     print("ACTUALLY HERE")
     ticker = yfinanceCreateContainer("AGCO")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1h")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1mo")
     bollingerBands(entireDataframe)
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
