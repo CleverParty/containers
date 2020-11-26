@@ -100,7 +100,7 @@ def main():
     # rtrnAnomaly  = anomalyPriceDetection(rtrnData,3)
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
     # print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
-    tran1 = merkleLeaf("23")
+    tran1 = merkleLeaf("text cargo")
     # print(tran1.cargoHash()) # to test merkle tree implemenatation
     print(print(np.std(rtrnData["Close"])))
     hashTest = tran1.cargoHash()
@@ -112,9 +112,10 @@ def main():
     print(rtrnValue)
     # Altman Z-Score:
     score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
-    print(f"z-score :{score}")
+    print(f"z-score :{score} \n")
     # Merkle Tree Imp:
     tran2 = merkleLeaf(str(score))
+    print("Merkle Root inititation \n")
     print(tran2.cargoHash())
     # tempCargo = []
     """for j in range(len(node)):
