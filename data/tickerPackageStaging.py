@@ -1,6 +1,5 @@
 from tickerScanner import yfinanceCreateContainer,altmanZScore,bollingerBands
 import matplotlib.pyplot as plt
-plt.style.use('ggplot')
 import datetime
 import hashlib
 import random
@@ -8,7 +7,8 @@ import numpy as np
 from yahoofinance import BalanceSheet 
 # fault handler for segmentation fault in pycore, is it due to matplotlib?
 import faulthandler
-faulthandler.enable()
+faulthandler.enable() # comment this line when not in debug mode.
+plt.style.use('ggplot')
 # execute "python3 -Xfaulthandler tickerPackageStaging.py" for the faulthandler
 # project imports
 
