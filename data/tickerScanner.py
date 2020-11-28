@@ -85,9 +85,11 @@ def on_message(ws, message):
 
 def on_close(ws):
     print("service has ended")
+    return True
 
 def on_error(ws, error):
     print(error)
+    return True
 
 def symbolsFinnhub(ws):
     ws.send('{"type":"subscribe","symbol":"BINANCE:BTCUSDT"}')
@@ -96,6 +98,7 @@ def accessGrant():
     # adding noise to the data process:
     # data[::5] += 3 * (0.5 - np.random.rand(5))
     # accessfile = open("access.txt","r")
+    strVal = ""
     with open("access.txt","r") as access:
             line = access.readline()
             cnt = 1
@@ -103,12 +106,15 @@ def accessGrant():
                 # if ("finnhub" in line):
                 #     print(f'Line {cnt}: {line.strip("finnhub=")}')
                 stripped = line.strip("finnhub=")
-                # line = access.readline()
-                line += access.readline(())
+                line += access.readline()
+                # line += access.readline(())
                 cnt += 1
                 if(cnt>2):
                     break
-    return stripped
+    val = [val for index,val in enumerate(stripped) if index>37] # = = 37
+    for i in val:
+        strVal += i
+    return strVal
 
 def getTickerNews(category):
     extracted = accessGrant()
@@ -244,23 +250,22 @@ def bollingerBands(data):
     upperBollingerBand = data['High'].rolling(window=5).mean()
     lowerBollingerBand = data['Low'].rolling(window=5).mean()
     print(upperBollingerBand,lowerBollingerBand)
-    std = math.sqrt(abs(data.mean())) # standard deviation calculation
-    print(std)
+    # std = math.sqrt(abs(data.mean())) # seems to be a math package issue during std dev calculation
     return upperBollingerBand
 
 def main():
     req = BalanceSheet('AGCO')
     print(req)
-    start = datetime.datetime(2019,9,12) # format :- year,month,day
+    start = datetime.datetime(2018,11,12) # format :- year,month,day
+    print(start)
     end = datetime.datetime(2020,11,16)
     symbolDefault = "AGCO"
     # stripped = "b" + accessGrant()
     # client = finnhub.Client(api_key=stripped)
     # print(finnhubCreate("F"))
     # print(laggingVWAP("AGCO", start=start, end=end, interval = '1mo'))
-    print("ACTUALLY HERE")
     ticker = yfinanceCreateContainer("AGCO")
-    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1h")
+    entireDataframe = ticker.symbolHist(start=start,end=end,interval="1mo")
     bollingerBands(entireDataframe)
     # csv = entireDataframe.to_csv("/Users/shanmukhasurapuraju/containers/data/currentEvaluation.csv")
     print(f'entire data frame contents')
