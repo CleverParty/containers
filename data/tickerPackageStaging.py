@@ -94,8 +94,8 @@ def justDisplayWhatever(data):
 
 def main():
     start = datetime.datetime(2019,7,19) # format :- year,month,day
-    end = datetime.datetime(2020,10,16)
-    tickerSymbol = yfinanceCreateContainer("BB")
+    end = datetime.datetime(2019,12,16)
+    tickerSymbol = yfinanceCreateContainer("T")
     rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
     # rtrnAnomaly  = anomalyPriceDetection(rtrnData,3)
     node = merkle(root="teststr",prevTransactions="teststrtest",currentHash=hashlib.sha256())
@@ -105,13 +105,13 @@ def main():
     print(print(np.std(rtrnData["Close"])))
     hashTest = tran1.cargoHash()
     prntTest = node.doubleHash(hashTest)
-    ticker = yfinanceCreateContainer("AGCO")
+    ticker = yfinanceCreateContainer("T")
     rtrnDataFrame = ticker.symbolHist(start=start,end=end,interval="1h")
     # Bollinger Bands:
     rtrnValue = bollingerBands(rtrnDataFrame)
     print(rtrnValue)
     # Altman Z-Score:
-    score = altmanZScore(symbol = "AAPL", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
+    score = altmanZScore(symbol = "T", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f"z-score :{score} \n")
     # Merkle Tree Imp:
     tran2 = merkleLeaf(str(score))
