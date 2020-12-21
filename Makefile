@@ -20,7 +20,6 @@ build:
 	# pip3 install plotit , dependency for tickerScanner.py
 	# source game/bin/activate , Using a "." instead of source also works
 	python3 nash/actors.py
-	go build main.go
 	# ./start_server.sh
 dynamic:
 	# re-read PEP 20 for code practices, and then read PEP 20 again.
