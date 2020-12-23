@@ -31,5 +31,5 @@ func main() {
 
 		c.String(http.StatusOK, fmt.Sprintf("'%s' uploaded!", file.Filename))
 	})
-	router.Run(":8003") //testing default port provided by gin-golang
+	router.Run(":8003") // testing default port provided by gin-golang
 }
