@@ -2,10 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D 
 
-# Global consts for fluid flow
-prandtl_number = 10 # ratio of momentum diffusivity and thermal diffusivity
+# Global consts for fluid flow (included in Lorenz equations)
+prandtl_number = 10 # AKA. sigma in certain texts, ratio of momentum diffusivity and thermal diffusivity
 rayleigh_number = 28 # it is the measure of instability in a fluid, mainly caused by convection
-beta = 8/3 # measure of compressibility of a fluid ( relative volume change )
+beta = 2.667 # abs(8/3) measure of compressibility of a fluid ( relative volume change )
 # refer "https://mathworld.wolfram.com/LorenzAttractor.html" for complete formulaic breakdown
 def lorenzAttractorGenerator(x,y,z):
     # This method of fluid movement, essentially assumes that the fluid is cooled from below and heated from above
