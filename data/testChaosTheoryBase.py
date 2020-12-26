@@ -31,7 +31,7 @@ if __name__ == "__main__":
         zArr[i + 1] = zArr[i] + (zBar * dt)
     """
     t = np.linspace(0, dt, steps)
-    f = odeint(lorenzAttractorGenerator, (0, 1, 1.05), t)
+    f = odeint(lorenzAttractorGenerator, (1, 1, 1), t)
     x, y, z = f.T
     print(x,y,z)
 
