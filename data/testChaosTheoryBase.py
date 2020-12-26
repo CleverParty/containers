@@ -34,6 +34,16 @@ if __name__ == "__main__":
     f = odeint(lorenzAttractorGenerator, (0, 1, 1.05), t)
     x, y, z = f.T
     print(x,y,z)
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    s = 10
+    c = np.linspace(0,1,steps)
+    for i in range(0,steps-s,s):
+        ax.plot(x[i:i+s+1], y[i:i+s+1], z[i:i+s+1], color=(1,c[i],0), alpha=0.4)
+
+    ax.set_axis_off()
+    plt.show()
     
     """
     fig = plt.figure()
