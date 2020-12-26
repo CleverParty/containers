@@ -19,6 +19,11 @@ def lorenzAttractorGenerator(X, t):
     print(xBar, yBar, zBar)
     return xBar, yBar, zBar
 
+def model(x,t):
+    const = 2
+    dxdt = -const * x
+    return dxdt
+
 if __name__ == "__main__":
    
     t = np.linspace(0, dt, steps)
@@ -33,8 +38,12 @@ if __name__ == "__main__":
         ax.plot(x[i:i+s+1], y[i:i+s+1], z[i:i+s+1], color=(1,c[i],0), alpha=0.4)
 
     ax.set_axis_off()
-    plt.show()
-    
+    # plt.show()
+
+    # time points for test model:
+    dt = np.linspace(0,20)
+    y = odeint(model,(1),dt)
+    print(y)
     """
     fig = plt.figure()
     ax = fig.gca(projection='3d')
