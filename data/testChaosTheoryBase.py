@@ -7,18 +7,20 @@ from mpl_toolkits.mplot3d import Axes3D
 prandtl_number = 10 # AKA. sigma in certain texts, ratio of momentum diffusivity and thermal diffusivity
 rayleigh_number = 28 # it is the measure of instability in a fluid, mainly caused by convection
 beta = 2.667 # abs(8/3) measure of compressibility of a fluid ( relative volume change )
+dt = 100 # max time point
+steps = 10000 # total no of time points
 # refer "https://mathworld.wolfram.com/LorenzAttractor.html" for complete formulaic breakdown
 def lorenzAttractorGenerator(X, t):
     # This method of fluid movement, essentially assumes that the fluid is cooled from below and heated from above
     x, y, z = X
-    xBar = -prandtl_number * (y - x)
-    yBar = rayleigh_number * x - y - x*y
+    xBar = -prandtl_number * (x - y)
+    yBar = rayleigh_number * x - y - x*z
     zBar = -beta*z + x*y 
+    print(xBar, yBar, zBar)
     return xBar, yBar, zBar
 
 if __name__ == "__main__":
-    dt = 100 # max time point
-    steps = 10000 # total no of time points
+   
     """ 
     xArr = np.empty(steps + 1)
     yArr = np.empty(steps + 1)
@@ -31,8 +33,9 @@ if __name__ == "__main__":
         zArr[i + 1] = zArr[i] + (zBar * dt)
     """
     t = np.linspace(0, dt, steps)
-    f = odeint(lorenzAttractorGenerator, (1, 1, 1), t)
+    f = odeint(lorenzAttractorGenerator, (0, 1, 1.05), t)
     x, y, z = f.T
+    print("solving the differential equation output using odeint")
     print(x,y,z)
 
     fig = plt.figure()
