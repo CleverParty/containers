@@ -19,24 +19,16 @@ def lorenzAttractorGenerator(X, t):
     print(xBar, yBar, zBar)
     return xBar, yBar, zBar
 
+def model(x,t):
+    const = 2
+    dxdt = -const * x
+    return dxdt
+
 if __name__ == "__main__":
    
-    """ 
-    xArr = np.empty(steps + 1)
-    yArr = np.empty(steps + 1)
-    zArr = np.empty(steps + 1)
-    xArr[0], yArr[0], zArr[0] = (0., 1., 1.05)
-    for i in range(steps):
-        xBar, yBar, zBar = lorenzAttractorGenerator(xArr[i], yArr[i], zArr[i])
-        xArr[i + 1] = xArr[i] + (xBar * dt)
-        yArr[i + 1] = yArr[i] + (yBar * dt)
-        zArr[i + 1] = zArr[i] + (zBar * dt)
-    """
     t = np.linspace(0, dt, steps)
-    f = odeint(lorenzAttractorGenerator, (0, 1, 1.05), t)
+    f = odeint(lorenzAttractorGenerator, (0, 1, 1.05), t) # solving the differential equation output using odeint
     x, y, z = f.T
-    print("solving the differential equation output using odeint")
-    print(x,y,z)
 
     fig = plt.figure()
     ax = fig.gca(projection='3d')
@@ -46,8 +38,12 @@ if __name__ == "__main__":
         ax.plot(x[i:i+s+1], y[i:i+s+1], z[i:i+s+1], color=(1,c[i],0), alpha=0.4)
 
     ax.set_axis_off()
-    plt.show()
-    
+    # plt.show()
+
+    # time points for test model:
+    dt = np.linspace(0,20)
+    y = odeint(model,(1),dt)
+    print(y)
     """
     fig = plt.figure()
     ax = fig.gca(projection='3d')
