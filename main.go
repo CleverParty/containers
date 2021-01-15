@@ -12,7 +12,7 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.GET("/indexVal", func(c *gin.Context) {
+	router.GET("/testHeader", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "value is : %v ", // This will return a json response on /indexVal extension
 		})
