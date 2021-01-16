@@ -28,11 +28,10 @@ dynamic:
 	# python3 nash/poker.py
 	# python3 algos/lychrel.py
 	# python3 algos/frequentDigits.py
-	python3 algos/reverseDigits.py
-	echo "reversing digits works"
+	# python3 algos/reverseDigits.py
 	python3 algos/squareConvergents.py
-	python3 algos/maxProfit.py
-	echo "algo test sequence"
+	python algos/squareConvergents.py
+	# python3 algos/maxProfit.py
 	# python3 data/tickerScanner.py
 	python3 data/tickerPackageStaging.py
 	# python3 data/arithproj.py
