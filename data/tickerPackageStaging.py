@@ -7,7 +7,7 @@ import numpy as np
 from yahoofinance import BalanceSheet 
 # fault handler for segmentation fault in pycore, is it due to matplotlib?
 import faulthandler
-faulthandler.enable() # comment this line when not in debug mode.
+# faulthandler.enable() # comment this line when not in debug mode.
 plt.style.use('ggplot')
 # execute "python3 -Xfaulthandler tickerPackageStaging.py" for the faulthandler
 # project imports
@@ -93,8 +93,8 @@ def justDisplayWhatever(data):
     plt.show() 
 
 def main():
-    start = datetime.datetime(2019,7,19) # format :- year,month,day
-    end = datetime.datetime(2019,12,16)
+    start = datetime.datetime(2018,7,19) # format :- year,month,day
+    end = datetime.datetime(2020,12,16)
     tickerSymbol = yfinanceCreateContainer("T")
     rtrnData = tickerSymbol.symbolDownloadHistoricalData(start,end)
     # rtrnAnomaly  = anomalyPriceDetection(rtrnData,3)
