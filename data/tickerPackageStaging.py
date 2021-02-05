@@ -21,6 +21,7 @@ class merkleLeaf(): # extend this with a base class
     def cargoHash(self):
         if(type(self.cargo) is str):
             tempHash = hashlib.sha256()
+            tempHashVal = hashlib.sha384()
             print("String Cargo")
             print(str.encode(self.cargo))
             tempHash.update(str.encode(self.cargo))
@@ -36,7 +37,6 @@ class merkleLeaf(): # extend this with a base class
     def interator(self):
         return iter(self.cargo)
     
-
 class merkle():
     def __init__(self,root,prevTransactions,currentHash,status=None):
         self.root = root
