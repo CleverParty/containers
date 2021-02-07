@@ -53,7 +53,6 @@ class merkle():
     
     def doubleHash(self,cargo): # Double hashing within the inner node itself for easier access to cargo
         self.status = hashlib.sha256(str.encode(self.cargo))
-        print(self.status.hexdigest())
         self.currentHash = hashlib.sha256()
         return (self.currentHash)
 
@@ -102,35 +101,34 @@ def main():
     # print(f'the test string (hash) : = {rtrnHash.hexdigest()}')
     tran1 = merkleLeaf("text cargo")
     # print(tran1.cargoHash()) # to test merkle tree implemenatation
-    print(print(np.std(rtrnData["Close"])))
     hashTest = tran1.cargoHash()
     prntTest = node.doubleHash(hashTest)
     ticker = yfinanceCreateContainer("T")
     rtrnDataFrame = ticker.symbolHist(start=start,end=end,interval="1h")
     # Bollinger Bands:
     rtrnValue = bollingerBands(rtrnDataFrame)
-    print(rtrnValue)
     # Altman Z-Score:
     score = altmanZScore(symbol = "T", sales = 265595000000, totalAssets = 338215000000, retainedEarnings = 53700000000 , rawEarnings = 1678000000, marketValueEquity = 19000000000, totalLiability = 248000000000)
     print(f"z-score :{score} \n")
     # Merkle Tree Imp:
     tran2 = merkleLeaf(str(score))
-    print("Merkle Root inititation \n")
+    print(f"Merkle Root inititation \n")
     print(tran2.cargoHash())
-    # tempCargo = []
+
     """for j in range(len(node)):
         print(j)
         tempCargo[j] = (2*cos(theta)*tempCargo[j-1]) - tempCargo[j-1]
-        rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]"""
-    # createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
-    # adding leaves
-    # valueInput = "ditto was a pidgeon"
-    # tran3 = merkleLeaf(valueInput)
-    # print(tran3.cargoHash())
-    # valueToBePrinted = str(tran1.cargoHash()) + str(tran2.cargoHash()) + str(tran3.cargoHash())
-    # print(valueToBePrinted)
-    # req = BalanceSheet('AAPL')
-    # print(req)
+        rtrnThetaConversion = 2*cos(theta) * tempCargo[j-1]
+    createMerkleTreeLevel(tran1,leftCargo="21",rightCargo="3")
+    adding leaves
+    valueInput = "ditto was a pidgeon"
+    tran3 = merkleLeaf(valueInput)
+    print(tran3.cargoHash())
+    valueToBePrinted = str(tran1.cargoHash()) + str(tran2.cargoHash()) + str(tran3.cargoHash())
+    print(valueToBePrinted)
+    req = BalanceSheet('AAPL')
+    print(req)
+    """
 
 if __name__ == "__main__" :
     main()
